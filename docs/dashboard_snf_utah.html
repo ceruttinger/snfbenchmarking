@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>SNF Benchmarking - Utah SNF Strategic Benchmark</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="site_libs/quarto-dashboard/stickythead.js"></script>
+<script src="site_libs/quarto-dashboard/datatables.min.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/pdfmake.min.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/vfs_fonts.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="site_libs/quarto-dashboard/components.js"></script>
+<link href="site_libs/quarto-dashboard/datatables.min.css" rel="stylesheet" kdttablesentinel="true">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/bslib-component-js-0.7.0/components.min.js"></script>
+<script src="site_libs/bslib-component-js-0.7.0/web-components.min.js" type="module"></script>
+<link href="site_libs/bslib-component-css-0.7.0/components.css" rel="stylesheet">
+<script src="site_libs/bslib-tag-require-0.7.0/tag-require.js"></script>
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.34.0/datatables.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="site_libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
+<script src="site_libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="site_libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
+<script src="site_libs/selectize-0.12.0/selectize.min.js"></script>
+<script src="site_libs/plotly-binding-4.12.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+
+
+</head>
+
+<body class="quarto-dashboard fullcontent">
+
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+    <div class="navbar-brand-container">       
+
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">Utah SNF Strategic Benchmark</a></div>
+        <div class="navbar-subtitle">Static Quarto prototype from CMS SNF cost-report metrics</div>
+        
+      </div>
+    </div>
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-overview" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#overview" data-scrolling="true" href="#overview" aria-controls="overview" aria-selected="true"><span class="nav-link-text">Overview</span></a></li><li class="nav-item" role="presentation"><a id="tab-benchmark-snapshot" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#benchmark-snapshot" data-scrolling="true" href="#benchmark-snapshot" aria-controls="benchmark-snapshot" aria-selected="false"><span class="nav-link-text">Benchmark Snapshot</span></a></li><li class="nav-item" role="presentation"><a id="tab-trends" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#trends" data-scrolling="true" href="#trends" aria-controls="trends" aria-selected="false"><span class="nav-link-text">Trends</span></a></li><li class="nav-item" role="presentation"><a id="tab-financial-performance" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#financial-performance" data-scrolling="true" href="#financial-performance" aria-controls="financial-performance" aria-selected="false"><span class="nav-link-text">Financial Performance</span></a></li><li class="nav-item" role="presentation"><a id="tab-facility-index" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#facility-index" data-scrolling="true" href="#facility-index" aria-controls="facility-index" aria-selected="false"><span class="nav-link-text">Facility Index</span></a></li></ul></div></div>
+</nav>
+</header>
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-layout-custom quarto-dashboard-content bslib-gap-spacing html-fill-container dashboard-scrolling quarto-dashboard-pages">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+<!-- main -->
+
+<div class="cell bslib-grid-item html-fill-item">
+<style type="text/css">
+.strategy-flag {
+  border-left: 6px solid #777;
+  border-radius: 6px;
+  padding: 0.75rem 0.85rem;
+  margin-bottom: 0.75rem;
+  background: #f8f9fa;
+}
+.strategy-flag p {
+  margin-bottom: 0;
+}
+.strategy-risk {
+  border-left-color: #b42318;
+  background: #fff4f2;
+}
+.strategy-watch {
+  border-left-color: #b54708;
+  background: #fffbeb;
+}
+.strategy-good {
+  border-left-color: #027a48;
+  background: #ecfdf3;
+}
+.small-note {
+  font-size: 0.9rem;
+  color: #555;
+}
+</style>
+</div>
+<div class="bslib-grid-item html-fill-item tab-content bslib-grid" data-layout="flow" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div id="overview" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-overview">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container bslib-value-box default" data-bslib-card-init="" data-require-bs-caller="card()" data-require-bs-version="5 5" data-full-screen="false">
+<div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+<div class="value-box-area html-fill-item html-fill-container">
+<p class="value-box-title">SUCCESSOR HEALTHCARE INC.</p>
+<p class="value-box-value">CCN 465095</p>
+<p>
+SALT LAKE CITY, UT
+ · 
+150+
+ beds · 
+U
+</p>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container bslib-value-box default" data-bslib-card-init="" data-require-bs-caller="card()" data-require-bs-version="5 5" data-full-screen="false">
+<div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+<div class="value-box-area html-fill-item html-fill-container">
+<p class="value-box-title">Occupancy</p>
+<p class="value-box-value">75.1%</p>
+<p>
+Peer median: 
+55.5%
+ · Percentile: 
+100%
+</p>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container bslib-value-box default" data-bslib-card-init="" data-require-bs-caller="card()" data-require-bs-version="5 5" data-full-screen="false">
+<div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+<div class="value-box-area html-fill-item html-fill-container">
+<p class="value-box-title">Patient service margin</p>
+<p class="value-box-value">75.1%</p>
+<p>
+Peer median: 
+55.5%
+ · Percentile: 
+100%
+</p>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container bslib-value-box default" data-bslib-card-init="" data-require-bs-caller="card()" data-require-bs-version="5 5" data-full-screen="false">
+<div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto;">
+<div class="value-box-area html-fill-item html-fill-container">
+<p class="value-box-title">Net patient revenue/day</p>
+<p class="value-box-value">75.1%</p>
+<p>
+Operating expense/day: 
+75.1%
+</p>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-0f74bcf4d10b39526529" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0f74bcf4d10b39526529">{"x":{"filter":"none","vertical":false,"data":[["CCN","Facility","City","County","ZIP","CBSA","Rural/urban","Type of control","Beds","Bed-size band","SNF/NF mix","Latest year","Peer definition","Peer count"],["465095","SUCCESSOR HEALTHCARE INC.","SALT LAKE CITY","SALT LAKE","84115","41620","U","11","221","150+","SNF-dominant","2023","same state + same rural/urban + same bed-size band","7"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Field<\/th>\n      <th>Value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"t","language":{"info":"Showing _TOTAL_ entries"},"paging":false,"columnDefs":[{"name":"Field","targets":0},{"name":"Value","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="strategy-flag strategy-good html-fill-item html-fill-container">
+<strong>Occupancy</strong>
+<p>Target occupancy is 75.1% versus a peer median of 55.5%.</p>
+</div>
+<div class="strategy-flag strategy-watch html-fill-item html-fill-container">
+<strong>Payer mix</strong>
+<p>Medicare day share is 75.1%; Medicaid day share is 75.1%.</p>
+</div>
+<div class="strategy-flag strategy-good html-fill-item html-fill-container">
+<strong>Margin</strong>
+<p>Patient service margin is 75.1% versus a peer median of 55.5%.</p>
+</div>
+<div class="strategy-flag strategy-risk html-fill-item html-fill-container">
+<strong>Labor pressure</strong>
+<p>Contract labor ratio is 75.1% versus a peer median of 55.5%.</p>
+</div>
+<div class="strategy-flag strategy-risk html-fill-item html-fill-container">
+<strong>Liquidity</strong>
+<p>Days cash on hand is 75.1% versus a peer median of 55.5%.</p>
+</div>
+<div class="strategy-flag strategy-watch html-fill-item html-fill-container">
+<strong>Revenue vs cost</strong>
+<p>Revenue/day is 75.1%; operating expense/day is 75.1%.</p>
+</div>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+</div>
+</div>
+<div id="benchmark-snapshot" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-benchmark-snapshot">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-372dcca18645b9ca2c9a" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-372dcca18645b9ca2c9a">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"3\" data-max=\"7\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["Utilization","Payer mix","Payer mix","Payer mix","Revenue","Cost","Margin","Margin","Labor","Labor","Labor","Liquidity","Liquidity","Liquidity","Solvency"],["Occupancy rate","Medicare day share","Medicaid day share","Other day share","Net patient revenue per resident day","Operating expense per resident day","Patient service margin","Total margin","Salary cost per resident day","Contract labor per resident day","Contract labor ratio","Days cash on hand","Current ratio","Days accounts receivable","Debt to assets"],["75.1%","11.1%","71.5%","17.4%","$473","$405","14.4%","14.5%","$214","$0","0.0%","5.6","9.1","51.5","44.7%"],["55.5%","3.3%","72.5%","28.3%","$330","$322","-5.9%","4.3%","$144","$9","5.7%","17.2","2.0","54.3","34.5%"],["33.1%","2.6%","69.1%","23.9%","$234","$283","-23.0%","-16.7%","$122","$7","4.0%","0.1","1.1","45.7","22.6%"],["56.9%","4.1%","72.8%","58.2%","$382","$388","2.8%","5.8%","$149","$24","13.1%","71.3","6.2","73.3","63.9%"],["100%","86%","40%","14%","100%","86%","100%","100%","100%","0%","0%","43%","71%","43%","71%"],["19.6%","7.7%","-1.0%","-10.8%","$143","$82","20.2%","10.2%","$70","-$9","-5.7%","-11.6","7.1","-2.8","10.2%"],[7,7,5,7,7,7,7,7,7,3,3,7,7,7,7]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Domain<\/th>\n      <th>Metric<\/th>\n      <th>Target<\/th>\n      <th>Peer median<\/th>\n      <th>Peer p25<\/th>\n      <th>Peer p75<\/th>\n      <th>Percentile<\/th>\n      <th>Difference<\/th>\n      <th>Peer n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"ifrt","language":{"info":"Showing _TOTAL_ entries"},"pageLength":15,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":8},{"name":"Domain","targets":0},{"name":"Metric","targets":1},{"name":"Target","targets":2},{"name":"Peer median","targets":3},{"name":"Peer p25","targets":4},{"name":"Peer p75","targets":5},{"name":"Percentile","targets":6},{"name":"Difference","targets":7},{"name":"Peer n","targets":8}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[10,15,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+</div>
+</div>
+<div id="trends" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-trends">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-e17bcadee706597e9797" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-e17bcadee706597e9797">{"x":{"data":[{"x":[2011,2012,2013,2014,2015,2016,2016,2017,2018,2019,2020,2021,2022,2023,2023,2023,2022,2021,2020,2019,2018,2017,2016,2016,2015,2014,2013,2012,2011,2011],"y":[0.47478206724782068,0.51907987536254874,0.46987147555640707,0.52604332589996816,0.45536617492096942,0.40339908743849906,0.40339908743849906,0.42162135313186239,0.461593571908959,0.42087766804714877,0.38212375839861601,0.34622429579997738,0.32180337303249923,0.33101965524254667,0.33101965524254667,0.56934237869275561,0.57940358017338367,0.60644729005360332,0.56233409436834103,0.58495836140429669,0.58971739130434786,0.54610821779298313,0.51073022971358106,0.51073022971358106,0.61047345454729163,0.88534526709341188,0.62925770807651293,0.68708069898138391,0.63298325722983262,0.47478206724782068],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"transparent","dash":"solid"},"fill":"toself","fillcolor":"rgba(122,122,122,0.15)","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,null,2012,null,2013,null,2014,null,2015,null,2016,2016,null,2017,null,2018,null,2019,null,2020,null,2021,null,2022,null,2023],"y":[0.60098757566103855,null,0.61022782039029244,null,0.55401544669623681,null,0.66596188207266227,null,0.5250729041586002,null,0.4240271435819381,0.4240271435819381,null,0.45216687422166874,null,0.58264840182648403,null,0.55099192207175096,null,0.50072960095294816,null,0.51624657534246576,null,0.53352054794520543,null,0.5547540983606557],"text":["Year: 2011<br>Peer median: 60.1%",null,"Year: 2012<br>Peer median: 61.0%",null,"Year: 2013<br>Peer median: 55.4%",null,"Year: 2014<br>Peer median: 66.6%",null,"Year: 2015<br>Peer median: 52.5%",null,"Year: 2016<br>Peer median: 42.4%","Year: 2016<br>Peer median: 42.4%",null,"Year: 2017<br>Peer median: 45.2%",null,"Year: 2018<br>Peer median: 58.3%",null,"Year: 2019<br>Peer median: 55.1%",null,"Year: 2020<br>Peer median: 50.1%",null,"Year: 2021<br>Peer median: 51.6%",null,"Year: 2022<br>Peer median: 53.4%",null,"Year: 2023<br>Peer median: 55.5%"],"type":"scatter","mode":"lines","line":{"width":3.4015748031496069,"color":"rgba(102,102,102,1)","dash":"dash"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,null,2012,null,2013,null,2014,null,2015,null,2016,null,2016,null,2017,null,2018,null,2019,null,2020,null,2021,null,2022,null,2023],"y":[0.72682390321398016,null,0.71207761793241886,null,0.72164717980818671,null,0.77944825736066714,null,0.78257807784310662,null,0.70580847723704865,null,0.75510204081632648,null,0.71694043265356722,null,0.72507283208330753,null,0.76161904171573791,null,0.74240288801523135,null,0.73275894130044006,null,0.73320523151304784,null,0.75059815285439779],"text":["Year: 2011<br>Target: 72.7%",null,"Year: 2012<br>Target: 71.2%",null,"Year: 2013<br>Target: 72.2%",null,"Year: 2014<br>Target: 77.9%",null,"Year: 2015<br>Target: 78.3%",null,"Year: 2016<br>Target: 70.6%",null,"Year: 2016<br>Target: 75.5%",null,"Year: 2017<br>Target: 71.7%",null,"Year: 2018<br>Target: 72.5%",null,"Year: 2019<br>Target: 76.2%",null,"Year: 2020<br>Target: 74.2%",null,"Year: 2021<br>Target: 73.3%",null,"Year: 2022<br>Target: 73.3%",null,"Year: 2023<br>Target: 75.1%"],"type":"scatter","mode":"lines","line":{"width":4.5354330708661417,"color":"rgba(0,94,168,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,2012,2013,2014,2015,2016,2016,2017,2018,2019,2020,2021,2022,2023],"y":[0.72682390321398016,0.71207761793241886,0.72164717980818671,0.77944825736066714,0.78257807784310662,0.75510204081632648,0.70580847723704865,0.71694043265356722,0.72507283208330753,0.76161904171573791,0.74240288801523135,0.73275894130044006,0.73320523151304784,0.75059815285439779],"text":["Year: 2011<br>Target: 72.7%","Year: 2012<br>Target: 71.2%","Year: 2013<br>Target: 72.2%","Year: 2014<br>Target: 77.9%","Year: 2015<br>Target: 78.3%","Year: 2016<br>Target: 75.5%","Year: 2016<br>Target: 70.6%","Year: 2017<br>Target: 71.7%","Year: 2018<br>Target: 72.5%","Year: 2019<br>Target: 76.2%","Year: 2020<br>Target: 74.2%","Year: 2021<br>Target: 73.3%","Year: 2022<br>Target: 73.3%","Year: 2023<br>Target: 75.1%"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,94,168,1)","opacity":1,"size":8.3149606299212611,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,94,168,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":50.537152345371524,"r":8.6342880863428828,"b":31.946865919468664,"l":33.673723536737242},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762},"title":{"text":"<b> Occupancy rate <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":20.722291407222912},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2010.4000000000001,2023.5999999999999],"tickmode":"array","ticktext":["2015","2020"],"tickvals":[2015,2020],"categoryorder":"array","categoryarray":["2015","2020"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714405,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.29362627832945359,0.91352236179645752],"tickmode":"array","ticktext":["30%","40%","50%","60%","70%","80%","90%"],"tickvals":[0.30000000000000004,0.40000000000000002,0.5,0.60000000000000009,0.70000000000000007,0.80000000000000004,0.90000000000000013],"categoryorder":"array","categoryarray":["30%","40%","50%","60%","70%","80%","90%"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"x","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"shapes":[],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":13.814860938148611}},"hovermode":"x unified","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"source":"A","attrs":{"ebc1c6a9b14":{"x":{},"ymin":{},"ymax":{},"type":"scatter"},"ebc12aeb446a":{"x":{},"y":{},"text":{}},"ebc13bd8a129":{"x":{},"y":{},"text":{}},"ebc1b3ca971":{"x":{},"y":{},"text":{}}},"cur_data":"ebc1c6a9b14","visdat":{"ebc1c6a9b14":["function (y) ","x"],"ebc12aeb446a":["function (y) ","x"],"ebc13bd8a129":["function (y) ","x"],"ebc1b3ca971":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-dbdb04bba345ee1a75be" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-dbdb04bba345ee1a75be">{"x":{"data":[{"x":[2011,2012,2013,2014,2015,2016,2016,2017,2018,2019,2020,2021,2022,2023,2023,2023,2022,2021,2020,2019,2018,2017,2016,2016,2015,2014,2013,2012,2011,2011],"y":[0.10449878975043819,0.11588288538183519,0.092156136448956302,0.12301793783376694,0.073323675994136306,0.083764114228508033,0.083764114228508033,0.086119665181768362,0.05160218704049728,0.045485072460991191,0.070140472108010735,0.049555708301313423,0.031231762065095398,0.026418669515563546,0.026418669515563546,0.041385510161653052,0.075541485992658683,0.076884745176377445,0.12406130737658366,0.10579296384773584,0.10573500652517201,0.13104333460898224,0.15286994521910904,0.15286994521910904,0.14871331071523791,0.16021905497437339,0.15610143051471098,0.17701732212001103,0.14203551550490326,0.10449878975043819],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"transparent","dash":"solid"},"fill":"toself","fillcolor":"rgba(122,122,122,0.15)","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,null,2012,null,2013,null,2014,null,2015,null,2016,2016,null,2017,null,2018,null,2019,null,2020,null,2021,null,2022,null,2023],"y":[0.11042622950819672,null,0.14967033453983689,null,0.12844321139786108,null,0.15179794520547946,null,0.13694806122834974,null,0.1140398401279881,0.1140398401279881,null,0.089863899074016526,null,0.075782161148014809,null,0.060812288846219281,null,0.10699135899450118,null,0.067186753701639873,null,0.050632911392405063,null,0.03331609344022067],"text":["Year: 2011<br>Peer median: 11.0%",null,"Year: 2012<br>Peer median: 15.0%",null,"Year: 2013<br>Peer median: 12.8%",null,"Year: 2014<br>Peer median: 15.2%",null,"Year: 2015<br>Peer median: 13.7%",null,"Year: 2016<br>Peer median: 11.4%","Year: 2016<br>Peer median: 11.4%",null,"Year: 2017<br>Peer median: 9.0%",null,"Year: 2018<br>Peer median: 7.6%",null,"Year: 2019<br>Peer median: 6.1%",null,"Year: 2020<br>Peer median: 10.7%",null,"Year: 2021<br>Peer median: 6.7%",null,"Year: 2022<br>Peer median: 5.1%",null,"Year: 2023<br>Peer median: 3.3%"],"type":"scatter","mode":"lines","line":{"width":3.4015748031496069,"color":"rgba(102,102,102,1)","dash":"dash"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,null,2012,null,2013,null,2014,null,2015,null,2016,null,2016,null,2017,null,2018,null,2019,null,2020,null,2021,null,2022,null,2023],"y":[0.10049431703544287,null,0.098101860552527717,null,0.098729863692688977,null,0.082115558359983368,null,0.067560811872420051,null,0.12002826041448608,null,0.073888764797855708,null,0.073315811315534649,null,0.080785802215839142,null,0.080262386874145455,null,0.15941715237302248,null,0.12013602219665696,null,0.15550182605167051,null,0.11069086825111071],"text":["Year: 2011<br>Target: 10.0%",null,"Year: 2012<br>Target: 9.8%",null,"Year: 2013<br>Target: 9.9%",null,"Year: 2014<br>Target: 8.2%",null,"Year: 2015<br>Target: 6.8%",null,"Year: 2016<br>Target: 12.0%",null,"Year: 2016<br>Target: 7.4%",null,"Year: 2017<br>Target: 7.3%",null,"Year: 2018<br>Target: 8.1%",null,"Year: 2019<br>Target: 8.0%",null,"Year: 2020<br>Target: 15.9%",null,"Year: 2021<br>Target: 12.0%",null,"Year: 2022<br>Target: 15.6%",null,"Year: 2023<br>Target: 11.1%"],"type":"scatter","mode":"lines","line":{"width":4.5354330708661417,"color":"rgba(0,94,168,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,2012,2013,2014,2015,2016,2016,2017,2018,2019,2020,2021,2022,2023],"y":[0.10049431703544287,0.098101860552527717,0.098729863692688977,0.082115558359983368,0.067560811872420051,0.073888764797855708,0.12002826041448608,0.073315811315534649,0.080785802215839142,0.080262386874145455,0.15941715237302248,0.12013602219665696,0.15550182605167051,0.11069086825111071],"text":["Year: 2011<br>Target: 10.0%","Year: 2012<br>Target: 9.8%","Year: 2013<br>Target: 9.9%","Year: 2014<br>Target: 8.2%","Year: 2015<br>Target: 6.8%","Year: 2016<br>Target: 7.4%","Year: 2016<br>Target: 12.0%","Year: 2017<br>Target: 7.3%","Year: 2018<br>Target: 8.1%","Year: 2019<br>Target: 8.0%","Year: 2020<br>Target: 15.9%","Year: 2021<br>Target: 12.0%","Year: 2022<br>Target: 15.6%","Year: 2023<br>Target: 11.1%"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,94,168,1)","opacity":1,"size":8.3149606299212611,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,94,168,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":50.537152345371524,"r":8.6342880863428828,"b":31.946865919468664,"l":33.673723536737242},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762},"title":{"text":"<b> Medicare day share <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":20.722291407222912},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2010.4000000000001,2023.5999999999999],"tickmode":"array","ticktext":["2015","2020"],"tickvals":[2015,2020],"categoryorder":"array","categoryarray":["2015","2020"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714405,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.018888736885341172,0.1845472547502334],"tickmode":"array","ticktext":["5%","10%","15%"],"tickvals":[0.050000000000000003,0.10000000000000001,0.15000000000000002],"categoryorder":"array","categoryarray":["5%","10%","15%"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"x","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"shapes":[],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":13.814860938148611}},"hovermode":"x unified","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"source":"A","attrs":{"ebc116e7fa32":{"x":{},"ymin":{},"ymax":{},"type":"scatter"},"ebc157daf45d":{"x":{},"y":{},"text":{}},"ebc167e132ba":{"x":{},"y":{},"text":{}},"ebc171c9869d":{"x":{},"y":{},"text":{}}},"cur_data":"ebc116e7fa32","visdat":{"ebc116e7fa32":["function (y) ","x"],"ebc157daf45d":["function (y) ","x"],"ebc167e132ba":["function (y) ","x"],"ebc171c9869d":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-211870b484692e6badaf" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-211870b484692e6badaf">{"x":{"data":[{"x":[2011,2012,2013,2014,2015,2016,2016,2017,2018,2019,2020,2021,2022,2023,2023,2023,2022,2021,2020,2019,2018,2017,2016,2016,2015,2014,2013,2012,2011,2011],"y":[0.55523227609705528,0.56753865222652444,0.54266429297135255,0.52856868641627741,0.54874086191578908,0.58538355425566235,0.58538355425566235,0.59740849235453641,0.63738990709342469,0.68329236175128205,0.67166766922614207,0.64271936120581374,0.663821832073478,0.69088075222934819,0.69088075222934819,0.7278368794326241,0.83236192774796514,0.82746908666348251,0.79015135745933573,0.78663115183570198,0.77653119174043594,0.73666096033111883,0.632096208942035,0.632096208942035,0.67361307127815939,0.65919152170996731,0.6284964264431796,0.6367858229195289,0.63723333324211417,0.55523227609705528],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"transparent","dash":"solid"},"fill":"toself","fillcolor":"rgba(122,122,122,0.15)","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,null,2012,null,2013,null,2014,null,2015,null,2016,2016,null,2017,null,2018,null,2019,null,2020,null,2021,null,2022,null,2023],"y":[0.59192273657447547,null,0.599772144443809,null,0.58699598197391822,null,0.60791455566205665,null,0.58511954615406947,null,0.60527744802787842,0.60527744802787842,null,0.6585686588986811,null,0.72968154600807655,null,0.73972482981168342,null,0.76418594758112168,null,0.72756793266483089,null,0.70207446808510643,null,0.72522570937231301],"text":["Year: 2011<br>Peer median: 59.2%",null,"Year: 2012<br>Peer median: 60.0%",null,"Year: 2013<br>Peer median: 58.7%",null,"Year: 2014<br>Peer median: 60.8%",null,"Year: 2015<br>Peer median: 58.5%",null,"Year: 2016<br>Peer median: 60.5%","Year: 2016<br>Peer median: 60.5%",null,"Year: 2017<br>Peer median: 65.9%",null,"Year: 2018<br>Peer median: 73.0%",null,"Year: 2019<br>Peer median: 74.0%",null,"Year: 2020<br>Peer median: 76.4%",null,"Year: 2021<br>Peer median: 72.8%",null,"Year: 2022<br>Peer median: 70.2%",null,"Year: 2023<br>Peer median: 72.5%"],"type":"scatter","mode":"lines","line":{"width":3.4015748031496069,"color":"rgba(102,102,102,1)","dash":"dash"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,null,2012,null,2013,null,2014,null,2015,null,2016,null,2016,null,2017,null,2018,null,2019,null,2020,null,2021,null,2022,null,2023],"y":[0.41112381464792519,null,0.42264925139384829,null,0.47061648079306073,null,0.48988254865124548,null,0.56939623773407033,null,0.58324771052043778,null,0.63507431442327822,null,0.65427445013141516,null,0.64968882505813164,null,0.67595546585064137,null,0.63190674437968364,null,0.6684543547404751,null,0.67741444609765999,null,0.71493220143029379],"text":["Year: 2011<br>Target: 41.1%",null,"Year: 2012<br>Target: 42.3%",null,"Year: 2013<br>Target: 47.1%",null,"Year: 2014<br>Target: 49.0%",null,"Year: 2015<br>Target: 56.9%",null,"Year: 2016<br>Target: 58.3%",null,"Year: 2016<br>Target: 63.5%",null,"Year: 2017<br>Target: 65.4%",null,"Year: 2018<br>Target: 65.0%",null,"Year: 2019<br>Target: 67.6%",null,"Year: 2020<br>Target: 63.2%",null,"Year: 2021<br>Target: 66.8%",null,"Year: 2022<br>Target: 67.7%",null,"Year: 2023<br>Target: 71.5%"],"type":"scatter","mode":"lines","line":{"width":4.5354330708661417,"color":"rgba(0,94,168,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,2012,2013,2014,2015,2016,2016,2017,2018,2019,2020,2021,2022,2023],"y":[0.41112381464792519,0.42264925139384829,0.47061648079306073,0.48988254865124548,0.56939623773407033,0.58324771052043778,0.63507431442327822,0.65427445013141516,0.64968882505813164,0.67595546585064137,0.63190674437968364,0.6684543547404751,0.67741444609765999,0.71493220143029379],"text":["Year: 2011<br>Target: 41.1%","Year: 2012<br>Target: 42.3%","Year: 2013<br>Target: 47.1%","Year: 2014<br>Target: 49.0%","Year: 2015<br>Target: 56.9%","Year: 2016<br>Target: 58.3%","Year: 2016<br>Target: 63.5%","Year: 2017<br>Target: 65.4%","Year: 2018<br>Target: 65.0%","Year: 2019<br>Target: 67.6%","Year: 2020<br>Target: 63.2%","Year: 2021<br>Target: 66.8%","Year: 2022<br>Target: 67.7%","Year: 2023<br>Target: 71.5%"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,94,168,1)","opacity":1,"size":8.3149606299212611,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,94,168,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":50.537152345371524,"r":8.6342880863428828,"b":31.946865919468664,"l":33.673723536737242},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762},"title":{"text":"<b> Medicaid day share <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":20.722291407222912},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2010.4000000000001,2023.5999999999999],"tickmode":"array","ticktext":["2015","2020"],"tickvals":[2015,2020],"categoryorder":"array","categoryarray":["2015","2020"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714405,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.3900619089929232,0.85342383340296712],"tickmode":"array","ticktext":["40%","50%","60%","70%","80%"],"tickvals":[0.40000000000000002,0.5,0.60000000000000009,0.70000000000000007,0.80000000000000004],"categoryorder":"array","categoryarray":["40%","50%","60%","70%","80%"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"x","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"shapes":[],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":13.814860938148611}},"hovermode":"x unified","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"source":"A","attrs":{"ebc11f200da2":{"x":{},"ymin":{},"ymax":{},"type":"scatter"},"ebc1715f16a4":{"x":{},"y":{},"text":{}},"ebc119c7a322":{"x":{},"y":{},"text":{}},"ebc11a71a67":{"x":{},"y":{},"text":{}}},"cur_data":"ebc11f200da2","visdat":{"ebc11f200da2":["function (y) ","x"],"ebc1715f16a4":["function (y) ","x"],"ebc119c7a322":["function (y) ","x"],"ebc11a71a67":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-1aa43819e70a091725fa" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-1aa43819e70a091725fa">{"x":{"data":[{"x":[2011,2012,2013,2014,2015,2016,2016,2017,2018,2019,2020,2021,2022,2023,2023,2023,2022,2021,2020,2019,2018,2017,2016,2016,2015,2014,2013,2012,2011,2011],"y":[0.074424752428398508,0.075707112686247496,0.084560068641613625,0.093601075219720928,0.1056516555596628,0.015968551589643248,0.015968551589643248,0.040201633419964938,0.071507881990003991,0.081090829148356927,0.068531214640884339,0.076214390797385581,0.053422007502183386,0.039545950473485234,0.039545950473485234,0.13119258149479471,0.30537718563512561,0.2841617562649118,0.19930106257408464,0.14443371751940842,0.14736184632971389,0.1343885306099788,0.17227782564091954,0.17227782564091954,0.20728270380815245,0.20137690071833059,0.17979634340919379,0.18816151188681929,0.17481523108193592,0.074424752428398508],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"transparent","dash":"solid"},"fill":"toself","fillcolor":"rgba(122,122,122,0.15)","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,null,2012,null,2013,null,2014,null,2015,null,2016,2016,null,2017,null,2018,null,2019,null,2020,null,2021,null,2022,null,2023],"y":[0.14868203198008981,null,0.13723030407985268,null,0.1655118239831225,null,0.18711363069709738,null,0.2062437998294642,null,0.12646140602839795,0.12646140602839795,null,0.057419556276512511,null,0.12885776188735434,null,0.12558275335078942,null,0.12214810090302861,null,0.094829449060004317,null,0.05916144572650877,null,0.056695903533512421],"text":["Year: 2011<br>Peer median: 14.9%",null,"Year: 2012<br>Peer median: 13.7%",null,"Year: 2013<br>Peer median: 16.6%",null,"Year: 2014<br>Peer median: 18.7%",null,"Year: 2015<br>Peer median: 20.6%",null,"Year: 2016<br>Peer median: 12.6%","Year: 2016<br>Peer median: 12.6%",null,"Year: 2017<br>Peer median: 5.7%",null,"Year: 2018<br>Peer median: 12.9%",null,"Year: 2019<br>Peer median: 12.6%",null,"Year: 2020<br>Peer median: 12.2%",null,"Year: 2021<br>Peer median: 9.5%",null,"Year: 2022<br>Peer median: 5.9%",null,"Year: 2023<br>Peer median: 5.7%"],"type":"scatter","mode":"lines","line":{"width":3.4015748031496069,"color":"rgba(102,102,102,1)","dash":"dash"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,null,2012,null,2013,null,2014,null,2015,null,2016,null,2016,null,2017,null,2018,null,2019,null,2020,null,2021,null,2022,null,2023],"y":[null,null,0.00053028337615600391,null,7.3235368010590615e-05,null,0.0016196785165857131,null,0.0023758212179813775,null,0.0018462473546306561,null,0.0025929944591062026,null,0.0017089558832353649,null,null,null,null,null,null,null,null,null,null,null,5.1020423915657761e-05],"text":["Year: 2011<br>Target: —",null,"Year: 2012<br>Target: 0.1%",null,"Year: 2013<br>Target: 0.0%",null,"Year: 2014<br>Target: 0.2%",null,"Year: 2015<br>Target: 0.2%",null,"Year: 2016<br>Target: 0.2%",null,"Year: 2016<br>Target: 0.3%",null,"Year: 2017<br>Target: 0.2%",null,"Year: 2018<br>Target: —",null,"Year: 2019<br>Target: —",null,"Year: 2020<br>Target: —",null,"Year: 2021<br>Target: —",null,"Year: 2022<br>Target: —",null,"Year: 2023<br>Target: 0.0%"],"type":"scatter","mode":"lines","line":{"width":4.5354330708661417,"color":"rgba(0,94,168,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,2012,2013,2014,2015,2016,2016,2017,2018,2019,2020,2021,2022,2023],"y":[null,0.00053028337615600391,7.3235368010590615e-05,0.0016196785165857131,0.0023758212179813775,0.0025929944591062026,0.0018462473546306561,0.0017089558832353649,null,null,null,null,null,5.1020423915657761e-05],"text":["Year: 2011<br>Target: —","Year: 2012<br>Target: 0.1%","Year: 2013<br>Target: 0.0%","Year: 2014<br>Target: 0.2%","Year: 2015<br>Target: 0.2%","Year: 2016<br>Target: 0.3%","Year: 2016<br>Target: 0.2%","Year: 2017<br>Target: 0.2%","Year: 2018<br>Target: —","Year: 2019<br>Target: —","Year: 2020<br>Target: —","Year: 2021<br>Target: —","Year: 2022<br>Target: —","Year: 2023<br>Target: 0.0%"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,94,168,1)","opacity":1,"size":8.3149606299212611,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,94,168,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":50.537152345371524,"r":8.6342880863428828,"b":31.946865919468664,"l":33.673723536737242},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762},"title":{"text":"<b> Contract labor ratio <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":20.722291407222912},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2010.4000000000001,2023.5999999999999],"tickmode":"array","ticktext":["2015","2020"],"tickvals":[2015,2020],"categoryorder":"array","categoryarray":["2015","2020"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714405,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.015215287836644841,0.32064349389568614],"tickmode":"array","ticktext":["0%","10%","20%","30%"],"tickvals":[-1.7347234759768071e-18,0.10000000000000002,0.20000000000000004,0.30000000000000004],"categoryorder":"array","categoryarray":["0%","10%","20%","30%"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"x","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"shapes":[],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":13.814860938148611}},"hovermode":"x unified","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"source":"A","attrs":{"ebc13ba5084":{"x":{},"ymin":{},"ymax":{},"type":"scatter"},"ebc13cfc0c05":{"x":{},"y":{},"text":{}},"ebc147793b8a":{"x":{},"y":{},"text":{}},"ebc1683405ae":{"x":{},"y":{},"text":{}}},"cur_data":"ebc13ba5084","visdat":{"ebc13ba5084":["function (y) ","x"],"ebc13cfc0c05":["function (y) ","x"],"ebc147793b8a":["function (y) ","x"],"ebc1683405ae":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+</div>
+</div>
+<div id="financial-performance" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-financial-performance">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-3c1012100541df533fbf" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-3c1012100541df533fbf">{"x":{"data":[{"x":[2011,2012,2013,2014,2015,2016,2016,2017,2018,2019,2020,2021,2022,2023,2023,2023,2022,2021,2020,2019,2018,2017,2016,2016,2015,2014,2013,2012,2011,2011],"y":[227.73013201240772,236.45806465685945,219.42739229535252,260.08347446586765,232.45905067934842,231.53276550920933,231.53276550920933,198.71629275718863,199.96799340799166,220.56197785059737,226.95612469148892,222.04728270823995,218.42288350111016,233.65156097530345,233.65156097530345,381.51459970670248,377.57233168897886,383.57781824514052,380.1000137084219,355.76865309543416,335.04064873490995,284.39043979255678,311.17118672112082,311.17118672112082,294.75757040106078,322.95732292533114,297.60315402528335,321.31332952983547,244.1679213114754,227.73013201240772],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"transparent","dash":"solid"},"fill":"toself","fillcolor":"rgba(122,122,122,0.15)","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,null,2012,null,2013,null,2014,null,2015,null,2016,2016,null,2017,null,2018,null,2019,null,2020,null,2021,null,2022,null,2023],"y":[230.29146567717996,null,268.76766412679297,null,241.80092671187799,null,300.66398954446765,null,267.73514545385848,null,286.35876076224599,286.35876076224599,null,254.05870127976081,null,289.39359796153997,null,255.81605448999207,null,307.31301387797851,null,344.89568400183009,null,333.03869809203144,null,329.72317041634341],"text":["Year: 2011<br>Peer median: $230",null,"Year: 2012<br>Peer median: $269",null,"Year: 2013<br>Peer median: $242",null,"Year: 2014<br>Peer median: $301",null,"Year: 2015<br>Peer median: $268",null,"Year: 2016<br>Peer median: $286","Year: 2016<br>Peer median: $286",null,"Year: 2017<br>Peer median: $254",null,"Year: 2018<br>Peer median: $289",null,"Year: 2019<br>Peer median: $256",null,"Year: 2020<br>Peer median: $307",null,"Year: 2021<br>Peer median: $345",null,"Year: 2022<br>Peer median: $333",null,"Year: 2023<br>Peer median: $330"],"type":"scatter","mode":"lines","line":{"width":3.4015748031496069,"color":"rgba(102,102,102,1)","dash":"dash"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,null,2012,null,2013,null,2014,null,2015,null,2016,null,2016,null,2017,null,2018,null,2019,null,2020,null,2021,null,2022,null,2023],"y":[207.89032550944918,null,207.67589112322244,null,226.90844175960348,null,228.32943740947354,null,232.71887274856809,null,231.40759437123074,null,286.83883713627802,null,330.5848492184258,null,340.39064423471484,null,360.35280617227681,null,427.20456286427975,null,415.44768897611152,null,452.9817902069525,null,472.58088757494176],"text":["Year: 2011<br>Target: $208",null,"Year: 2012<br>Target: $208",null,"Year: 2013<br>Target: $227",null,"Year: 2014<br>Target: $228",null,"Year: 2015<br>Target: $233",null,"Year: 2016<br>Target: $231",null,"Year: 2016<br>Target: $287",null,"Year: 2017<br>Target: $331",null,"Year: 2018<br>Target: $340",null,"Year: 2019<br>Target: $360",null,"Year: 2020<br>Target: $427",null,"Year: 2021<br>Target: $415",null,"Year: 2022<br>Target: $453",null,"Year: 2023<br>Target: $473"],"type":"scatter","mode":"lines","line":{"width":4.5354330708661417,"color":"rgba(0,94,168,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,2012,2013,2014,2015,2016,2016,2017,2018,2019,2020,2021,2022,2023],"y":[207.89032550944918,207.67589112322244,226.90844175960348,228.32943740947354,232.71887274856809,231.40759437123074,286.83883713627802,330.5848492184258,340.39064423471484,360.35280617227681,427.20456286427975,415.44768897611152,452.9817902069525,472.58088757494176],"text":["Year: 2011<br>Target: $208","Year: 2012<br>Target: $208","Year: 2013<br>Target: $227","Year: 2014<br>Target: $228","Year: 2015<br>Target: $233","Year: 2016<br>Target: $231","Year: 2016<br>Target: $287","Year: 2017<br>Target: $331","Year: 2018<br>Target: $340","Year: 2019<br>Target: $360","Year: 2020<br>Target: $427","Year: 2021<br>Target: $415","Year: 2022<br>Target: $453","Year: 2023<br>Target: $473"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,94,168,1)","opacity":1,"size":8.3149606299212611,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,94,168,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":50.537152345371524,"r":8.6342880863428828,"b":31.946865919468664,"l":40.581154005811541},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762},"title":{"text":"<b> Net patient revenue per resident day <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":20.722291407222912},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2010.4000000000001,2023.5999999999999],"tickmode":"array","ticktext":["2015","2020"],"tickvals":[2015,2020],"categoryorder":"array","categoryarray":["2015","2020"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714405,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[185.02306301630097,486.27411731582941],"tickmode":"array","ticktext":["$200","$300","$400"],"tickvals":[200,300,400],"categoryorder":"array","categoryarray":["$200","$300","$400"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"x","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"shapes":[],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":13.814860938148611}},"hovermode":"x unified","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"source":"A","attrs":{"ebc17c584565":{"x":{},"ymin":{},"ymax":{},"type":"scatter"},"ebc173429aa":{"x":{},"y":{},"text":{}},"ebc1719b5b97":{"x":{},"y":{},"text":{}},"ebc1e9a50c6":{"x":{},"y":{},"text":{}}},"cur_data":"ebc17c584565","visdat":{"ebc17c584565":["function (y) ","x"],"ebc173429aa":["function (y) ","x"],"ebc1719b5b97":["function (y) ","x"],"ebc1e9a50c6":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-31dc1f072f2dd5b42958" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-31dc1f072f2dd5b42958">{"x":{"data":[{"x":[2011,2012,2013,2014,2015,2016,2016,2017,2018,2019,2020,2021,2022,2023,2023,2023,2022,2021,2020,2019,2018,2017,2016,2016,2015,2014,2013,2012,2011,2011],"y":[220.56868733017529,241.43810157092636,220.86106685124145,271.16324798028205,247.52721395665793,256.09170764779975,256.09170764779975,268.34216635492498,207.41183111399511,227.63454995034553,251.63267775502621,242.79347735444293,272.62197292360764,283.32087859257001,283.32087859257001,387.96855228567017,389.36106040724974,361.37991095478111,352.73528567495595,335.33884878967956,322.86591789974665,328.42501112028782,306.13543753515142,306.13543753515142,303.60908430418664,316.70657111779383,289.97593271692324,315.86962439904084,327.13414990401469,220.56868733017529],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"transparent","dash":"solid"},"fill":"toself","fillcolor":"rgba(122,122,122,0.15)","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,null,2012,null,2013,null,2014,null,2015,null,2016,2016,null,2017,null,2018,null,2019,null,2020,null,2021,null,2022,null,2023],"y":[237.670268852459,null,261.99067734649236,null,256.62077260351361,null,302.99363392988892,null,282.88808290873328,null,299.73643760870709,299.73643760870709,null,319.23488157015879,null,297.20725472505609,null,306.68037273828924,null,303.38654097931396,null,319.75268161252603,null,333.70978723404255,null,322.24385828807863],"text":["Year: 2011<br>Peer median: $238",null,"Year: 2012<br>Peer median: $262",null,"Year: 2013<br>Peer median: $257",null,"Year: 2014<br>Peer median: $303",null,"Year: 2015<br>Peer median: $283",null,"Year: 2016<br>Peer median: $300","Year: 2016<br>Peer median: $300",null,"Year: 2017<br>Peer median: $319",null,"Year: 2018<br>Peer median: $297",null,"Year: 2019<br>Peer median: $307",null,"Year: 2020<br>Peer median: $303",null,"Year: 2021<br>Peer median: $320",null,"Year: 2022<br>Peer median: $334",null,"Year: 2023<br>Peer median: $322"],"type":"scatter","mode":"lines","line":{"width":3.4015748031496069,"color":"rgba(102,102,102,1)","dash":"dash"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,null,2012,null,2013,null,2014,null,2015,null,2016,null,2016,null,2017,null,2018,null,2019,null,2020,null,2021,null,2022,null,2023],"y":[219.92297733539579,null,211.92775480799349,null,220.9156288723668,null,209.87504840028109,null,215.40272242933253,null,217.76654009381281,null,251.09946095876072,null,277.21633351777564,null,289.1144166324716,null,303.8864997721206,null,351.55149042464615,null,346.39744197063004,null,381.70539699715948,null,404.65009001271738],"text":["Year: 2011<br>Target: $220",null,"Year: 2012<br>Target: $212",null,"Year: 2013<br>Target: $221",null,"Year: 2014<br>Target: $210",null,"Year: 2015<br>Target: $215",null,"Year: 2016<br>Target: $218",null,"Year: 2016<br>Target: $251",null,"Year: 2017<br>Target: $277",null,"Year: 2018<br>Target: $289",null,"Year: 2019<br>Target: $304",null,"Year: 2020<br>Target: $352",null,"Year: 2021<br>Target: $346",null,"Year: 2022<br>Target: $382",null,"Year: 2023<br>Target: $405"],"type":"scatter","mode":"lines","line":{"width":4.5354330708661417,"color":"rgba(0,94,168,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,2012,2013,2014,2015,2016,2016,2017,2018,2019,2020,2021,2022,2023],"y":[219.92297733539579,211.92775480799349,220.9156288723668,209.87504840028109,215.40272242933253,217.76654009381281,251.09946095876072,277.21633351777564,289.1144166324716,303.8864997721206,351.55149042464615,346.39744197063004,381.70539699715948,404.65009001271738],"text":["Year: 2011<br>Target: $220","Year: 2012<br>Target: $212","Year: 2013<br>Target: $221","Year: 2014<br>Target: $210","Year: 2015<br>Target: $215","Year: 2016<br>Target: $218","Year: 2016<br>Target: $251","Year: 2017<br>Target: $277","Year: 2018<br>Target: $289","Year: 2019<br>Target: $304","Year: 2020<br>Target: $352","Year: 2021<br>Target: $346","Year: 2022<br>Target: $382","Year: 2023<br>Target: $405"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,94,168,1)","opacity":1,"size":8.3149606299212611,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,94,168,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":50.537152345371524,"r":8.6342880863428828,"b":31.946865919468664,"l":40.581154005811541},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762},"title":{"text":"<b> Operating expense per resident day <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":20.722291407222912},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2010.4000000000001,2023.5999999999999],"tickmode":"array","ticktext":["2015","2020"],"tickvals":[2015,2020],"categoryorder":"array","categoryarray":["2015","2020"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714405,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[197.549918169059,414.51200295765352],"tickmode":"array","ticktext":["$200","$250","$300","$350","$400"],"tickvals":[200,250,300,350,400],"categoryorder":"array","categoryarray":["$200","$250","$300","$350","$400"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"x","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"shapes":[],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":13.814860938148611}},"hovermode":"x unified","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"source":"A","attrs":{"ebc1238fd92c":{"x":{},"ymin":{},"ymax":{},"type":"scatter"},"ebc138fae9f1":{"x":{},"y":{},"text":{}},"ebc16114ea70":{"x":{},"y":{},"text":{}},"ebc1242b90db":{"x":{},"y":{},"text":{}}},"cur_data":"ebc1238fd92c","visdat":{"ebc1238fd92c":["function (y) ","x"],"ebc138fae9f1":["function (y) ","x"],"ebc16114ea70":["function (y) ","x"],"ebc1242b90db":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-64c8edbebd962514fe77" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-64c8edbebd962514fe77">{"x":{"data":[{"x":[2011,2012,2013,2014,2015,2016,2016,2017,2018,2019,2020,2021,2022,2023,2023,2023,2022,2021,2020,2019,2018,2017,2016,2016,2015,2014,2013,2012,2011,2011],"y":[0.018784604454004428,-0.021257609980680089,-0.089477210008760147,-0.076685505152209552,-0.10744738424584782,-0.12863595091956687,-0.12863595091956687,-0.2303291463014521,-0.039322849328179345,-0.15847642244845891,-0.013811801295476317,-0.068247157016587914,-0.10863206508643558,-0.22973236338074737,-0.22973236338074737,0.027798334008303102,0.035590929589214025,0.082586652996161081,0.05379790327516229,0.095665648694461411,0.063128622577144661,-0.0053504948969023483,0.035700086954750174,0.035700086954750174,0.019142190954996044,0.033297994183494814,0.034897718768609517,0.046951913067767616,0.031447066837173056,0.018784604454004428],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"transparent","dash":"solid"},"fill":"toself","fillcolor":"rgba(122,122,122,0.15)","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,null,2012,null,2013,null,2014,null,2015,null,2016,2016,null,2017,null,2018,null,2019,null,2020,null,2021,null,2022,null,2023],"y":[0.02661140916511958,null,-0.0048036370522737022,null,0.024724526311278694,null,-0.0077483319134788765,null,-0.062950354711509865,null,0.024533698322506552,0.024533698322506552,null,-0.11157361086834129,null,0.020376976342553099,null,0.044729891172123795,null,0.010677712393727392,null,0.016348487666127402,null,-0.026082089647863699,null,-0.05865620474540427],"text":["Year: 2011<br>Peer median: 2.7%",null,"Year: 2012<br>Peer median: -0.5%",null,"Year: 2013<br>Peer median: 2.5%",null,"Year: 2014<br>Peer median: -0.8%",null,"Year: 2015<br>Peer median: -6.3%",null,"Year: 2016<br>Peer median: 2.5%","Year: 2016<br>Peer median: 2.5%",null,"Year: 2017<br>Peer median: -11.2%",null,"Year: 2018<br>Peer median: 2.0%",null,"Year: 2019<br>Peer median: 4.5%",null,"Year: 2020<br>Peer median: 1.1%",null,"Year: 2021<br>Peer median: 1.6%",null,"Year: 2022<br>Peer median: -2.6%",null,"Year: 2023<br>Peer median: -5.9%"],"type":"scatter","mode":"lines","line":{"width":3.4015748031496069,"color":"rgba(102,102,102,1)","dash":"dash"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,null,2012,null,2013,null,2014,null,2015,null,2016,null,2016,null,2017,null,2018,null,2019,null,2020,null,2021,null,2022,null,2023],"y":[-0.05787980655886598,null,-0.020473554545858343,null,0.026410709274473455,null,0.080823520692591966,null,0.074408019060594618,null,0.12459740994047255,null,0.058948170281458184,null,0.16143666543347313,null,0.1506393564885582,null,0.15669728508555292,null,0.1770886339143998,null,0.16620683864112654,null,0.15734935653203455,null,0.14374427605570894],"text":["Year: 2011<br>Target: -5.8%",null,"Year: 2012<br>Target: -2.0%",null,"Year: 2013<br>Target: 2.6%",null,"Year: 2014<br>Target: 8.1%",null,"Year: 2015<br>Target: 7.4%",null,"Year: 2016<br>Target: 12.5%",null,"Year: 2016<br>Target: 5.9%",null,"Year: 2017<br>Target: 16.1%",null,"Year: 2018<br>Target: 15.1%",null,"Year: 2019<br>Target: 15.7%",null,"Year: 2020<br>Target: 17.7%",null,"Year: 2021<br>Target: 16.6%",null,"Year: 2022<br>Target: 15.7%",null,"Year: 2023<br>Target: 14.4%"],"type":"scatter","mode":"lines","line":{"width":4.5354330708661417,"color":"rgba(0,94,168,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,2012,2013,2014,2015,2016,2016,2017,2018,2019,2020,2021,2022,2023],"y":[-0.05787980655886598,-0.020473554545858343,0.026410709274473455,0.080823520692591966,0.074408019060594618,0.058948170281458184,0.12459740994047255,0.16143666543347313,0.1506393564885582,0.15669728508555292,0.1770886339143998,0.16620683864112654,0.15734935653203455,0.14374427605570894],"text":["Year: 2011<br>Target: -5.8%","Year: 2012<br>Target: -2.0%","Year: 2013<br>Target: 2.6%","Year: 2014<br>Target: 8.1%","Year: 2015<br>Target: 7.4%","Year: 2016<br>Target: 5.9%","Year: 2016<br>Target: 12.5%","Year: 2017<br>Target: 16.1%","Year: 2018<br>Target: 15.1%","Year: 2019<br>Target: 15.7%","Year: 2020<br>Target: 17.7%","Year: 2021<br>Target: 16.6%","Year: 2022<br>Target: 15.7%","Year: 2023<br>Target: 14.4%"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,94,168,1)","opacity":1,"size":8.3149606299212611,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,94,168,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":50.537152345371524,"r":8.6342880863428828,"b":31.946865919468664,"l":40.581154005811541},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762},"title":{"text":"<b> Patient service margin <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":20.722291407222912},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2010.4000000000001,2023.5999999999999],"tickmode":"array","ticktext":["2015","2020"],"tickvals":[2015,2020],"categoryorder":"array","categoryarray":["2015","2020"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714405,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.25070003531224472,0.19745952292519239],"tickmode":"array","ticktext":["-20%","-10%","0%","10%"],"tickvals":[-0.20000000000000001,-0.10000000000000001,0,0.10000000000000003],"categoryorder":"array","categoryarray":["-20%","-10%","0%","10%"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"x","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"shapes":[],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":13.814860938148611}},"hovermode":"x unified","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"source":"A","attrs":{"ebc127164fa3":{"x":{},"ymin":{},"ymax":{},"type":"scatter"},"ebc129c66a61":{"x":{},"y":{},"text":{}},"ebc121721bb4":{"x":{},"y":{},"text":{}},"ebc14a78d793":{"x":{},"y":{},"text":{}}},"cur_data":"ebc127164fa3","visdat":{"ebc127164fa3":["function (y) ","x"],"ebc129c66a61":["function (y) ","x"],"ebc121721bb4":["function (y) ","x"],"ebc14a78d793":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-31b3e2cc2809526b8806" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-31b3e2cc2809526b8806">{"x":{"data":[{"x":[2011,2012,2013,2014,2015,2016,2016,2017,2018,2019,2020,2021,2022,2023,2023,2023,2022,2021,2020,2019,2018,2017,2016,2016,2015,2014,2013,2012,2011,2011],"y":[0.41039030351348316,0.37346800134383407,1.5022544934823761,0.27617266187631145,2.9942846669414562,0.27342882044426631,0.27342882044426631,9.8980522262765902,0.072961479208136587,12.508973470721902,25.126387890150909,17.807177854264015,24.470461994736279,0.078503449825055416,0.078503449825055416,71.259753565962683,89.619779227626395,172.80399932843807,126.91313746617352,88.469390170459661,161.17790253211214,86.195700118778376,93.585009210563996,93.585009210563996,78.374475300117354,42.748787282897986,21.521051027918535,19.568269239743014,10.133669918361182,0.41039030351348316],"text":"","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"transparent","dash":"solid"},"fill":"toself","fillcolor":"rgba(122,122,122,0.15)","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,null,2012,null,2013,null,2014,null,2015,null,2016,2016,null,2017,null,2018,null,2019,null,2020,null,2021,null,2022,null,2023],"y":[9.7044154504790789,null,10.766719842925511,null,12.817914404745832,null,11.511404477073286,null,25.008152407616084,null,0.59751028287610108,0.59751028287610108,null,12.689693924069422,null,33.949229119370742,null,35.605666777924448,null,50.499425326180308,null,61.070834543989861,null,61.930181563034772,null,17.190602377970116],"text":["Year: 2011<br>Peer median: 9.7",null,"Year: 2012<br>Peer median: 10.8",null,"Year: 2013<br>Peer median: 12.8",null,"Year: 2014<br>Peer median: 11.5",null,"Year: 2015<br>Peer median: 25.0",null,"Year: 2016<br>Peer median: 0.6","Year: 2016<br>Peer median: 0.6",null,"Year: 2017<br>Peer median: 12.7",null,"Year: 2018<br>Peer median: 33.9",null,"Year: 2019<br>Peer median: 35.6",null,"Year: 2020<br>Peer median: 50.5",null,"Year: 2021<br>Peer median: 61.1",null,"Year: 2022<br>Peer median: 61.9",null,"Year: 2023<br>Peer median: 17.2"],"type":"scatter","mode":"lines","line":{"width":3.4015748031496069,"color":"rgba(102,102,102,1)","dash":"dash"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,null,2012,null,2013,null,2014,null,2015,null,2016,null,2016,null,2017,null,2018,null,2019,null,2020,null,2021,null,2022,null,2023],"y":[0.11375796541611675,null,0.3834990970669474,null,0.47534435683749188,null,0.57328366085296567,null,0.75923473664107965,null,0.21961230876787596,null,135.65081533306994,null,0.042118952905053811,null,8.9934359661931804,null,7.4594068069373423,null,3.2604871271949865,null,3.092778900563911,null,2.3051073673221478,null,5.6177318127182598],"text":["Year: 2011<br>Target: 0.1",null,"Year: 2012<br>Target: 0.4",null,"Year: 2013<br>Target: 0.5",null,"Year: 2014<br>Target: 0.6",null,"Year: 2015<br>Target: 0.8",null,"Year: 2016<br>Target: 0.2",null,"Year: 2016<br>Target: 135.7",null,"Year: 2017<br>Target: 0.0",null,"Year: 2018<br>Target: 9.0",null,"Year: 2019<br>Target: 7.5",null,"Year: 2020<br>Target: 3.3",null,"Year: 2021<br>Target: 3.1",null,"Year: 2022<br>Target: 2.3",null,"Year: 2023<br>Target: 5.6"],"type":"scatter","mode":"lines","line":{"width":4.5354330708661417,"color":"rgba(0,94,168,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2011,2012,2013,2014,2015,2016,2016,2017,2018,2019,2020,2021,2022,2023],"y":[0.11375796541611675,0.3834990970669474,0.47534435683749188,0.57328366085296567,0.75923473664107965,0.21961230876787596,135.65081533306994,0.042118952905053811,8.9934359661931804,7.4594068069373423,3.2604871271949865,3.092778900563911,2.3051073673221478,5.6177318127182598],"text":["Year: 2011<br>Target: 0.1","Year: 2012<br>Target: 0.4","Year: 2013<br>Target: 0.5","Year: 2014<br>Target: 0.6","Year: 2015<br>Target: 0.8","Year: 2016<br>Target: 0.2","Year: 2016<br>Target: 135.7","Year: 2017<br>Target: 0.0","Year: 2018<br>Target: 9.0","Year: 2019<br>Target: 7.5","Year: 2020<br>Target: 3.3","Year: 2021<br>Target: 3.1","Year: 2022<br>Target: 2.3","Year: 2023<br>Target: 5.6"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,94,168,1)","opacity":1,"size":8.3149606299212611,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,94,168,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":50.537152345371524,"r":8.6342880863428828,"b":31.946865919468664,"l":33.673723536737242},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762},"title":{"text":"<b> Days cash on hand <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":20.722291407222912},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2010.4000000000001,2023.5999999999999],"tickmode":"array","ticktext":["2015","2020"],"tickvals":[2015,2020],"categoryorder":"array","categoryarray":["2015","2020"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714405,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-8.595975065871599,181.44209334721472],"tickmode":"array","ticktext":["0","50","100","150"],"tickvals":[0,50.000000000000007,100.00000000000001,150],"categoryorder":"array","categoryarray":["0","50","100","150"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"x","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685762}},"hoverformat":".2f"},"shapes":[],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":13.814860938148611}},"hovermode":"x unified","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"source":"A","attrs":{"ebc18e953f7":{"x":{},"ymin":{},"ymax":{},"type":"scatter"},"ebc1e8781b3":{"x":{},"y":{},"text":{}},"ebc162541638":{"x":{},"y":{},"text":{}},"ebc17e7ee8f6":{"x":{},"y":{},"text":{}}},"cur_data":"ebc18e953f7","visdat":{"ebc18e953f7":["function (y) ","x"],"ebc1e8781b3":["function (y) ","x"],"ebc162541638":["function (y) ","x"],"ebc17e7ee8f6":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+</div>
+</div>
+<div id="facility-index" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-facility-index">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, max-content) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<p>To render this dashboard for another facility, copy a CCN from this table and run:</p>
+<div class="sourceCode html-fill-item html-fill-container" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="st">"dashboard_snf_utah.qmd"</span>, <span class="at">execute_params =</span> <span class="fu">list</span>(<span class="at">target_ccn =</span> <span class="st">"465095"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="datatables html-widget html-fill-item html-fill-container" id="htmlwidget-1302e0a8102ed944e0c0" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-1302e0a8102ed944e0c0">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"16\" data-max=\"221\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["465189","465190","465191","465170","465159","465166","465172","465150","465072","465184","465057","465158","465006","465102","465137","465111","465117","465049","465078","465090","465152","465100","465143","465181","465179","465083","465009","465174","465104","465108","465171","465112","465186","465192","465124","465157","465185","465088","465175","465086","465165","465109","465085","465129","465155","465188","465098","465160","465119","465067","465125","465116","465168","465075","465147","465089","465064","465097","465156","465093","465096","465074","465094","465107","465163","465020","465059","465146","465066","465144","465091","465180","465183","465178","465153","465182","465167","465173","465176","465130","465095","465079","465169","465084","465092","465069","465115","465003","465101"],["ADVANCED HEALTH CARE OF SALEM","ADVANCED HEALTH CARE OF ST. GEORGE","ALPINE MEADOW REHABILITATION AND NUR","ASPEN RIDGE OF UTAH VALLEY","ASPEN RIDGE TRANSITIONAL REHAB","ASPEN RIDGE WEST TRANSITIONAL REHAB","AVALON CARE CENTER - VA OGDEN LLC","AVALON CARE CENTER - VA SALT LAKE II","AVENUES HEALTHCARE INC.","BEAVER VALLEY HOSP DBA CASCADES RIVE","BEAVER VALLEY HOSPITAL (FOUR CORNERS","BEAVER VALLEY HOSPITAL (MEADOW BROOK","BEAVER VALLEY HOSPITAL (MT OLYMPUS)","BEAVER VALLEY HOSPITAL (PARKDALE)","BEAVER VALLEY HOSPITAL (RED CLIFFS)","BEAVER VALLEY HOSPITAL (SANDY)","BEAVER VALLEY HOSPITAL (SO OGDEN)","BEAVER VALLEY HOSPITAL (SPRING CREEK","BEAVER VALLEY HOSPITAL DBA HIGHLAND","BEAVER VALLEY HOSPITAL DBA ORCHARD P","BELLA TERRA ST. GEORGE NURSING","CARDIFF HEALTHCARE INC.","CEDAR CITY HEALTHCARE LLC","CENTRAL UTAH VETERANS HOME - PAYSON","COUNTRY LIFE CARE CENTER","CRESTWOOD REHABILITATION AND NURSING","DE MOISY HEALTHCARE LLC","FAIRFIELD VILLAGE OF LAYTON","HUENEME HEALTHCARE INC.","JORDAN HEALTH ASSOCIATES INC.","LEGACY VILLAGE OF TAYLORSVILLE","LIFE CARE CENTER OF BOUNTIFUL","MAPLE SPRINGS OF NORTH LOGAN","MEADOW PEAK REHABILITATION","MIDTOWN MANOR","MILLARD COUNTY CARE &amp; REHABILITATION","MILLCREEK REHABILITATION AND NURSING","MISSION AT ALPINE REHABILITATION","MISSION AT COMMUNITY LIVING &amp; REHAB","MOUNTAIN VIEW HEALTH SERVICES","MSM BRIGHAM CITY","OLYMPUS HEALTH INC.","P","PARKWAY HEALTH CENTER","PINE VIEW TRANSITIONAL REHAB","POINTE MEADOW HEALTHCARE INC.","PRICE HEALTHCARE INC.","RED CLIFFS HEALTHCARE INC.","RIVERVIEW HEALTHCARE INC.","RMC - CLEARFIELD","RMC - COTTAGE ON VINE","RMC - LOGAN","ROCKY MOUNTAIN - RIVERTON","ROCKY MOUNTAIN CARE - HUNTER HOLLOW","ROCKY MOUNTAIN CARE - THE LODGE","ROCKY MOUNTAIN CARE - WILLOW SPRINGS","SAND HOLLOW HEALTHCARE LLC","SANDSTONE AMERICAN FORK","SANDSTONE BOUNTIFUL","SANDSTONE BRIGHAM CITY","SANDSTONE CANYON RIM","SANDSTONE HOLLADAY","SANDSTONE MILLCREEK","SANDSTONE NEPHI","SANDSTONE NORTH PARK","SANDSTONE PIONEER TRAIL","SANDSTONE RICHFIELD","SANDSTONE SOUTH LAKE","SANDSTONE TAYLORSVILLE","SEASONS HEALTHCARE &amp; REHAB","SOUTH VALLEY HEALTHCARE INC.","SOUTHERN UTAH VETERANS HOME - IVINS","SPANISH FORK REHABILITATION AND NURS","STONEHENGE OF AMERICAN FORK","STONEHENGE OF CEDAR CITY LLC","STONEHENGE OF OGDEN","STONEHENGE OF OREM","STONEHENGE OF RICHFIELD","STONEHENGE OF SOUTH JORDAN","STONEHENGE OF SPRINGVILLE","SUCCESSOR HEALTHCARE INC.","SUNSHINE TERRACE","THATCHER BROOK REHAB CENTER","UINTAH BASIN &amp; SENIOR VILLA","UINTAH HC SPECIAL SVC DISTRICT","WASHINGTON HEIGHTS HEALTHCARE INC.","WATERFALL CANYON HEALTHCARE LLC","WEST 5600 HEALTHCARE INC.","ZION HEALTHCARE INC."],["SALEM","ST. GEORGE","WEST VALLEY CITY","OREM","MURRAY","MURRAY","OGDEN","SALT LAKE CITY","SALT LAKE CITY","MIDVALE","BLANDING","SOUTH SALT LAKE","SALT LAKE CITY","PRICE","ST GEORGE","SANDY","SO OGDEN","HOLLADAY","SALT LAKE CITY","OREM","ST. GEORGE","SALT LAKE CITY","CEDAR CITY","PAYSON","RIVERTON","OGDEN","WEST COLUMBIA","LAYTON","OREM","WEST JORDAN","TAYLORSVILLE","BOUNTIFUL","NORTH LOGAN","TAYLORSVILLE","SALT LAKE CITY","DELTA","SALT LAKE CITY","PLEASANT GROVE","CENTERFIELD","SOUTH OGDEN","BRIGHAM CITY","SALT LAKE CITY","FERRON","PAYSON","OGDEN","LEHI","PRICE","SAINT GEORGE","PROVO","CLEARFIELD","MURRAY","LOGAN","RIVERTON","WEST VALLEY CITY","HEBER CITY","TOOELE","ST. GEORGE","AMERICAN FORK","BOUNTIFUL","BRIGHAM CITY","SALT LAKE CITY","SALT LAKE CITY","SALT LAKE CITY","NEPHI","BOUNTIFUL","BRIGHAM CITY","RICHFIELD","SALT LAKE CITY","SALT LAKE CITY","ST. GEORGE","DRAPER","IVINS","SPANISH FORK","AMERICAN FORK","CEDAR CITY","OGDEN","OREM","RICHFIELD","SOUTH JORDAN","SPRINGVILLE","SALT LAKE CITY","LOGAN","CLEARFIELD","ROOSEVELT","VERNAL","OGDEN","OGDEN","ROY","HURRICANE"],["UTAH","WASHINGTON","SALT LAKE","UTAH","SALT LAKE","SALT LAKE","WEBER","SALT LAKE","SALT LAKE","SALT LAKE","SAN JUAN","SALT LAKE","SALT LAKE","CARBON","WASHINGTON","SALT LAKE","WEBER","SALT LAKE","SALT LAKE","UTAH","WASHINGTON","SALT LAKE","IRON","UTAH","SALT LAKE","WEBER","WEBER","DAVIS","UTAH","SALT LAKE","SALT LAKE","DAVIS","CACHE","SALT LAKE","SALT LAKE","MILLARD","SALT LAKE","UTAH","SANPETE","WEBER","BOX ELDER","SALT LAKE","EMERY","UTAH","WEBER","UTAH","CARBON","WASHINGTON","UTAH","DAVIS","SALT LAKE","CACHE","SALT LAKE","SALT LAKE","WASATCH","TOOELE","WASHINGTON","UTAH","DAVIS","BOX ELDER","SALT LAKE","SALT LAKE","SALT LAKE","JUAB","DAVIS","BOX ELDER","SEVIER","SALT LAKE","SALT LAKE","WASHINGTON","SALT LAKE","WASHINGTON","UTAH","UTAH","IRON","WEBER","UTAH","SEVIER","SALT LAKE","UTAH","SALT LAKE","CACHE","DAVIS","DUCHESNE","UINTAH","WEBER","WEBER","WEBER","WASHINGTON"],[16,50,42,24,38,38,120,81,80,120,104,41,100,58,124,141,122,92,103,52,173,85,120,108,64,88,63,40,114,110,40,100,180,75,null,60,61,45,46,155,41,105,51,76,30,99,80,60,200,168,61,112,40,120,92,112,99,106,122,84,90,77,184,80,102,72,98,140,120,53,85,108,44,119,50,52,34,30,32,50,221,172,30,90,110,108,114,122,54],["&lt;50","50-99","&lt;50","&lt;50","&lt;50","&lt;50","100-149","50-99","50-99","100-149","100-149","&lt;50","100-149","50-99","100-149","100-149","100-149","50-99","100-149","50-99","150+","50-99","100-149","100-149","50-99","50-99","50-99","&lt;50","100-149","100-149","&lt;50","100-149","150+","50-99",null,"50-99","50-99","&lt;50","&lt;50","150+","&lt;50","100-149","50-99","50-99","&lt;50","50-99","50-99","50-99","150+","150+","50-99","100-149","&lt;50","100-149","50-99","100-149","50-99","100-149","100-149","50-99","50-99","50-99","150+","50-99","100-149","50-99","50-99","100-149","100-149","50-99","50-99","100-149","&lt;50","100-149","50-99","50-99","&lt;50","&lt;50","&lt;50","50-99","150+","150+","&lt;50","50-99","100-149","100-149","100-149","100-149","50-99"],["U","U","U","U","U","U","U","U","U","U","R","U","U","R","U","U","U","U","U","U","U","U","R","U","U","U","U","U","U","U","U","U","U","U",null,"R","U","U","R","U","U","U","R","U","U","U","R","U","U","U","U","U","U","U","R","U","U","U","U","U","U","U","U","U","U","U","R","U","U","U","U","U","U","U","R","U","U","R","U","U","U","U","U","R","R","U","U","U","U"],["87.0%","57.7%","93.9%","87.2%","85.9%","91.1%","96.9%","92.1%","70.8%","85.5%","44.4%","88.1%","76.7%","46.9%","57.8%","70.4%","65.6%","66.7%","70.1%","83.0%","36.6%","66.8%","57.5%","95.5%","90.6%","62.4%","68.6%","79.1%","63.7%","78.6%","90.6%","44.4%","55.8%","82.9%","—","77.9%","94.8%","79.7%","68.8%","25.4%","78.6%","80.0%","66.9%","56.5%","82.3%","84.3%","67.4%","67.7%","55.5%","68.4%","83.0%","60.8%","87.9%","86.0%","84.5%","87.9%","93.4%","62.5%","45.7%","41.9%","45.5%","75.5%","58.1%","47.6%","40.4%","49.7%","35.9%","62.4%","80.1%","83.5%","71.2%","95.6%","88.4%","65.1%","81.5%","80.0%","65.1%","61.2%","64.7%","66.4%","75.1%","29.6%","88.2%","49.9%","35.9%","58.4%","67.4%","91.5%","85.1%"],["79.9%","84.1%","2.5%","73.7%","69.0%","75.8%","2.5%","1.2%","3.3%","8.8%","7.3%","4.2%","4.2%","23.7%","11.0%","6.0%","7.8%","13.2%","9.6%","3.1%","3.3%","3.8%","8.6%","4.1%","2.6%","3.8%","7.0%","69.3%","3.6%","6.3%","63.9%","16.9%","13.2%","18.2%","—","9.7%","3.9%","3.2%","13.4%","2.2%","17.2%","6.7%","17.8%","5.3%","77.9%","13.4%","25.2%","43.2%","4.3%","4.0%","2.7%","4.3%","18.5%","5.4%","8.8%","11.2%","7.8%","3.8%","15.8%","5.0%","2.0%","1.3%","2.6%","7.4%","8.0%","6.1%","6.3%","3.4%","4.9%","5.8%","5.7%","3.9%","14.4%","19.3%","18.7%","33.9%","68.0%","27.0%","59.2%","19.1%","11.1%","2.6%","44.2%","7.8%","5.1%","7.3%","4.6%","6.7%","13.4%"],["—","—","—","—","—","—","7.4%","2.1%","76.1%","67.6%","86.6%","79.9%","54.2%","59.2%","59.2%","67.2%","76.6%","68.8%","64.2%","70.3%","—","78.1%","68.4%","3.6%","85.0%","—","53.1%","—","70.5%","61.4%","—","51.2%","—","42.4%","—","55.3%","—","73.5%","66.7%","94.2%","46.5%","50.9%","62.0%","67.5%","—","55.3%","54.8%","14.8%","72.8%","66.4%","79.2%","70.0%","5.5%","66.0%","60.6%","65.4%","71.0%","72.3%","53.7%","83.8%","90.9%","93.4%","69.1%","69.7%","75.1%","60.1%","70.0%","82.9%","76.4%","58.8%","70.4%","3.5%","—","54.3%","54.8%","31.8%","—","35.9%","—","55.7%","71.5%","72.5%","—","65.7%","76.6%","61.1%","77.6%","73.5%","66.4%"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>CCN<\/th>\n      <th>Facility<\/th>\n      <th>City<\/th>\n      <th>County<\/th>\n      <th>Beds<\/th>\n      <th>Bed band<\/th>\n      <th>Rural/Urban<\/th>\n      <th>Occupancy<\/th>\n      <th>Medicare mix<\/th>\n      <th>Medicaid mix<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"bPaginate":false,"dom":"ifrt","language":{"info":"Showing _TOTAL_ entries"},"pageLength":25,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":4},{"name":"CCN","targets":0},{"name":"Facility","targets":1},{"name":"City","targets":2},{"name":"County","targets":3},{"name":"Beds","targets":4},{"name":"Bed band","targets":5},{"name":"Rural/Urban","targets":6},{"name":"Occupancy","targets":7},{"name":"Medicare mix","targets":8},{"name":"Medicaid mix","targets":9}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+
+
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
+
+
+
+</body></html>

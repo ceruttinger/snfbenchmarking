@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "client_report_snf_facility.html",
+    "href": "client_report_snf_facility.html",
+    "title": "Skilled Nursing Facility Strategic Benchmark Report",
+    "section": "",
+    "text": "SUCCESSOR HEALTHCARE INC. | CCN 465095 | SALT LAKE CITY, UT | SALT LAKE County\n\n\nOverall read: occupancy appears stronger than similar peers; net patient revenue per resident day exceeds operating expense per resident day; patient service margin is positive; liquidity appears thin based on days cash on hand.\n\nFacility: SUCCESSOR HEALTHCARE INC.\nCCN: 465095\nLocation: SALT LAKE CITY, UT; SALT LAKE County\nLatest cost-report year: 2023\nPeer group: Same state + same rural/urban + same bed-size band; n = 8.\nThis report summarizes cost-report-based strategic indicators for the selected skilled nursing facility. It is designed as a first-pass consulting report, not a substitute for audited financial review, facility interviews, staffing data, quality measures, or referral-market analysis.\n\nLatest occupancy is 75.1%, compared with a peer median of 46.0%; the three-year change is up 0.8% from 2020 to 2023.\nMedicare day share is 11.1% and Medicaid day share is 71.5%, giving an initial view of post-acute versus long-stay payer mix.\nNet patient revenue per resident day is $473, while operating expense per resident day is $405.\nPatient service margin is 14.4%, compared with a peer median of -13.1%.\nContract labor ratio is 0.0%, compared with a peer median of 4.0%.\n\n\n\n\nPeer comparisons use the selected facility’s latest-year peer group: same state, same rural/urban category, and same bed-size band.\nTrend charts compare the target facility with the latest-year peer group over time. The shaded band is the peer 25th to 75th percentile range; the dashed line is the peer median; the solid line is the target facility.\nCost-report metrics are screening indicators. They are useful for identifying likely issues and follow-up questions, but they should be validated with staffing, quality, survey, referral, rate, and management information before making operational recommendations."
+  },
+  {
+    "objectID": "client_report_snf_facility.html#how-to-read-this-report",
+    "href": "client_report_snf_facility.html#how-to-read-this-report",
+    "title": "Skilled Nursing Facility Strategic Benchmark Report",
+    "section": "",
+    "text": "Peer comparisons use the selected facility’s latest-year peer group: same state, same rural/urban category, and same bed-size band.\nTrend charts compare the target facility with the latest-year peer group over time. The shaded band is the peer 25th to 75th percentile range; the dashed line is the peer median; the solid line is the target facility.\nCost-report metrics are screening indicators. They are useful for identifying likely issues and follow-up questions, but they should be validated with staffing, quality, survey, referral, rate, and management information before making operational recommendations."
+  },
+  {
+    "objectID": "client_report_snf_facility.html#occupancy",
+    "href": "client_report_snf_facility.html#occupancy",
+    "title": "Skilled Nursing Facility Strategic Benchmark Report",
+    "section": "Occupancy",
+    "text": "Occupancy\n\n\n\n\n\n\n\n\n\nInterpretation: Occupancy is the clearest capacity-utilization signal in the cost report. A target line below the peer median suggests census pressure; a target line above peers suggests stronger utilization or a different care model."
+  },
+  {
+    "objectID": "client_report_snf_facility.html#payer-mix",
+    "href": "client_report_snf_facility.html#payer-mix",
+    "title": "Skilled Nursing Facility Strategic Benchmark Report",
+    "section": "Payer mix",
+    "text": "Payer mix\n\n\n\n\n\n\n\n\n\nInterpretation: Medicare share is a rough proxy for skilled/post-acute orientation, while Medicaid share often reflects long-stay reimbursement exposure. Directional change can matter as much as the latest value."
+  },
+  {
+    "objectID": "client_report_snf_facility.html#revenue-and-operating-expense-per-resident-day",
+    "href": "client_report_snf_facility.html#revenue-and-operating-expense-per-resident-day",
+    "title": "Skilled Nursing Facility Strategic Benchmark Report",
+    "section": "Revenue and operating expense per resident day",
+    "text": "Revenue and operating expense per resident day\n\n\n\n\n\n\n\n\n\nInterpretation: If operating expense per day is growing faster than revenue per day, the facility may be facing margin compression even if occupancy is stable."
+  },
+  {
+    "objectID": "client_report_snf_facility.html#patient-service-margin",
+    "href": "client_report_snf_facility.html#patient-service-margin",
+    "title": "Skilled Nursing Facility Strategic Benchmark Report",
+    "section": "Patient service margin",
+    "text": "Patient service margin\n\n\n\n\n\n\n\n\n\nInterpretation: Patient service margin shows whether resident-care operations appear financially sustainable based on cost-report fields. A persistent negative margin requires deeper review of payer mix, labor cost, overhead, occupancy, and accounting treatment."
+  },
+  {
+    "objectID": "client_report_snf_facility.html#contract-labor-ratio",
+    "href": "client_report_snf_facility.html#contract-labor-ratio",
+    "title": "Skilled Nursing Facility Strategic Benchmark Report",
+    "section": "Contract labor ratio",
+    "text": "Contract labor ratio\n\n\n\n\n\n\n\n\n\nInterpretation: Contract labor ratio is a screening indicator for agency or contracted labor reliance. A high or rising value may suggest staffing instability, wage pressure, or temporary surge staffing, but it should be validated with PBJ staffing data."
+  },
+  {
+    "objectID": "client_report_snf_facility.html#recommended-follow-up-questions",
+    "href": "client_report_snf_facility.html#recommended-follow-up-questions",
+    "title": "Skilled Nursing Facility Strategic Benchmark Report",
+    "section": "Recommended follow-up questions",
+    "text": "Recommended follow-up questions\n\n\nMedicaid dependence is higher than peersDoes the payer mix align with the facility’s intended strategy, and are hospital/referral relationships supporting the desired skilled/post-acute volume?\n\n\nOperating expense is highIs the financial pressure driven by payer mix, labor cost, case mix, overhead, occupancy, or accounting treatment?\n\n\nContract labor reliance is elevatedIs contract labor reliance temporary, seasonal, or a structural staffing problem, and how does it compare with PBJ staffing levels and turnover?\n\n\nTotal labor cost per day is highIs contract labor reliance temporary, seasonal, or a structural staffing problem, and how does it compare with PBJ staffing levels and turnover?\n\n\nLabor share of expense is highIs contract labor reliance temporary, seasonal, or a structural staffing problem, and how does it compare with PBJ staffing levels and turnover?\n\n\n\nSource: Centers for Medicare & Medicaid Services (CMS), Healthcare Cost Report Information System (HCRIS), Skilled Nursing Facility Cost Report public-use data (CMS-2540-10). This report uses cleaned Utah facility cost-report years 2011–2023 from CMS source files spanning 2010–2024. Cost-report metrics are unaudited screening indicators and should be validated with staffing, quality, survey, referral-market, rate, and management information before making operational recommendations."
+  }
+]

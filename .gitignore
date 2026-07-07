@@ -1,0 +1,10 @@
+.DS_Store
+.quarto/
+_cache/
+outputs/
+
+data/processed/
+outputs/
+.quarto/
+
+data/dashboard/

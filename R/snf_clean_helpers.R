@@ -13,10 +13,6 @@ safe_div <- function(num, den) {
 }
 
 parse_cms_date <- function(x) {
-  # CMS public files are not perfectly consistent about date serialization.
-  # Critical rule: CMS cost report CSV dates like "10/01/2022" are U.S. M/D/Y,
-  # not Y/M/D. Earlier versions tried ymd first and could turn 10/01/2022 into
-  # 2010-01-20. This parser prioritizes unambiguous U.S. slash/dash dates.
   if (inherits(x, "Date")) return(x)
 
   x_chr <- trimws(as.character(x))

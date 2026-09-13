@@ -1,0 +1,182 @@
+---
+title: "Skilled Nursing Facility Benchmark Report"
+subtitle: "Financial, utilization, payer-mix and labor benchmarking from CMS cost-report data"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    embed-resources: true
+execute:
+  echo: false
+  warning: false
+  message: false
+params:
+  target_ccn: "465095"
+  data_prefix: "national"
+---
+
+```{r setup}
+library(dplyr)
+library(jsonlite)
+library(scales)
+library(ggplot2)
+library(gt)
+library(glue)
+
+prefix <- as.character(params$data_prefix)
+target_ccn <- as.character(params$target_ccn)
+path <- function(stem) file.path("data/dashboard", paste0(prefix, "_", stem, ".json"))
+required <- c(path("facility_index"), path("metric_specs"), path("facility_benchmarks"), path("facility_trends"), path("facility_strategy_flags"))
+missing <- required[!file.exists(required)]
+if (length(missing)) stop("Missing report inputs: ", paste(missing, collapse = ", "))
+
+facilities <- fromJSON(path("facility_index"), simplifyDataFrame = TRUE)
+metrics <- fromJSON(path("metric_specs"), simplifyDataFrame = TRUE)
+benchmarks <- fromJSON(path("facility_benchmarks"), simplifyDataFrame = TRUE)
+trends <- fromJSON(path("facility_trends"), simplifyDataFrame = TRUE)
+flags <- fromJSON(path("facility_strategy_flags"), simplifyDataFrame = TRUE)
+
+target <- facilities |> filter(as.character(.data$provider_ccn) == target_ccn) |> slice(1)
+if (!nrow(target)) stop("Target CCN not found in national report data: ", target_ccn)
+b <- benchmarks |> filter(as.character(.data$provider_ccn) == target_ccn)
+t <- trends |> filter(as.character(.data$provider_ccn) == target_ccn)
+f <- flags |> filter(as.character(.data$provider_ccn) == target_ccn)
+
+fmt <- function(x, type = "number") {
+  if (!length(x) || is.na(x)) return("—")
+  if (identical(type, "percent")) return(percent(as.numeric(x), accuracy = 0.1))
+  if (identical(type, "dollar")) return(dollar(as.numeric(x), accuracy = 1))
+  number(as.numeric(x), accuracy = 0.1, big.mark = ",")
+}
+
+br <- function(metric) b |> filter(.data$metric == metric) |> slice(1)
+metric_text <- function(metric, col = "target_value") {
+  z <- br(metric)
+  if (!nrow(z) || !col %in% names(z) || is.na(z[[col]][[1]])) return("—")
+  fmt(z[[col]][[1]], z$format[[1]])
+}
+
+peer_definition <- if (nrow(b) && "peer_definition" %in% names(b)) b$peer_definition[[1]] else "Matched peers"
+peer_count <- if (nrow(b) && "peer_count" %in% names(b)) b$peer_count[[1]] else NA_integer_
+latest_year <- if (nrow(t)) suppressWarnings(max(t$source_year, na.rm = TRUE)) else target$source_year[[1]]
+
+plot_metric <- function(metric, title) {
+  spec <- metrics |> filter(.data$metric == metric) |> slice(1)
+  d <- t |> filter(.data$metric == metric) |> arrange(.data$source_year)
+  if (!nrow(d)) return(NULL)
+  p <- ggplot(d, aes(x = .data$source_year)) +
+    geom_ribbon(aes(ymin = .data$peer_p25, ymax = .data$peer_p75), alpha = 0.15) +
+    geom_line(aes(y = .data$peer_median), linetype = "dashed", linewidth = 0.8) +
+    geom_line(aes(y = .data$target_value), linewidth = 1.1) +
+    geom_point(aes(y = .data$target_value), size = 2) +
+    labs(title = title, subtitle = "Target vs matched-peer median and interquartile range", x = NULL, y = NULL) +
+    theme_minimal(base_size = 12) + theme(plot.title = element_text(face = "bold"), panel.grid.minor = element_blank())
+  if (nrow(spec) && spec$format[[1]] == "percent") p <- p + scale_y_continuous(labels = percent_format(accuracy = 1))
+  if (nrow(spec) && spec$format[[1]] == "dollar") p <- p + scale_y_continuous(labels = dollar_format(accuracy = 1))
+  p
+}
+```
+
+<style>
+.report-hero {border:1px solid #d9e1ea;border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.2rem;background:#f8fafc}
+.report-kicker {color:#667085;font-size:.9rem;margin-bottom:.35rem}.report-title {font-size:1.35rem;font-weight:750}.report-meta {color:#475467;margin-top:.3rem}
+.metric-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:.7rem;margin:1rem 0 1.4rem}.metric-card {border:1px solid #e1e6ed;border-radius:10px;padding:.8rem;background:white}.metric-label {font-size:.78rem;color:#667085}.metric-value {font-size:1.35rem;font-weight:750;margin-top:.15rem}
+.flag {border-left:5px solid #98a2b3;padding:.65rem .85rem;margin:.6rem 0;background:#fafafa;border-radius:6px}.flag.Risk{border-left-color:#b42318}.flag.Watch{border-left-color:#dc6803}.flag.Strength{border-left-color:#027a48}.source-note{font-size:.84rem;color:#667085;border-top:1px solid #e1e6ed;padding-top:1rem;margin-top:2rem}
+</style>
+
+```{r results='asis'}
+cat(glue("<div class='report-hero'><div class='report-kicker'>SNFBenchmarking.com</div><div class='report-title'>{target$facility_name[[1]]}</div><div class='report-meta'>CCN {target_ccn} · {target$city[[1]]}, {target$state[[1]]} · Latest report year {latest_year}</div><div class='report-meta'>Peer group: {peer_definition}; n = {peer_count}</div></div>"))
+
+cards <- list(
+  c("Occupancy", metric_text("occupancy_rate")),
+  c("Medicare day share", metric_text("medicare_day_share")),
+  c("Revenue / resident day", metric_text("net_patient_revenue_per_day")),
+  c("Operating expense / day", metric_text("operating_expense_per_day")),
+  c("Patient service margin", metric_text("patient_service_margin")),
+  c("Contract labor ratio", metric_text("contract_labor_ratio")),
+  c("Labor cost / day", metric_text("total_labor_cost_per_day")),
+  c("Days cash on hand", metric_text("days_cash_on_hand"))
+)
+cat("<div class='metric-grid'>")
+for (x in cards) cat(glue("<div class='metric-card'><div class='metric-label'>{x[[1]]}</div><div class='metric-value'>{x[[2]]}</div></div>"))
+cat("</div>")
+```
+
+# Strategic signals
+
+These signals are screening indicators generated from the facility's latest cost report and matched-peer benchmark. They identify questions worth investigating; they are not guaranteed savings estimates or operational conclusions.
+
+```{r results='asis'}
+if (!nrow(f)) {
+  cat("<div class='flag'>No rule-based strategic flags were generated for this report.</div>")
+} else {
+  for (i in seq_len(nrow(f))) {
+    sev <- ifelse(is.na(f$severity[[i]]), "Context", as.character(f$severity[[i]]))
+    cat(glue("<div class='flag {sev}'><strong>{sev}: {f$title[[i]]}</strong><br>{f$detail[[i]]}</div>"))
+  }
+}
+```
+
+# Latest benchmark
+
+```{r}
+show_metrics <- c(
+  "occupancy_rate", "medicare_day_share", "medicaid_day_share",
+  "net_patient_revenue_per_day", "operating_expense_per_day", "revenue_expense_spread_per_day",
+  "patient_service_margin", "total_margin", "salary_cost_per_day", "contract_labor_per_day",
+  "contract_labor_ratio", "total_labor_cost_per_day", "labor_cost_share_of_operating_expense",
+  "days_cash_on_hand", "current_ratio", "debt_to_assets"
+)
+bench_table <- b |>
+  filter(.data$metric %in% show_metrics) |>
+  mutate(
+    Facility = mapply(fmt, target_value, format),
+    `Peer median` = mapply(fmt, peer_median, format),
+    `Peer p25` = mapply(fmt, peer_p25, format),
+    `Peer p75` = mapply(fmt, peer_p75, format),
+    Difference = mapply(fmt, difference_from_peer_median, format),
+    Percentile = percent(target_percentile, accuracy = 1)
+  ) |>
+  select(Domain = domain, Metric = label, Facility, `Peer median`, `Peer p25`, `Peer p75`, Difference, Percentile)
+bench_table |> gt(groupname_col = "Domain") |> tab_options(table.font.size = px(12), table.width = pct(100))
+```
+
+# Trends
+
+## Occupancy
+
+```{r fig.height=4.3, fig.width=8.5}
+plot_metric("occupancy_rate", "Occupancy rate")
+```
+
+## Revenue per resident day
+
+```{r fig.height=4.3, fig.width=8.5}
+plot_metric("net_patient_revenue_per_day", "Net patient revenue per resident day")
+```
+
+## Operating expense per resident day
+
+```{r fig.height=4.3, fig.width=8.5}
+plot_metric("operating_expense_per_day", "Operating expense per resident day")
+```
+
+## Patient service margin
+
+```{r fig.height=4.3, fig.width=8.5}
+plot_metric("patient_service_margin", "Patient service margin")
+```
+
+## Contract labor ratio
+
+```{r fig.height=4.3, fig.width=8.5}
+plot_metric("contract_labor_ratio", "Contract labor ratio")
+```
+
+# What to validate next
+
+A facility-specific operating review should use these cost-report signals to decide what to investigate next. The highest-value enrichments for the commercial product are PBJ staffing/contract hours, Care Compare quality and survey measures, ownership/chain relationships, SNF VBP/QRP measures, local labor-market data, and reimbursement/referral-market context.
+
+<div class="source-note">
+<strong>Source and limitations:</strong> CMS Healthcare Cost Report Information System / Skilled Nursing Facility Cost Report public-use data. Cost reports are screening and benchmarking data, not audited operating recommendations. Facility comparisons depend on reported fields, report-period quality, peer definition, and accounting practices. SNFBenchmarking.com is an independent product and is not endorsed by CMS.
+</div>

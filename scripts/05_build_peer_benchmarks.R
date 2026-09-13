@@ -26,11 +26,12 @@ build_snf_peer_benchmarks <- function(provider_year, latest_valid, metric_specs,
 
   for (i in seq_len(nrow(targets))) {
     target_row <- targets |> dplyr::slice(i)
-    pg <- snf_get_peer_ids(target_row, latest_state, peer_minimum = cfg$peer_minimum)
-    peer_group <- latest_state |> dplyr::filter(.data$provider_ccn %in% pg$ids)
+    pg <- snf_get_configured_peer_ids(target_row, latest_state, cfg)
+    peer_group <- latest_state |> dplyr::filter(as.character(.data$provider_ccn) %in% pg$ids)
 
     peer_lookup_rows[[i]] <- tibble::tibble(
       provider_ccn = target_row$provider_ccn[[1]],
+      peer_mode = pg$mode,
       peer_definition = pg$definition,
       peer_count = length(unique(pg$ids)),
       peer_ccns = paste(unique(pg$ids), collapse = ",")
@@ -39,6 +40,7 @@ build_snf_peer_benchmarks <- function(provider_year, latest_valid, metric_specs,
     benchmark_rows[[i]] <- purrr::map_dfr(seq_len(nrow(metric_specs)), function(j) {
       snf_benchmark_one_metric(target_row, peer_group, metric_specs |> dplyr::slice(j)) |>
         dplyr::mutate(
+          peer_mode = pg$mode,
           peer_definition = pg$definition,
           peer_count = length(unique(pg$ids)),
           .after = .data$difference_from_peer_median
@@ -57,5 +59,6 @@ build_snf_peer_benchmarks <- function(provider_year, latest_valid, metric_specs,
   readr::write_csv(peer_lookup, file.path(cfg$processed_dir, paste0("snf_peer_lookup_v041_", prefix, ".csv")))
 
   message("Peer benchmarks written: ", cfg$peer_benchmark_output)
+  message("Peer mode: ", cfg$peer_mode)
   list(benchmarks = benchmarks, peer_lookup = peer_lookup, latest_state = latest_state, targets = targets)
 }

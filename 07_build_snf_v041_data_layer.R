@@ -17,7 +17,7 @@ cfg <- snf_v041_config()
 snf_v041_prepare_dirs(cfg)
 
 message("\nBuilding SNF dashboard data layer ", cfg$project_version, "...")
-message("State filter: ", cfg$state_filter)
+message("State filter: ", cfg$state_filter, if (length(cfg$target_ccns) > 0) paste0("; target CCNs: ", paste(cfg$target_ccns, collapse=", ")) else "")
 message("Peer minimum: ", cfg$peer_minimum)
 
 provider_year <- build_snf_provider_year_public(cfg)

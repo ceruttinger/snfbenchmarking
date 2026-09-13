@@ -8,15 +8,18 @@ build_snf_peer_benchmarks <- function(provider_year, latest_valid, metric_specs,
     dplyr::filter(dplyr::coalesce(.data$display_in_dashboard, TRUE)) |>
     dplyr::filter(.data$metric %in% names(provider_year), .data$metric %in% names(latest_valid))
 
-  state_values <- snf_state_values(cfg$state_filter)
-  latest_state <- latest_valid |>
-    dplyr::filter(.data$state %in% state_values | toupper(.data$state) == toupper(cfg$state_filter))
+  latest_state <- snf_filter_state(latest_valid, cfg$state_filter)
 
   if (nrow(latest_state) == 0) stop("No latest-valid rows found for state filter: ", cfg$state_filter)
 
   targets <- latest_state |>
     dplyr::filter(dplyr::coalesce(.data$valid_core_benchmark, TRUE)) |>
     dplyr::arrange(.data$facility_name, .data$city, .data$provider_ccn)
+
+  if (length(cfg$target_ccns) > 0) {
+    targets <- targets |> dplyr::filter(as.character(.data$provider_ccn) %in% cfg$target_ccns)
+    if (nrow(targets) == 0) stop("SNF_TARGET_CCNS did not match any latest-valid facilities.")
+  }
 
   benchmark_rows <- vector("list", nrow(targets))
   peer_lookup_rows <- vector("list", nrow(targets))
@@ -49,8 +52,9 @@ build_snf_peer_benchmarks <- function(provider_year, latest_valid, metric_specs,
 
   saveRDS(benchmarks, cfg$peer_benchmark_output)
   saveRDS(peer_lookup, cfg$peer_lookup_output)
-  readr::write_csv(benchmarks, file.path(cfg$processed_dir, "snf_peer_benchmarks_v041.csv"))
-  readr::write_csv(peer_lookup, file.path(cfg$processed_dir, "snf_peer_lookup_v041.csv"))
+  prefix <- cfg$output_prefix
+  readr::write_csv(benchmarks, file.path(cfg$processed_dir, paste0("snf_peer_benchmarks_v041_", prefix, ".csv")))
+  readr::write_csv(peer_lookup, file.path(cfg$processed_dir, paste0("snf_peer_lookup_v041_", prefix, ".csv")))
 
   message("Peer benchmarks written: ", cfg$peer_benchmark_output)
   list(benchmarks = benchmarks, peer_lookup = peer_lookup, latest_state = latest_state, targets = targets)

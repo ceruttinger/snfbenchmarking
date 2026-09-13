@@ -1,0 +1,19 @@
+semantic_field,form_id,value_type,wksht_cd,line_num,clmn_num,aggregation,verification_status,verification_source,notes
+provider_ccn,CMS-2540-10,report,,,,identity,verified,HCRIS RPT table,PRVDR_NUM
+provider_ccn,CMS-2540-24,report,,,,identity,verified,HCRIS RPT table,PRVDR_NUM
+fiscal_year_begin_date,CMS-2540-10,report,,,,identity,verified,HCRIS RPT table,FY_BGN_DT
+fiscal_year_begin_date,CMS-2540-24,report,,,,identity,verified,HCRIS RPT table,FY_BGN_DT
+fiscal_year_end_date,CMS-2540-10,report,,,,identity,verified,HCRIS RPT table,FY_END_DT
+fiscal_year_end_date,CMS-2540-24,report,,,,identity,verified,HCRIS RPT table,FY_END_DT
+total_beds,CMS-2540-10,numeric,,,,identity,pending,,Run coordinate inference then verify in CMS Chapter 41
+total_beds,CMS-2540-24,numeric,,,,identity,pending,,Verify in CMS Chapter 49
+total_days,CMS-2540-10,numeric,,,,identity,pending,,Run coordinate inference then verify in CMS Chapter 41
+total_days,CMS-2540-24,numeric,,,,identity,pending,,Verify in CMS Chapter 49
+net_patient_revenue,CMS-2540-10,numeric,,,,identity,pending,,Run coordinate inference then verify in CMS Chapter 41
+net_patient_revenue,CMS-2540-24,numeric,,,,identity,pending,,Verify in CMS Chapter 49
+operating_expense,CMS-2540-10,numeric,,,,identity,pending,,Run coordinate inference then verify in CMS Chapter 41
+operating_expense,CMS-2540-24,numeric,,,,identity,pending,,Verify in CMS Chapter 49
+adjusted_salaries,CMS-2540-10,numeric,,,,identity,pending,,Run coordinate inference then verify in CMS Chapter 41
+adjusted_salaries,CMS-2540-24,numeric,,,,identity,pending,,Verify in CMS Chapter 49
+contract_labor,CMS-2540-10,numeric,,,,identity,pending,,Run coordinate inference then verify in CMS Chapter 41
+contract_labor,CMS-2540-24,numeric,,,,identity,pending,,Verify in CMS Chapter 49

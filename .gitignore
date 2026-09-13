@@ -17,3 +17,12 @@ data/dashboard/
 *.parquet
 *.duckdb
 *.duckdb.wal
+
+# Local secrets / credentials
+.env
+.env.*
+.Renviron
+*.pem
+*.key
+credentials*
+.aws/

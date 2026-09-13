@@ -1,0 +1,73 @@
+version: 1
+last_reviewed: 2026-09-12
+
+sources:
+  hcris_snf_2540_10:
+    source: CMS HCRIS
+    provider_type: SNF
+    form_id: CMS-2540-10
+    fiscal_year_start: 2011
+    fiscal_year_end_current_release: 2025
+    refresh: release_based
+    required_for: [national_financials, paid_report]
+
+  hcris_snf_2540_24:
+    source: CMS HCRIS
+    provider_type: SNF
+    form_id: CMS-2540-24
+    fiscal_year_start: 2024
+    fiscal_year_end_current_release: 2026
+    refresh: release_based
+    required_for: [national_financials, visible_labor, paid_report]
+
+  nursing_home_provider_information:
+    source: CMS Provider Data Catalog
+    dataset_id: 4pq5-n9py
+    refresh: monthly
+    join_key: ccn
+    required_for: [provider_master, paid_report, public_profile]
+
+  nursing_home_ownership:
+    source: CMS Provider Data Catalog
+    dataset_id: y2hd-n93e
+    refresh: monthly
+    join_key: ccn
+    required_for: [provider_master, ownership_intelligence]
+
+  nursing_home_penalties:
+    source: CMS Provider Data Catalog
+    dataset_id: g6vv-u9sr
+    refresh: monthly
+    join_key: ccn
+    required_for: [regulatory_context]
+
+  snf_qrp_provider_data:
+    source: CMS Provider Data Catalog
+    dataset_id: fykj-qjee
+    refresh: published_schedule
+    join_key: ccn
+    required_for: [quality_context]
+
+  nursing_home_collection_intervals:
+    source: CMS Provider Data Catalog
+    dataset_id: qmdc-9999
+    refresh: monthly
+    required_for: [period_alignment]
+
+  pbj_daily_nurse_staffing:
+    source: CMS Data
+    refresh: quarterly
+    join_key: ccn
+    required_for: [visible_labor, staffing_context]
+
+  pbj_daily_non_nurse_staffing:
+    source: CMS Data
+    refresh: quarterly
+    join_key: ccn
+    required_for: [department_labor_context]
+
+  snf_vbp_facility_level:
+    source: CMS Provider Data Catalog
+    refresh: annual
+    join_key: ccn
+    required_for: [vbp_context, paid_report]

@@ -1,10 +1,19 @@
 .DS_Store
+
+# Quarto / local caches
 .quarto/
 _cache/
+
+# Generated outputs
 outputs/
 
+# Local data artifacts. Keep source/configuration code in Git, not CMS extracts.
+data/raw/
 data/processed/
-outputs/
-.quarto/
-
 data/dashboard/
+
+# Common large analytical artifacts if created outside ignored data folders
+*.rds
+*.parquet
+*.duckdb
+*.duckdb.wal

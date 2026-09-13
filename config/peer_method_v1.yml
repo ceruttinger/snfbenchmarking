@@ -1,0 +1,59 @@
+version: peer-v1
+status: draft
+
+minimum_peer_count: 20
+preferred_peer_count: 40
+
+features:
+  urban_rural:
+    type: exact_or_relax
+    priority: 1
+  bed_count:
+    type: relative_band
+    initial_tolerance_pct: 35
+    max_tolerance_pct: 75
+    priority: 2
+  ownership_type:
+    type: categorical
+    priority: 3
+  hospital_based:
+    type: exact_or_relax
+    priority: 4
+  occupancy_rate:
+    type: absolute_band
+    initial_tolerance: 0.10
+    max_tolerance: 0.25
+    priority: 5
+  medicare_day_share:
+    type: absolute_band
+    initial_tolerance: 0.10
+    max_tolerance: 0.25
+    priority: 6
+  medicaid_day_share:
+    type: absolute_band
+    initial_tolerance: 0.15
+    max_tolerance: 0.30
+    priority: 7
+
+fallback_order:
+  - matched
+  - matched_relaxed
+  - state
+  - national
+
+required_output:
+  - peer_method_version
+  - peer_count
+  - peer_definition
+  - target_value
+  - peer_median
+  - peer_q1
+  - peer_q3
+  - percentile
+  - state_median
+  - national_median
+
+notes:
+  - Peer rules are a starting specification and must be validated against the national distribution before production.
+  - Geography is reported as context but is not the sole matching criterion.
+  - Sparse peer sets must broaden automatically rather than display unstable benchmarks.

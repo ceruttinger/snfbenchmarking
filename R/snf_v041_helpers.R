@@ -136,13 +136,66 @@ snf_get_peer_ids <- function(target_row, latest_df, peer_minimum = 5L) {
     ids <- unique(as.character(candidate$df$provider_ccn))
     ids <- ids[!is.na(ids) & nzchar(ids)]
     if (length(ids) >= peer_minimum) {
-      return(list(ids = ids, definition = candidate$label))
+      return(list(ids = ids, definition = candidate$label, mode = "auto"))
     }
   }
 
   ids <- unique(as.character(base$provider_ccn))
   ids <- ids[!is.na(ids) & nzchar(ids)]
-  list(ids = ids, definition = "All available national peers (small peer universe)")
+  list(ids = ids, definition = "All available national peers (small peer universe)", mode = "auto")
+}
+
+snf_get_configured_peer_ids <- function(target_row, latest_df, cfg) {
+  target_ccn <- as.character(target_row$provider_ccn[[1]])
+  base <- latest_df |>
+    dplyr::filter(as.character(.data$provider_ccn) != target_ccn) |>
+    dplyr::filter(dplyr::coalesce(.data$valid_core_benchmark, TRUE))
+
+  if (identical(cfg$peer_mode, "explicit")) {
+    ids <- unique(as.character(cfg$peer_ccns))
+    ids <- ids[nzchar(ids) & ids != target_ccn]
+    matched <- base |> dplyr::filter(as.character(.data$provider_ccn) %in% ids)
+    if (nrow(matched) == 0) stop("SNF_PEER_MODE=explicit but none of SNF_PEER_CCNS matched valid peer facilities.")
+    return(list(
+      ids = unique(as.character(matched$provider_ccn)),
+      definition = paste0("User-selected facilities (", nrow(matched), " matched)"),
+      mode = "explicit"
+    ))
+  }
+
+  if (identical(cfg$peer_mode, "filters")) {
+    peers <- base
+    parts <- character(0)
+    if (length(cfg$peer_states)) {
+      peers <- peers |> dplyr::filter(toupper(as.character(.data$state)) %in% cfg$peer_states)
+      parts <- c(parts, paste0("state in [", paste(cfg$peer_states, collapse = ", "), "]"))
+    }
+    if (length(cfg$peer_rural_urban)) {
+      peers <- peers |> dplyr::filter(as.character(.data$rural_urban) %in% cfg$peer_rural_urban)
+      parts <- c(parts, paste0("rural/urban in [", paste(cfg$peer_rural_urban, collapse = ", "), "]"))
+    }
+    if (length(cfg$peer_bed_size_bands)) {
+      peers <- peers |> dplyr::filter(as.character(.data$bed_size_band) %in% cfg$peer_bed_size_bands)
+      parts <- c(parts, paste0("bed-size band in [", paste(cfg$peer_bed_size_bands, collapse = ", "), "]"))
+    }
+    if (length(cfg$peer_controls)) {
+      peers <- peers |> dplyr::filter(as.character(.data$type_of_control) %in% cfg$peer_controls)
+      parts <- c(parts, paste0("ownership/control in [", paste(cfg$peer_controls, collapse = ", "), "]"))
+    }
+    if (is.finite(cfg$peer_min_beds)) {
+      peers <- peers |> dplyr::filter(as.numeric(.data$total_beds) >= cfg$peer_min_beds)
+      parts <- c(parts, paste0("beds >= ", cfg$peer_min_beds))
+    }
+    if (is.finite(cfg$peer_max_beds)) {
+      peers <- peers |> dplyr::filter(as.numeric(.data$total_beds) <= cfg$peer_max_beds)
+      parts <- c(parts, paste0("beds <= ", cfg$peer_max_beds))
+    }
+    if (nrow(peers) == 0) stop("SNF_PEER_MODE=filters produced zero valid peer facilities. Relax one or more peer filters.")
+    definition <- if (length(parts)) paste0("User-defined filters: ", paste(parts, collapse = "; ")) else "User-defined filters: all valid national facilities"
+    return(list(ids = unique(as.character(peers$provider_ccn)), definition = definition, mode = "filters"))
+  }
+
+  snf_get_peer_ids(target_row, latest_df, peer_minimum = cfg$peer_minimum)
 }
 
 snf_benchmark_one_metric <- function(target_row, peer_group, metric_row) {

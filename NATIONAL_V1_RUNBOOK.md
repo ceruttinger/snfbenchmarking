@@ -14,13 +14,67 @@ Sys.setenv(SNF_TARGET_CCN = "465095")
 source("render_national_paid_report.R")
 ```
 
-If the core national metric table is already present locally, the report builder reuses it. Otherwise it refreshes the CMS public-use cost-report pipeline first. The report uses the full U.S. latest-valid universe, then chooses same-state/rurality/bed-size peers with documented fallbacks when the local cohort is too small.
+If the core national metric table is already present locally, the report builder reuses it. Otherwise it refreshes the CMS public-use cost-report pipeline first.
 
 The result is written to:
 
 ```text
 outputs/national_client_reports/snf_benchmark_<CCN>.html
 ```
+
+## Peer group modes
+
+The commercial report supports three peer-selection modes. The target facility is always excluded from its own peer distribution.
+
+### 1. Automatic matched peers
+
+This is the default. The engine starts with same-state + same urban/rural classification + same bed-size band, then uses documented broader fallbacks when the cohort is too small.
+
+```r
+Sys.setenv(
+  SNF_TARGET_CCN = "465095",
+  SNF_PEER_MODE = "auto"
+)
+source("render_national_paid_report.R")
+```
+
+### 2. User-defined filters
+
+Filters can be combined. Omitted filters are not applied.
+
+```r
+Sys.setenv(
+  SNF_TARGET_CCN = "465095",
+  SNF_PEER_MODE = "filters",
+  SNF_PEER_STATES = "UT,ID,WY",
+  SNF_PEER_RURAL_URBAN = "Urban",
+  SNF_PEER_BED_SIZE_BANDS = "50-99,100-149",
+  SNF_PEER_MIN_BEDS = "60",
+  SNF_PEER_MAX_BEDS = "140"
+)
+source("render_national_paid_report.R")
+```
+
+Ownership/control can also be filtered using the exact values in the cost-report data:
+
+```r
+Sys.setenv(SNF_PEER_CONTROLS = "For profit")
+```
+
+### 3. Explicit facility list
+
+Use this when a customer knows exactly which facilities they regard as competitors or comparators.
+
+```r
+Sys.setenv(
+  SNF_TARGET_CCN = "465095",
+  SNF_PEER_MODE = "explicit",
+  SNF_PEER_CCNS = "465003,465006,465020,465049"
+)
+source("render_national_paid_report.R")
+```
+
+The generated report records the peer mode, peer definition, peer count, and a facility list so the benchmark can be reproduced and reviewed.
 
 ## Refresh the stable national public-use dataset and facility index
 
@@ -69,6 +123,14 @@ That verified semantic crosswalk is the bridge to CMS-2540-24 and, later, to HHA
 - `SNF_REFRESH_BASE` — force a refresh of the stable public-use metric layer
 - `SNF_DASHBOARD_STATE` — `UT` for legacy dashboard; `ALL` for national target builds
 - `SNF_OUTPUT_PREFIX` — defaults to `utah`; national report build uses `national`
+- `SNF_PEER_MODE` — `auto`, `filters`, or `explicit`
+- `SNF_PEER_CCNS` — comma-separated explicit peer CCNs
+- `SNF_PEER_STATES` — comma-separated state abbreviations for filter mode
+- `SNF_PEER_RURAL_URBAN` — comma-separated rural/urban classifications for filter mode
+- `SNF_PEER_BED_SIZE_BANDS` — comma-separated bed-size bands for filter mode
+- `SNF_PEER_CONTROLS` — comma-separated ownership/control values for filter mode
+- `SNF_PEER_MIN_BEDS` / `SNF_PEER_MAX_BEDS` — optional numeric bed bounds
+- `SNF_PEER_MINIMUM` — minimum cohort size used by automatic matching before falling back
 - `SNF_HCRIS_MIN_YEAR` / `SNF_HCRIS_MAX_YEAR` — raw HCRIS discovery range
 - `SNF_HCRIS_FORMS` — e.g. `CMS-2540-10,CMS-2540-24`
 - `SNF_HCRIS_YEARS` — comma-separated raw download years

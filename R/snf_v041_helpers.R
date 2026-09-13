@@ -7,9 +7,18 @@ snf_clean_numeric_for_json <- function(df) {
 }
 
 snf_state_values <- function(state_filter) {
-  state_filter <- toupper(as.character(state_filter))
+  state_filter <- toupper(trimws(as.character(state_filter)))
+  if (length(state_filter) == 0 || is.na(state_filter) || state_filter %in% c("", "ALL", "US", "USA", "NATIONAL")) {
+    return(character(0))
+  }
   state_name <- state.name[match(state_filter, state.abb)]
   unique(stats::na.omit(c(state_filter, toupper(state_name))))
+}
+
+snf_filter_state <- function(df, state_filter) {
+  vals <- snf_state_values(state_filter)
+  if (length(vals) == 0) return(df)
+  df |> dplyr::filter(toupper(.data$state) %in% vals)
 }
 
 snf_sum_with_na <- function(...) {
@@ -88,38 +97,52 @@ snf_latest_valid_provider_year <- function(provider_year) {
 }
 
 snf_get_peer_ids <- function(target_row, latest_df, peer_minimum = 5L) {
-  target_state <- target_row$state[[1]]
-  target_rural <- target_row$rural_urban[[1]]
-  target_bed_band <- target_row$bed_size_band[[1]]
-  target_ccn <- target_row$provider_ccn[[1]]
+  target_state <- as.character(target_row$state[[1]])
+  target_rural <- as.character(target_row$rural_urban[[1]])
+  target_bed_band <- as.character(target_row$bed_size_band[[1]])
+  target_ccn <- as.character(target_row$provider_ccn[[1]])
+
+  has_value <- function(x) length(x) > 0 && !is.na(x) && nzchar(trimws(x))
 
   base <- latest_df |>
-    dplyr::filter(.data$provider_ccn != target_ccn) |>
-    dplyr::filter(dplyr::coalesce(.data$valid_core_benchmark, TRUE)) |>
-    dplyr::filter(is.na(target_state) | .data$state == target_state)
+    dplyr::filter(as.character(.data$provider_ccn) != target_ccn) |>
+    dplyr::filter(dplyr::coalesce(.data$valid_core_benchmark, TRUE))
 
-  primary <- base |>
-    dplyr::filter(
-      is.na(target_rural) | .data$rural_urban == target_rural,
-      is.na(target_bed_band) | .data$bed_size_band == target_bed_band
-    )
-  if (nrow(primary) >= peer_minimum) {
-    return(list(ids = primary$provider_ccn, definition = "Same state + same rural/urban + same bed-size band"))
+  same_state <- if (has_value(target_state)) {
+    base |> dplyr::filter(.data$state == target_state)
+  } else {
+    base[0, , drop = FALSE]
   }
 
-  secondary <- base |>
-    dplyr::filter(is.na(target_bed_band) | .data$bed_size_band == target_bed_band)
-  if (nrow(secondary) >= peer_minimum) {
-    return(list(ids = secondary$provider_ccn, definition = "Same state + same bed-size band fallback"))
+  filter_match <- function(df, use_rural = FALSE, use_bed = FALSE) {
+    out <- df
+    if (use_rural && has_value(target_rural)) out <- out |> dplyr::filter(.data$rural_urban == target_rural)
+    if (use_bed && has_value(target_bed_band)) out <- out |> dplyr::filter(.data$bed_size_band == target_bed_band)
+    out
   }
 
-  tertiary <- base |>
-    dplyr::filter(is.na(target_rural) | .data$rural_urban == target_rural)
-  if (nrow(tertiary) >= peer_minimum) {
-    return(list(ids = tertiary$provider_ccn, definition = "Same state + same rural/urban fallback"))
+  candidates <- list(
+    list(df = filter_match(same_state, TRUE, TRUE), label = "Same state + same rural/urban + same bed-size band"),
+    list(df = filter_match(same_state, FALSE, TRUE), label = "Same state + same bed-size band fallback"),
+    list(df = filter_match(same_state, TRUE, FALSE), label = "Same state + same rural/urban fallback"),
+    list(df = same_state, label = "Same state fallback"),
+    list(df = filter_match(base, TRUE, TRUE), label = "National same rural/urban + same bed-size band fallback"),
+    list(df = filter_match(base, FALSE, TRUE), label = "National same bed-size band fallback"),
+    list(df = filter_match(base, TRUE, FALSE), label = "National same rural/urban fallback"),
+    list(df = base, label = "National fallback")
+  )
+
+  for (candidate in candidates) {
+    ids <- unique(as.character(candidate$df$provider_ccn))
+    ids <- ids[!is.na(ids) & nzchar(ids)]
+    if (length(ids) >= peer_minimum) {
+      return(list(ids = ids, definition = candidate$label))
+    }
   }
 
-  list(ids = base$provider_ccn, definition = "Same state fallback")
+  ids <- unique(as.character(base$provider_ccn))
+  ids <- ids[!is.na(ids) & nzchar(ids)]
+  list(ids = ids, definition = "All available national peers (small peer universe)")
 }
 
 snf_benchmark_one_metric <- function(target_row, peer_group, metric_row) {

@@ -28,11 +28,12 @@ quarto::quarto_render(
   execute_params = list(target_ccn = target_ccn, data_prefix = "national")
 )
 
-source_html <- "client_report_snf_national.html"
+# The project-level _quarto.yml renders website artifacts under outputs/dashboard_site/.
+source_html <- file.path("outputs", "dashboard_site", "client_report_snf_national.html")
 out_dir <- file.path("outputs", "national_client_reports")
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 out_file <- file.path(out_dir, paste0("snf_benchmark_", target_ccn, ".html"))
 if (!file.exists(source_html)) stop("Quarto completed but expected report was not found: ", source_html)
-file.copy(source_html, out_file, overwrite = TRUE)
+if (!file.copy(source_html, out_file, overwrite = TRUE)) stop("Could not copy rendered report to: ", out_file)
 message("National paid report rendered: ", out_file)
 invisible(out_file)

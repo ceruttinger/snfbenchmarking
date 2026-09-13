@@ -22,7 +22,9 @@ library(scales)
 library(ggplot2)
 library(gt)
 library(glue)
+library(readr)
 
+aesc <- htmltools::htmlEscape
 prefix <- as.character(params$data_prefix)
 target_ccn <- as.character(params$target_ccn)
 path <- function(stem) file.path("data/dashboard", paste0(prefix, "_", stem, ".json"))
@@ -42,12 +44,35 @@ b <- benchmarks |> filter(as.character(.data$provider_ccn) == target_ccn)
 t <- trends |> filter(as.character(.data$provider_ccn) == target_ccn)
 f <- flags |> filter(as.character(.data$provider_ccn) == target_ccn)
 
+peer_lookup_path <- file.path("data/processed", paste0("snf_peer_lookup_v041_", prefix, ".csv"))
+latest_valid_path <- file.path("data/processed", "snf_latest_valid_reports_v041.rds")
+peer_lookup <- if (file.exists(peer_lookup_path)) suppressMessages(read_csv(peer_lookup_path, show_col_types = FALSE)) else tibble()
+peer_row <- peer_lookup |> filter(as.character(.data$provider_ccn) == target_ccn) |> slice(1)
+peer_members <- tibble()
+if (nrow(peer_row) && file.exists(latest_valid_path) && "peer_ccns" %in% names(peer_row)) {
+  peer_ids <- trimws(unlist(strsplit(as.character(peer_row$peer_ccns[[1]]), ",", fixed = TRUE)))
+  latest_valid <- readRDS(latest_valid_path)
+  peer_members <- latest_valid |>
+    filter(as.character(.data$provider_ccn) %in% peer_ids) |>
+    arrange(.data$state, .data$facility_name) |>
+    transmute(
+      CCN = as.character(.data$provider_ccn),
+      Facility = .data$facility_name,
+      City = .data$city,
+      State = .data$state,
+      Beds = .data$total_beds,
+      `Urban / rural` = .data$rural_urban,
+      `Ownership / control` = .data$type_of_control
+    )
+}
+
 fmt <- function(x, type = "number") {
   if (!length(x) || is.na(x)) return("—")
   if (identical(type, "percent")) return(percent(as.numeric(x), accuracy = 0.1))
   if (identical(type, "dollar")) return(dollar(as.numeric(x), accuracy = 1))
   number(as.numeric(x), accuracy = 0.1, big.mark = ",")
 }
+safe_text <- function(x) if (!length(x) || is.na(x) || !nzchar(trimws(as.character(x)))) "—" else as.character(x)
 
 br <- function(metric) b |> filter(.data$metric == metric) |> slice(1)
 metric_text <- function(metric, col = "target_value") {
@@ -55,22 +80,55 @@ metric_text <- function(metric, col = "target_value") {
   if (!nrow(z) || !col %in% names(z) || is.na(z[[col]][[1]])) return("—")
   fmt(z[[col]][[1]], z$format[[1]])
 }
+metric_row <- function(metric) metrics |> filter(.data$metric == metric) |> slice(1)
+metric_field <- function(metric, field, fallback = "") {
+  z <- metric_row(metric)
+  if (!nrow(z) || !field %in% names(z) || is.na(z[[field]][[1]]) || !nzchar(as.character(z[[field]][[1]]))) return(fallback)
+  as.character(z[[field]][[1]])
+}
+metric_explanation_html <- function(metric) {
+  definition <- metric_field(metric, "definition", "This metric is calculated from the facility's CMS cost report.")
+  strategic <- metric_field(metric, "strategic_use", "Use it with the peer comparison and longitudinal trend to identify questions for further review.")
+  trend_note <- metric_field(metric, "trend_interpretation", "Focus on sustained changes rather than a single-year movement.")
+  caveat <- metric_field(metric, "caveats", "Interpret this measure with other operating and financial context.")
+  glue("<div class='metric-explain'><div><strong>What it measures:</strong> {aesc(definition)}</div><div><strong>Why it matters:</strong> {aesc(strategic)}</div><div><strong>How to read the trend:</strong> {aesc(trend_note)}</div><div class='metric-caveat'><strong>Keep in mind:</strong> {aesc(caveat)}</div></div>")
+}
 
 peer_definition <- if (nrow(b) && "peer_definition" %in% names(b)) b$peer_definition[[1]] else "Matched peers"
 peer_count <- if (nrow(b) && "peer_count" %in% names(b)) b$peer_count[[1]] else NA_integer_
-latest_year <- if (nrow(t)) suppressWarnings(max(t$source_year, na.rm = TRUE)) else target$source_year[[1]]
+peer_mode <- if (nrow(b) && "peer_mode" %in% names(b)) b$peer_mode[[1]] else if (nrow(peer_row) && "peer_mode" %in% names(peer_row)) peer_row$peer_mode[[1]] else "auto"
+peer_mode_label <- dplyr::case_when(
+  peer_mode == "explicit" ~ "User-selected facilities",
+  peer_mode == "filters" ~ "User-defined filters",
+  TRUE ~ "Automatic matched peers"
+)
+latest_year <- if (nrow(t) && any(is.finite(suppressWarnings(as.numeric(t$source_year))))) suppressWarnings(max(as.numeric(t$source_year), na.rm = TRUE)) else target$source_year[[1]]
 
 plot_metric <- function(metric, title) {
   spec <- metrics |> filter(.data$metric == metric) |> slice(1)
-  d <- t |> filter(.data$metric == metric) |> arrange(.data$source_year)
+  d <- t |> filter(.data$metric == metric) |> arrange(.data$source_year) |>
+    mutate(target_plot = ifelse(dplyr::coalesce(.data$target_has_report, TRUE), .data$target_value, NA_real_))
   if (!nrow(d)) return(NULL)
+
   p <- ggplot(d, aes(x = .data$source_year)) +
-    geom_ribbon(aes(ymin = .data$peer_p25, ymax = .data$peer_p75), alpha = 0.15) +
-    geom_line(aes(y = .data$peer_median), linetype = "dashed", linewidth = 0.8) +
-    geom_line(aes(y = .data$target_value), linewidth = 1.1) +
-    geom_point(aes(y = .data$target_value), size = 2) +
-    labs(title = title, subtitle = "Target vs matched-peer median and interquartile range", x = NULL, y = NULL) +
-    theme_minimal(base_size = 12) + theme(plot.title = element_text(face = "bold"), panel.grid.minor = element_blank())
+    geom_ribbon(aes(ymin = .data$peer_p25, ymax = .data$peer_p75, fill = "Peer IQR"), alpha = 0.38, color = NA) +
+    geom_line(aes(y = .data$peer_median, color = "Peer median"), linetype = "22", linewidth = 0.9, na.rm = TRUE) +
+    geom_point(aes(y = .data$peer_median, color = "Peer median"), shape = 15, size = 2.2, na.rm = TRUE) +
+    geom_line(aes(y = .data$target_plot, color = "Target facility"), linewidth = 1.2, na.rm = TRUE) +
+    geom_point(aes(y = .data$target_plot, color = "Target facility"), shape = 16, size = 2.8, na.rm = TRUE) +
+    scale_color_manual(NULL, values = c("Target facility" = "#155EEF", "Peer median" = "#D97706")) +
+    scale_fill_manual(NULL, values = c("Peer IQR" = "#CBD5E1")) +
+    guides(color = guide_legend(order = 1), fill = guide_legend(order = 2)) +
+    labs(title = title, subtitle = "Target facility vs peer median; shaded band = peer 25th–75th percentile", x = NULL, y = NULL) +
+    scale_x_continuous(breaks = scales::pretty_breaks(n = 7)) +
+    theme_minimal(base_size = 12) +
+    theme(
+      plot.title = element_text(face = "bold"),
+      panel.grid.minor = element_blank(),
+      legend.position = "top",
+      legend.justification = "left",
+      legend.box.spacing = grid::unit(0, "pt")
+    )
   if (nrow(spec) && spec$format[[1]] == "percent") p <- p + scale_y_continuous(labels = percent_format(accuracy = 1))
   if (nrow(spec) && spec$format[[1]] == "dollar") p <- p + scale_y_continuous(labels = dollar_format(accuracy = 1))
   p
@@ -81,11 +139,15 @@ plot_metric <- function(metric, title) {
 .report-hero {border:1px solid #d9e1ea;border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.2rem;background:#f8fafc}
 .report-kicker {color:#667085;font-size:.9rem;margin-bottom:.35rem}.report-title {font-size:1.35rem;font-weight:750}.report-meta {color:#475467;margin-top:.3rem}
 .metric-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:.7rem;margin:1rem 0 1.4rem}.metric-card {border:1px solid #e1e6ed;border-radius:10px;padding:.8rem;background:white}.metric-label {font-size:.78rem;color:#667085}.metric-value {font-size:1.35rem;font-weight:750;margin-top:.15rem}
-.flag {border-left:5px solid #98a2b3;padding:.65rem .85rem;margin:.6rem 0;background:#fafafa;border-radius:6px}.flag.Risk{border-left-color:#b42318}.flag.Watch{border-left-color:#dc6803}.flag.Strength{border-left-color:#027a48}.source-note{font-size:.84rem;color:#667085;border-top:1px solid #e1e6ed;padding-top:1rem;margin-top:2rem}
+.profile-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.65rem;margin:.8rem 0 1.2rem}.profile-item {border-bottom:1px solid #eaecf0;padding:.45rem .15rem}.profile-label {font-size:.76rem;color:#667085;text-transform:uppercase;letter-spacing:.03em}.profile-value {font-weight:650;margin-top:.15rem}
+.flag {border-left:5px solid #98a2b3;padding:.65rem .85rem;margin:.6rem 0;background:#fafafa;border-radius:6px}.flag.Risk{border-left-color:#b42318}.flag.Watch{border-left-color:#dc6803}.flag.Strength{border-left-color:#027a48}
+.peer-box {border:1px solid #d9e1ea;border-radius:10px;padding:.9rem 1rem;background:#f8fafc;margin:.8rem 0 1.2rem}.peer-warning {border-left:4px solid #dc6803;padding:.55rem .75rem;background:#fffaeb;margin:.6rem 0}
+.metric-explain {border-left:4px solid #98a2b3;background:#f8fafc;padding:.75rem .9rem;margin:.25rem 0 1.5rem;font-size:.93rem;line-height:1.45}.metric-explain > div {margin:.2rem 0}.metric-caveat {color:#475467}
+.source-note{font-size:.84rem;color:#667085;border-top:1px solid #e1e6ed;padding-top:1rem;margin-top:2rem}
 </style>
 
 ```{r results='asis'}
-cat(glue("<div class='report-hero'><div class='report-kicker'>SNFBenchmarking.com</div><div class='report-title'>{target$facility_name[[1]]}</div><div class='report-meta'>CCN {target_ccn} · {target$city[[1]]}, {target$state[[1]]} · Latest report year {latest_year}</div><div class='report-meta'>Peer group: {peer_definition}; n = {peer_count}</div></div>"))
+cat(glue("<div class='report-hero'><div class='report-kicker'>SNFBenchmarking.com</div><div class='report-title'>{aesc(target$facility_name[[1]])}</div><div class='report-meta'>CCN {aesc(target_ccn)} · {aesc(target$city[[1]])}, {aesc(target$state[[1]])} · Latest report year {latest_year}</div><div class='report-meta'>Peer method: {aesc(peer_mode_label)} · {aesc(peer_definition)} · n = {peer_count}</div></div>"))
 
 cards <- list(
   c("Occupancy", metric_text("occupancy_rate")),
@@ -98,13 +160,34 @@ cards <- list(
   c("Days cash on hand", metric_text("days_cash_on_hand"))
 )
 cat("<div class='metric-grid'>")
-for (x in cards) cat(glue("<div class='metric-card'><div class='metric-label'>{x[[1]]}</div><div class='metric-value'>{x[[2]]}</div></div>"))
+for (x in cards) cat(glue("<div class='metric-card'><div class='metric-label'>{aesc(x[[1]])}</div><div class='metric-value'>{aesc(x[[2]])}</div></div>"))
 cat("</div>")
+```
+
+# Facility profile
+
+```{r results='asis'}
+profile <- list(
+  c("Licensed / reported beds", fmt(target$total_beds[[1]], "number")),
+  c("Bed-size band", safe_text(target$bed_size_band[[1]])),
+  c("Urban / rural", safe_text(target$rural_urban[[1]])),
+  c("Ownership / control", safe_text(target$type_of_control[[1]])),
+  c("Average daily census", metric_text("average_daily_census")),
+  c("Report days", fmt(target$report_days[[1]], "number")),
+  c("Report-period status", safe_text(target$report_period_status[[1]])),
+  c("SNF / NF mix", safe_text(target$snf_nf_mix[[1]]))
+)
+cat("<div class='profile-grid'>")
+for (x in profile) cat(glue("<div class='profile-item'><div class='profile-label'>{aesc(x[[1]])}</div><div class='profile-value'>{aesc(x[[2]])}</div></div>"))
+cat("</div>")
+if (!is.na(target$data_quality_flags[[1]]) && nzchar(as.character(target$data_quality_flags[[1]]))) {
+  cat(glue("<div class='peer-warning'><strong>Data-quality note:</strong> {aesc(as.character(target$data_quality_flags[[1]]))}</div>"))
+}
 ```
 
 # Strategic signals
 
-These signals are screening indicators generated from the facility's latest cost report and matched-peer benchmark. They identify questions worth investigating; they are not guaranteed savings estimates or operational conclusions.
+These signals are screening indicators generated from the facility's latest cost report and peer benchmark. They identify questions worth investigating; they are not guaranteed savings estimates or operational conclusions.
 
 ```{r results='asis'}
 if (!nrow(f)) {
@@ -112,8 +195,31 @@ if (!nrow(f)) {
 } else {
   for (i in seq_len(nrow(f))) {
     sev <- ifelse(is.na(f$severity[[i]]), "Context", as.character(f$severity[[i]]))
-    cat(glue("<div class='flag {sev}'><strong>{sev}: {f$title[[i]]}</strong><br>{f$detail[[i]]}</div>"))
+    cat(glue("<div class='flag {aesc(sev)}'><strong>{aesc(sev)}: {aesc(f$title[[i]])}</strong><br>{aesc(f$detail[[i]])}</div>"))
   }
+}
+```
+
+# Peer group
+
+```{r results='asis'}
+cat(glue("<div class='peer-box'><strong>{aesc(peer_mode_label)}</strong><br>{aesc(peer_definition)}<br><strong>{peer_count}</strong> facilities are included in the peer benchmark. The target facility itself is excluded from the peer distribution.</div>"))
+if (!is.na(peer_count) && peer_count < 10) {
+  cat("<div class='peer-warning'><strong>Small peer cohort:</strong> Interpret percentile and quartile comparisons cautiously. A broader cohort may be useful as a sensitivity check.</div>")
+}
+```
+
+The benchmarking engine supports three peer methods: **automatic matching**, **user-defined filters**, and an **explicit facility list**. This report records the method used so the comparison is reproducible. A future interactive selector can expose these same controls directly to the user without changing the benchmark logic.
+
+```{r}
+if (nrow(peer_members)) {
+  shown <- peer_members |> slice_head(n = 40)
+  peer_gt <- shown |>
+    gt() |>
+    tab_header(title = md("**Peer facilities used in this benchmark**"), subtitle = if (nrow(peer_members) > 40) paste0("Showing first 40 of ", nrow(peer_members), " peers") else paste0(nrow(peer_members), " peers")) |>
+    fmt_number(columns = Beds, decimals = 0) |>
+    tab_options(table.font.size = px(11), table.width = pct(100))
+  peer_gt
 }
 ```
 
@@ -121,11 +227,11 @@ if (!nrow(f)) {
 
 ```{r}
 show_metrics <- c(
-  "occupancy_rate", "medicare_day_share", "medicaid_day_share",
+  "occupancy_rate", "average_daily_census", "medicare_day_share", "medicaid_day_share", "other_day_share",
   "net_patient_revenue_per_day", "operating_expense_per_day", "revenue_expense_spread_per_day",
   "patient_service_margin", "total_margin", "salary_cost_per_day", "contract_labor_per_day",
   "contract_labor_ratio", "total_labor_cost_per_day", "labor_cost_share_of_operating_expense",
-  "days_cash_on_hand", "current_ratio", "debt_to_assets"
+  "days_cash_on_hand", "current_ratio", "days_accounts_receivable", "debt_to_assets"
 )
 bench_table <- b |>
   filter(.data$metric %in% show_metrics) |>
@@ -143,10 +249,36 @@ bench_table |> gt(groupname_col = "Domain") |> tab_options(table.font.size = px(
 
 # Trends
 
+The blue line and circles are the **target facility**. The orange dashed line and squares are the **peer median**. The gray shaded band is the **peer interquartile range (25th–75th percentile)**. Target points are shown only for years with a usable target cost report.
+
 ## Occupancy
 
 ```{r fig.height=4.3, fig.width=8.5}
 plot_metric("occupancy_rate", "Occupancy rate")
+```
+
+```{r results='asis'}
+cat(metric_explanation_html("occupancy_rate"))
+```
+
+## Medicare day share
+
+```{r fig.height=4.3, fig.width=8.5}
+plot_metric("medicare_day_share", "Medicare day share")
+```
+
+```{r results='asis'}
+cat(metric_explanation_html("medicare_day_share"))
+```
+
+## Medicaid day share
+
+```{r fig.height=4.3, fig.width=8.5}
+plot_metric("medicaid_day_share", "Medicaid day share")
+```
+
+```{r results='asis'}
+cat(metric_explanation_html("medicaid_day_share"))
 ```
 
 ## Revenue per resident day
@@ -155,10 +287,18 @@ plot_metric("occupancy_rate", "Occupancy rate")
 plot_metric("net_patient_revenue_per_day", "Net patient revenue per resident day")
 ```
 
+```{r results='asis'}
+cat(metric_explanation_html("net_patient_revenue_per_day"))
+```
+
 ## Operating expense per resident day
 
 ```{r fig.height=4.3, fig.width=8.5}
 plot_metric("operating_expense_per_day", "Operating expense per resident day")
+```
+
+```{r results='asis'}
+cat(metric_explanation_html("operating_expense_per_day"))
 ```
 
 ## Patient service margin
@@ -167,10 +307,38 @@ plot_metric("operating_expense_per_day", "Operating expense per resident day")
 plot_metric("patient_service_margin", "Patient service margin")
 ```
 
+```{r results='asis'}
+cat(metric_explanation_html("patient_service_margin"))
+```
+
 ## Contract labor ratio
 
 ```{r fig.height=4.3, fig.width=8.5}
 plot_metric("contract_labor_ratio", "Contract labor ratio")
+```
+
+```{r results='asis'}
+cat(metric_explanation_html("contract_labor_ratio"))
+```
+
+## Total labor cost per resident day
+
+```{r fig.height=4.3, fig.width=8.5}
+plot_metric("total_labor_cost_per_day", "Total labor cost per resident day")
+```
+
+```{r results='asis'}
+cat(metric_explanation_html("total_labor_cost_per_day"))
+```
+
+## Days cash on hand
+
+```{r fig.height=4.3, fig.width=8.5}
+plot_metric("days_cash_on_hand", "Days cash on hand")
+```
+
+```{r results='asis'}
+cat(metric_explanation_html("days_cash_on_hand"))
 ```
 
 # What to validate next

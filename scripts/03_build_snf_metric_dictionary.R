@@ -20,8 +20,9 @@ build_snf_metric_dictionary <- function(provider_year, cfg = snf_v041_config()) 
     dplyr::filter(dplyr::coalesce(.data$display_in_dashboard, TRUE))
 
   readr::write_csv(metric_specs, cfg$metric_dictionary_output)
-  readr::write_csv(dashboard_metric_specs, file.path(cfg$dashboard_dir, "utah_metric_specs.csv"))
-  jsonlite::write_json(dashboard_metric_specs, file.path(cfg$dashboard_dir, "utah_metric_specs.json"), dataframe = "rows", auto_unbox = TRUE, na = "null", pretty = TRUE)
+  prefix <- cfg$output_prefix
+  readr::write_csv(dashboard_metric_specs, file.path(cfg$dashboard_dir, paste0(prefix, "_metric_specs.csv")))
+  jsonlite::write_json(dashboard_metric_specs, file.path(cfg$dashboard_dir, paste0(prefix, "_metric_specs.json")), dataframe = "rows", auto_unbox = TRUE, na = "null", pretty = TRUE)
 
   missing_metrics <- readr::read_csv(cfg$metric_dictionary_config, show_col_types = FALSE) |>
     dplyr::filter(!.data$metric %in% names(provider_year)) |>
@@ -29,6 +30,6 @@ build_snf_metric_dictionary <- function(provider_year, cfg = snf_v041_config()) 
   readr::write_csv(missing_metrics, file.path(cfg$processed_dir, "snf_metric_dictionary_missing_fields_v041.csv"))
 
   message("Metric dictionary written: ", cfg$metric_dictionary_output)
-  message("Dashboard metric specs written: ", file.path(cfg$dashboard_dir, "utah_metric_specs.json"))
+  message("Dashboard metric specs written: ", file.path(cfg$dashboard_dir, paste0(prefix, "_metric_specs.json")))
   metric_specs
 }

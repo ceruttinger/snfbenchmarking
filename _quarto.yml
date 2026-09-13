@@ -1,0 +1,15 @@
+project:
+  type: website
+  output-dir: outputs/dashboard_site
+  resources:
+    - data/dashboard/*.json
+    - data/dashboard/*.csv
+
+website:
+  title: "Utah SNF Strategic Benchmark Explorer"
+  navbar: false
+
+format:
+  html:
+    toc: false
+    theme: cosmo

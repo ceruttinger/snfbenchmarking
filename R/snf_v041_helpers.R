@@ -43,6 +43,44 @@ snf_bool <- function(x) {
   )
 }
 
+# CMS SNF Cost Report Type of Control codes (1-13).
+# Keep the raw code separately in the provider layer; use this label for display/filtering.
+snf_type_of_control_label <- function(x) {
+  raw <- trimws(as.character(x))
+  labels <- c(
+    "1" = "Voluntary nonprofit — Church",
+    "2" = "Voluntary nonprofit — Other",
+    "3" = "Proprietary — Individual",
+    "4" = "Proprietary — Corporation",
+    "5" = "Proprietary — Partnership",
+    "6" = "Proprietary — Other",
+    "7" = "Governmental — Federal",
+    "8" = "Governmental — City-county",
+    "9" = "Governmental — County",
+    "10" = "Governmental — State",
+    "11" = "Governmental — Hospital district",
+    "12" = "Governmental — City",
+    "13" = "Governmental — Other"
+  )
+  out <- unname(labels[raw])
+  keep_raw <- is.na(out) & !is.na(raw) & nzchar(raw)
+  out[keep_raw] <- raw[keep_raw]
+  out[is.na(raw) | !nzchar(raw)] <- NA_character_
+  out
+}
+
+snf_rural_urban_label <- function(x) {
+  raw <- trimws(as.character(x))
+  up <- toupper(raw)
+  out <- dplyr::case_when(
+    up %in% c("U", "URBAN") ~ "Urban",
+    up %in% c("R", "RURAL") ~ "Rural",
+    is.na(raw) | !nzchar(raw) ~ NA_character_,
+    TRUE ~ raw
+  )
+  as.character(out)
+}
+
 snf_safe_q <- function(x, p) {
   x <- x[!is.na(x) & is.finite(x)]
   if (length(x) == 0) return(NA_real_)
@@ -171,16 +209,22 @@ snf_get_configured_peer_ids <- function(target_row, latest_df, cfg) {
       parts <- c(parts, paste0("state in [", paste(cfg$peer_states, collapse = ", "), "]"))
     }
     if (length(cfg$peer_rural_urban)) {
-      peers <- peers |> dplyr::filter(as.character(.data$rural_urban) %in% cfg$peer_rural_urban)
-      parts <- c(parts, paste0("rural/urban in [", paste(cfg$peer_rural_urban, collapse = ", "), "]"))
+      wanted_ru <- unique(snf_rural_urban_label(cfg$peer_rural_urban))
+      peers <- peers |> dplyr::filter(as.character(.data$rural_urban) %in% wanted_ru)
+      parts <- c(parts, paste0("urban/rural in [", paste(wanted_ru, collapse = ", "), "]"))
     }
     if (length(cfg$peer_bed_size_bands)) {
       peers <- peers |> dplyr::filter(as.character(.data$bed_size_band) %in% cfg$peer_bed_size_bands)
       parts <- c(parts, paste0("bed-size band in [", paste(cfg$peer_bed_size_bands, collapse = ", "), "]"))
     }
     if (length(cfg$peer_controls)) {
-      peers <- peers |> dplyr::filter(as.character(.data$type_of_control) %in% cfg$peer_controls)
-      parts <- c(parts, paste0("ownership/control in [", paste(cfg$peer_controls, collapse = ", "), "]"))
+      controls <- as.character(cfg$peer_controls)
+      if ("type_of_control_code" %in% names(peers)) {
+        peers <- peers |> dplyr::filter(as.character(.data$type_of_control) %in% controls | as.character(.data$type_of_control_code) %in% controls)
+      } else {
+        peers <- peers |> dplyr::filter(as.character(.data$type_of_control) %in% controls)
+      }
+      parts <- c(parts, paste0("ownership/control in [", paste(controls, collapse = ", "), "]"))
     }
     if (is.finite(cfg$peer_min_beds)) {
       peers <- peers |> dplyr::filter(as.numeric(.data$total_beds) >= cfg$peer_min_beds)
@@ -225,7 +269,7 @@ snf_benchmark_one_metric <- function(target_row, peer_group, metric_row) {
 
 snf_trend_delta <- function(tdf, metric, years_back = 3) {
   z <- tdf |>
-    dplyr::filter(.data$metric == metric) |>
+    dplyr::filter(.data$metric == .env$metric) |>
     dplyr::arrange(.data$source_year)
   if (nrow(z) == 0) return(NA_real_)
   latest_y <- suppressWarnings(max(z$source_year, na.rm = TRUE))

@@ -3,7 +3,7 @@
 
 build_snf_strategy_flags <- function(facility_index, benchmarks, trends) {
   bench_value <- function(b, metric, col) {
-    z <- b |> dplyr::filter(.data$metric == metric) |> dplyr::slice(1)
+    z <- b |> dplyr::filter(.data$metric == .env$metric) |> dplyr::slice(1)
     if (nrow(z) == 0 || !(col %in% names(z))) return(NA_real_)
     suppressWarnings(as.numeric(z[[col]][[1]]))
   }
@@ -95,7 +95,9 @@ export_snf_dashboard_json <- function(provider_year, latest_valid, metric_specs,
       zip_code,
       cbsa,
       rural_urban,
+      rural_urban_code,
       type_of_control,
+      type_of_control_code,
       total_beds,
       bed_size_band,
       snf_nf_mix,
@@ -196,7 +198,7 @@ export_snf_dashboard_json <- function(provider_year, latest_valid, metric_specs,
         dplyr::arrange(.data$source_year) |>
         dplyr::mutate(
           provider_ccn = target_id,
-          metric = metric,
+          metric = .env$metric,
           label = mr$label[[1]],
           format = mr$format[[1]],
           domain = mr$domain[[1]],

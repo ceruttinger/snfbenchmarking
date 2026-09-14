@@ -26,7 +26,7 @@ build_snf_metric_dictionary <- function(provider_year, cfg = snf_v041_config()) 
 
   missing_metrics <- readr::read_csv(cfg$metric_dictionary_config, show_col_types = FALSE) |>
     dplyr::filter(!.data$metric %in% names(provider_year)) |>
-    dplyr::select(.data$metric, .data$label, .data$source_layer, .data$module)
+    dplyr::select("metric", "label", "source_layer", "module")
   readr::write_csv(missing_metrics, file.path(cfg$processed_dir, "snf_metric_dictionary_missing_fields_v041.csv"))
 
   message("Metric dictionary written: ", cfg$metric_dictionary_output)

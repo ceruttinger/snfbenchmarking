@@ -43,7 +43,7 @@ build_snf_peer_benchmarks <- function(provider_year, latest_valid, metric_specs,
           peer_mode = pg$mode,
           peer_definition = pg$definition,
           peer_count = length(unique(pg$ids)),
-          .after = .data$difference_from_peer_median
+          .after = "difference_from_peer_median"
         )
     })
   }

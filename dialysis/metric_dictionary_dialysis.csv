@@ -1,0 +1,14 @@
+metric_id,label,domain,source,worksheet,line,column,unit,status,notes
+report_start,Report period start,identity,HCRIS_RPT,,,,date,ready,From HCRIS report file
+report_end,Report period end,identity,HCRIS_RPT,,,,date,ready,From HCRIS report file
+provider_ccn,Medicare provider number,identity,HCRIS_RPT,,,,text,ready,From HCRIS report file
+facility_name,Facility name,identity,HCRIS_ALPHA,,,,text,to_validate,Resolve CMS-265-11 worksheet coordinate
+state,State,identity,HCRIS_ALPHA,,,,text,to_validate,Resolve CMS-265-11 worksheet coordinate
+total_treatments,Total dialysis treatments,utilization,HCRIS_NUMERIC,,,,count,to_validate,Validate worksheet line and column against current CMS-265-11 instructions
+in_center_hd_treatments,In-center hemodialysis treatments,utilization,HCRIS_NUMERIC,,,,count,to_validate,Validate worksheet coordinate
+home_dialysis_treatments,Home dialysis treatments,utilization,HCRIS_NUMERIC,,,,count,to_validate,Validate worksheet coordinate
+total_patient_service_revenue,Patient service revenue,financial,HCRIS_NUMERIC,,,,usd,to_validate,Validate worksheet coordinate
+total_operating_cost,Operating cost,financial,HCRIS_NUMERIC,,,,usd,to_validate,Validate worksheet coordinate
+cost_per_treatment,Operating cost per treatment,derived,DERIVED,,,,usd_per_treatment,to_validate,total_operating_cost / total_treatments
+revenue_per_treatment,Patient service revenue per treatment,derived,DERIVED,,,,usd_per_treatment,to_validate,total_patient_service_revenue / total_treatments
+operating_margin,Operating margin,derived,DERIVED,,,,ratio,to_validate,(revenue - cost) / revenue

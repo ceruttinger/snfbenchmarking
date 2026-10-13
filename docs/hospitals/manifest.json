@@ -1,0 +1,43 @@
+{
+  "2022": {
+    "source": "https://data.cms.gov/sites/default/files/2026-10/1be4ec08-6d9d-4e05-b871-c4d74fe81089/CostReport_2022_Final.csv",
+    "sourceModified": "2026-10-05",
+    "retrieved": "2026-10-13",
+    "sourceSha256": "4633eaa53eed156bb6480ba76c4fad426236a3b4f7a345a77f12bd511c427a4f",
+    "inputReports": 6069,
+    "selectedReports": 6004,
+    "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+    "standardPeriodReports": 5902,
+    "types": {
+      "STH": 3215,
+      "CAH": 1363,
+      "LTCH": 342,
+      "RH": 343,
+      "CH": 93,
+      "PH": 630,
+      "RNMHC": 10,
+      "ORD": 8
+    }
+  },
+  "2023": {
+    "source": "https://data.cms.gov/sites/default/files/2026-10/e48e1326-aeeb-4ad4-acf6-a506871b6d20/CostReport_2023_Final.csv",
+    "sourceModified": "2026-10-05",
+    "retrieved": "2026-10-13",
+    "sourceSha256": "0412fb0050b58260b1c94d4d7cbe43e249d30f37deed9e6727df705fd648b878",
+    "inputReports": 6109,
+    "selectedReports": 6046,
+    "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+    "standardPeriodReports": 5877,
+    "types": {
+      "STH": 3210,
+      "CAH": 1374,
+      "LTCH": 336,
+      "RH": 376,
+      "CH": 91,
+      "PH": 640,
+      "RNMHC": 10,
+      "TC": 1,
+      "ORD": 8
+    }
+  }
+}

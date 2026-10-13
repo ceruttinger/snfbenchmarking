@@ -9,14 +9,18 @@ National renal dialysis benchmarking module for the existing HCRIS provider benc
 
 ## Architecture
 
-1. `01_pull_renal_hcris.py` downloads the CMS renal HCRIS ZIP and converts the long HCRIS files into analysis-ready source tables.
+1. `01_pull_renal_hcris.py` now stops with an explicit API-coverage message. Bulk downloads are disabled; an official raw renal cost-report API has not been verified.
 2. `02_build_dialysis_metrics.py` creates a facility-year analytic table from worksheet/line/column mappings.
 3. `metric_dictionary_dialysis.csv` is the canonical metric/mapping dictionary. Mappings should be validated against the current CMS-265-11 instructions before production use.
 4. `03_build_static_site.py` creates a lightweight static national benchmarking page in `docs/dialysis/`.
 
 The first implementation deliberately keeps HCRIS worksheet coordinates visible rather than hiding them behind opaque variable names. That makes metric validation auditable.
 
-## Run
+## API-only status
+
+Do not run the old bulk-download workflow. Renal financial metrics remain unavailable until an official API is verified. See `../DATA_ACCESS.md`.
+
+## Historical scaffold commands
 
 ```bash
 cd dialysis

@@ -1,9 +1,9 @@
 {
   "2022": {
-    "source": "https://data.cms.gov/sites/default/files/2026-10/1be4ec08-6d9d-4e05-b871-c4d74fe81089/CostReport_2022_Final.csv",
-    "sourceModified": "2026-10-05",
-    "retrieved": "2026-10-13",
-    "sourceSha256": "4633eaa53eed156bb6480ba76c4fad426236a3b4f7a345a77f12bd511c427a4f",
+    "source": "https://data.cms.gov/data-api/v1/dataset/8457c184-a531-40db-8597-2497fec80c7a/data",
+    "sourceType": "CMS paginated JSON API",
+    "queriedAt": "2026-10-13T16:55:30-06:00",
+    "apiRecordsSha256": "b56bb0224b20f2bbab6c9e2d3e4411924a6e5616220156ff6ee133389b17aaa2",
     "inputReports": 6069,
     "selectedReports": 6004,
     "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
@@ -20,10 +20,10 @@
     }
   },
   "2023": {
-    "source": "https://data.cms.gov/sites/default/files/2026-10/e48e1326-aeeb-4ad4-acf6-a506871b6d20/CostReport_2023_Final.csv",
-    "sourceModified": "2026-10-05",
-    "retrieved": "2026-10-13",
-    "sourceSha256": "0412fb0050b58260b1c94d4d7cbe43e249d30f37deed9e6727df705fd648b878",
+    "source": "https://data.cms.gov/data-api/v1/dataset/f08d4c46-c0e4-4bcb-a54a-c62c87d59251/data",
+    "sourceType": "CMS paginated JSON API",
+    "queriedAt": "2026-10-13T16:55:35-06:00",
+    "apiRecordsSha256": "7a770b8c1503125feee99eb15e4fb5067baaa21fa86b90c4b8e1ddbc959e494d",
     "inputReports": 6109,
     "selectedReports": 6046,
     "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",

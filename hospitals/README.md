@@ -4,13 +4,13 @@ National hospital module at `/hospitals/` on the existing SNF GitHub Pages site.
 
 ## API-only data access
 
-Run `python hospitals/build_data.py`. The builder queries official CMS JSON APIs for the 2022 and 2023 Hospital Provider Cost Report datasets, using selected fields, stable report-ID ordering and 1,000-row pages. Raw responses remain in memory. No raw CSV/ZIP distributions are downloaded or saved. Only the derived dashboard cache and manifest are published. The manifest retains API URLs, timestamps, record checksums and selection counts. The page identifies the cache refresh time; it does not claim live queries.
+Run `python hospitals/build_data.py`. The builder queries official CMS JSON APIs for the 2017–2024 Hospital Provider Cost Report datasets, using selected fields, stable report-ID ordering and 1,000-row pages. Raw responses remain in memory. No raw CSV/ZIP distributions are downloaded or saved. Only the derived dashboard cache and manifest are published. The manifest retains API URLs, timestamps, record checksums and selection counts. The page identifies the cache refresh time; it does not claim live queries.
 
 ## Defined peer groups
 
 Target selection is independent of the peer definition. Geography supports national, Census region, state, county and city (county/city always state-scoped). Category, clinical provider type, ownership group, specific type of control, rural/urban classification, bed bands and numeric bed limits can be combined. Individual peers can be excluded and exclusions cleared. Defaults are national, same category, same clinical type and same bed band. All controls combine with AND; contradictory choices produce an explicit empty cohort. Diverse hospital groups receive a clinical-comparability warning.
 
-All nine metric cards, distributions and comparison exports use one authoritative cohort. The target CCN is excluded. Peer-list search only changes the displayed membership list; it does not change the cohort. A full peer-list export retains the definition and members. History uses fixed selected peer CCNs, with eligible reports and valid values counted separately by year. Async history results are invalidated when the definition changes.
+All nine metric cards, distributions and comparison exports use one authoritative cohort. The target CCN is excluded. Peer-list search only changes the displayed membership list; it does not change the cohort. A full peer-list export retains the definition and members. History supports fixed selected peer CCNs, criteria reapplied to each year’s target characteristics, and fixed membership with valid values in every selected year. The consistent group is metric-specific. Eligible reports and valid values are counted separately by year. Async history results are invalidated when the definition changes.
 
 ## Definitions and validation
 
@@ -18,4 +18,14 @@ One representative report per CCN/source dataset: prefer a 300–430-day report,
 
 Patient-service margin differs from RAND operating margin. Total margin uses RAND’s documented definition with CMS fields. RAND observation files, ownership links and claims-based prices are not loaded.
 
-Run `node hospitals/test_metrics.cjs` and `python hospitals/test_api.py`. Serve `docs` through HTTP for browser verification. Modern-browser DecompressionStream support is required.
+Run `node hospitals/test_metrics.cjs`, `node hospitals/test_history.cjs` and `python hospitals/test_api.py`. Serve `docs` through HTTP for browser verification. Modern-browser DecompressionStream support is required.
+
+## Longitudinal analysis
+
+The range selector covers 2017–2024 source datasets. API mappings are in `api_sources.json`; `--years` refreshes selected years while retaining the existing manifest entries. No raw distributions are retained. Eight caches contain 48,193 selected facility-year observations.
+
+The historical panel includes nine ratio metrics plus beds, annualized discharges, annualized patient days, annualized net patient revenue and annualized operating expense. Flow annualization is reported amount × 365.25 / report days; balances such as beds are not annualized. Dollar flows remain nominal. The chart shows target, unweighted peer median and interquartile band. Missing or ineligible target reports produce gaps, and fewer than five valid peers suppress peer statistics.
+
+Tables and exports retain fiscal periods, target values, annual absolute changes, growth fractions for positive-base volumes/dollars/beds, peer medians, gaps, changes in gaps, target percentile and peer coverage. Percentage-measure differences display as percentage points; exports retain fractions. Adjacent target-period changes require eligible nonoverlapping reports with no more than a 60-day gap. Range summaries use selected endpoints, with a separate 2019 comparison when available. Compound growth uses elapsed fiscal-end dates and positive endpoints. Negative-margin streaks count consecutive observed dataset years ending at the selected endpoint, without inferring missing values.
+
+History is descriptive. Fiscal periods differ across hospitals; a dataset label does not define a calendar year. Fixed CCNs do not establish unchanged service scope or ownership. System acquisitions, inflation-adjusted dollars, case-mix adjustment and RAND price trends remain future work pending additional validated inputs.

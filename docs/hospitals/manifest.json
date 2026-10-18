@@ -39,5 +39,126 @@
       "TC": 1,
       "ORD": 8
     }
+  },
+  "2017": {
+    "source": "https://data.cms.gov/data-api/v1/dataset/62b6b160-3f7f-4a31-898e-996a410fc9a1/data",
+    "sourceType": "CMS paginated JSON API",
+    "queriedAt": "2026-10-13T17:39:57-06:00",
+    "apiRecordsSha256": "dc0622197e00e9613a2c733f21c3f41685f73c3405eeaefc5f18deba6c025ffa",
+    "inputReports": 6175,
+    "selectedReports": 6077,
+    "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+    "standardPeriodReports": 5947,
+    "types": {
+      "STH": 3347,
+      "CAH": 1343,
+      "LTCH": 405,
+      "RH": 278,
+      "CH": 99,
+      "PH": 580,
+      "RNMHC": 16,
+      "ORD": 9
+    }
+  },
+  "2018": {
+    "source": "https://data.cms.gov/data-api/v1/dataset/2caad1a6-e674-47ce-84e7-d14a945e38c9/data",
+    "sourceType": "CMS paginated JSON API",
+    "queriedAt": "2026-10-13T17:40:05-06:00",
+    "apiRecordsSha256": "dac337861a3cf05ccfca23e781dc3da3f7ab3dc821df4144341d4121ce1ab97d",
+    "inputReports": 6161,
+    "selectedReports": 6049,
+    "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+    "standardPeriodReports": 5888,
+    "types": {
+      "STH": 3313,
+      "CAH": 1353,
+      "LTCH": 379,
+      "RH": 289,
+      "CH": 97,
+      "PH": 595,
+      "RNMHC": 14,
+      "ORD": 9
+    }
+  },
+  "2019": {
+    "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data",
+    "sourceType": "CMS paginated JSON API",
+    "queriedAt": "2026-10-13T17:40:13-06:00",
+    "apiRecordsSha256": "52778ec4b98121a9bfc3cf2001dfdeef89e4901f39a1e2af6a3af40c3eff5f21",
+    "inputReports": 6125,
+    "selectedReports": 6017,
+    "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+    "standardPeriodReports": 5848,
+    "types": {
+      "STH": 3271,
+      "CAH": 1355,
+      "LTCH": 362,
+      "RH": 302,
+      "CH": 95,
+      "PH": 610,
+      "RNMHC": 13,
+      "ORD": 9
+    }
+  },
+  "2020": {
+    "source": "https://data.cms.gov/data-api/v1/dataset/4ebc26db-f8f2-4f7e-89cd-a5bc84dcbfbd/data",
+    "sourceType": "CMS paginated JSON API",
+    "queriedAt": "2026-10-13T17:40:22-06:00",
+    "apiRecordsSha256": "1f04d7b3027269669b36db5f5eaaa3267e300a4f8f801cb66f8e4bf413dc68ce",
+    "inputReports": 6060,
+    "selectedReports": 5990,
+    "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+    "standardPeriodReports": 5862,
+    "types": {
+      "STH": 3244,
+      "CAH": 1355,
+      "LTCH": 347,
+      "RH": 314,
+      "CH": 94,
+      "PH": 615,
+      "RNMHC": 13,
+      "ORD": 8
+    }
+  },
+  "2021": {
+    "source": "https://data.cms.gov/data-api/v1/dataset/98b7383e-ad67-44d5-a7d8-0a80a92a72c1/data",
+    "sourceType": "CMS paginated JSON API",
+    "queriedAt": "2026-10-13T17:40:30-06:00",
+    "apiRecordsSha256": "02d71f7eda76a864e2402514dee30aece4015e5e3b9d8b8f92d848d41706bbdd",
+    "inputReports": 6058,
+    "selectedReports": 5984,
+    "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+    "standardPeriodReports": 5883,
+    "types": {
+      "STH": 3222,
+      "CAH": 1357,
+      "LTCH": 343,
+      "RH": 328,
+      "CH": 91,
+      "PH": 623,
+      "RNMHC": 12,
+      "ORD": 8
+    }
+  },
+  "2024": {
+    "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data",
+    "sourceType": "CMS paginated JSON API",
+    "queriedAt": "2026-10-13T17:40:39-06:00",
+    "apiRecordsSha256": "9f51185a7f5d6789e39780a96debab8f7dbc18f490e07e330f35e77822fc4d5d",
+    "inputReports": 6109,
+    "selectedReports": 6026,
+    "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+    "standardPeriodReports": 5846,
+    "types": {
+      "STH": 3170,
+      "CAH": 1377,
+      "LTCH": 328,
+      "RH": 391,
+      "CH": 94,
+      "PH": 648,
+      "RNMHC": 9,
+      "TC": 1,
+      "ORD": 8
+    }
   }
 }

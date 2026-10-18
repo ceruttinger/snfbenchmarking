@@ -27,9 +27,7 @@ FIELDS = ['Number of Beds','Total Days (V + XVIII + XIX + Unknown)',
           'Total Other Income','Net Income','Total Current Assets',
           'Total Current Liabilities','Total Assets','Total Liabilities',
           'Cost of Uncompensated Care']
-URLS = {
-  2022:'https://data.cms.gov/data-api/v1/dataset/8457c184-a531-40db-8597-2497fec80c7a/data',
-  2023:'https://data.cms.gov/data-api/v1/dataset/f08d4c46-c0e4-4bcb-a54a-c62c87d59251/data'}
+URLS = {int(year):url for year,url in json.loads((Path(__file__).parent/'api_sources.json').read_text()).items()}
 IDENTITY_FIELDS = ['Provider CCN','Hospital Name','City','State Code','CCN Facility Type',
                    'Provider Type','Type of Control','Rural Versus Urban',
                    'Fiscal Year Begin Date','Fiscal Year End Date','rpt_rec_num','County']
@@ -85,10 +83,12 @@ def number(value):
     except (ValueError, AttributeError):
         return None
 
-def build(output_dir):
+def build(output_dir, years=None):
     output_dir.mkdir(parents=True, exist_ok=True)
-    audit = {}
+    audit = json.loads((output_dir/'manifest.json').read_text()) if (output_dir/'manifest.json').exists() else {}
     for year, url in URLS.items():
+        if years is not None and year not in years:
+            continue
         chosen = {}
         rows = query_api(url)
         for row in rows:
@@ -116,14 +116,15 @@ def build(output_dir):
         assert all(len(x) == len(COLUMNS) for x in result)
         raw = json.dumps(payload, separators=(',', ':'), allow_nan=False).encode()
         (output_dir / f'data-{year}.json.gz').write_bytes(gzip.compress(raw, mtime=0))
-        audit[year] = {k:payload[k] for k in ['source','sourceType','queriedAt','apiRecordsSha256','inputReports','selectedReports','selection']}
-        audit[year]['standardPeriodReports'] = sum(300 <= x[10] <= 430 for x in result)
-        audit[year]['types'] = dict(Counter(x[4] for x in result))
+        audit[str(year)] = {k:payload[k] for k in ['source','sourceType','queriedAt','apiRecordsSha256','inputReports','selectedReports','selection']}
+        audit[str(year)]['standardPeriodReports'] = sum(300 <= x[10] <= 430 for x in result)
+        audit[str(year)]['types'] = dict(Counter(x[4] for x in result))
     (output_dir / 'manifest.json').write_text(json.dumps(audit, indent=2))
     print(json.dumps(audit, indent=2))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--output-dir', type=Path, default=Path(__file__).resolve().parents[1]/'docs/hospitals')
+    parser.add_argument('--years', type=int, nargs='+', choices=sorted(URLS))
     args = parser.parse_args()
-    build(args.output_dir)
+    build(args.output_dir,args.years)

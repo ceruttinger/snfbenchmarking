@@ -1,0 +1,224 @@
+[
+  {
+    "id": "trend",
+    "question": "How has Intermountain Medical Center\u2019s occupancy changed since 2019 versus the same peers?",
+    "query": {
+      "targetCcn": "460010",
+      "anchorYear": 2024,
+      "startYear": 2019,
+      "endYear": 2024,
+      "mode": "fixed",
+      "filters": {
+        "category": "same",
+        "providerType": "same",
+        "bedBand": "same",
+        "scope": "national"
+      },
+      "analysis": "trend",
+      "metrics": [
+        "occupancy"
+      ]
+    }
+  },
+  {
+    "id": "financial",
+    "question": "Compare this hospital\u2019s total margin, liquidity and liabilities/assets with its defined peers.",
+    "query": {
+      "targetCcn": "460010",
+      "anchorYear": 2024,
+      "startYear": 2017,
+      "endYear": 2024,
+      "mode": "fixed",
+      "filters": {
+        "category": "same",
+        "providerType": "same",
+        "bedBand": "same",
+        "scope": "national"
+      },
+      "analysis": "compare",
+      "metrics": [
+        "totalMargin",
+        "currentRatio",
+        "leverage"
+      ]
+    }
+  },
+  {
+    "id": "rank",
+    "question": "Which 10 nonprofit Utah hospitals had the lowest total margin in 2024, with at least 100 beds?",
+    "query": {
+      "targetCcn": "460010",
+      "anchorYear": 2024,
+      "startYear": 2017,
+      "endYear": 2024,
+      "mode": "fixed",
+      "filters": {
+        "scope": "state",
+        "geoState": "UT",
+        "ownership": "nonprofit",
+        "minBeds": 100,
+        "category": "any",
+        "providerType": "any",
+        "bedBand": "any"
+      },
+      "analysis": "rank",
+      "metrics": [
+        "totalMargin"
+      ],
+      "direction": "asc"
+    }
+  },
+  {
+    "id": "compound",
+    "question": "Among nonprofit Utah hospitals with at least 100 beds, which improved total margin most from 2019 to 2024 and ended above 5%?",
+    "query": {
+      "targetCcn": "460010",
+      "anchorYear": 2024,
+      "startYear": 2019,
+      "endYear": 2024,
+      "mode": "fixed",
+      "filters": {
+        "scope": "state",
+        "geoState": "UT",
+        "ownership": "nonprofit",
+        "minBeds": 100,
+        "category": "any",
+        "providerType": "any",
+        "bedBand": "any"
+      },
+      "analysis": "rank",
+      "metrics": [
+        "totalMargin"
+      ],
+      "sortBy": "change",
+      "direction": "desc",
+      "conditions": [
+        {
+          "metric": "totalMargin",
+          "basis": "value",
+          "op": "gt",
+          "value": 0.05
+        },
+        {
+          "metric": "totalMargin",
+          "basis": "change",
+          "op": "gt",
+          "value": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": "balanced",
+    "question": "Show revenue and expense trends using peers with valid observations throughout 2017\u20132024.",
+    "query": {
+      "targetCcn": "460010",
+      "anchorYear": 2024,
+      "startYear": 2017,
+      "endYear": 2024,
+      "mode": "balanced",
+      "filters": {
+        "category": "same",
+        "providerType": "same",
+        "bedBand": "same",
+        "scope": "national"
+      },
+      "analysis": "trend",
+      "metrics": [
+        "revenue",
+        "expense"
+      ]
+    }
+  },
+  {
+    "id": "dynamic",
+    "question": "Compare occupancy trends when similar-size peers are reselected every year.",
+    "query": {
+      "targetCcn": "460010",
+      "anchorYear": 2024,
+      "startYear": 2017,
+      "endYear": 2024,
+      "mode": "dynamic",
+      "filters": {
+        "category": "same",
+        "providerType": "same",
+        "bedBand": "same",
+        "scope": "national"
+      },
+      "analysis": "trend",
+      "metrics": [
+        "occupancy"
+      ]
+    }
+  },
+  {
+    "id": "definition",
+    "question": "How is total margin calculated, which CMS fields are used, and is it RAND operating margin?",
+    "query": {
+      "targetCcn": "460010",
+      "anchorYear": 2024,
+      "startYear": 2017,
+      "endYear": 2024,
+      "mode": "fixed",
+      "filters": {
+        "category": "same",
+        "providerType": "same",
+        "bedBand": "same",
+        "scope": "national"
+      },
+      "analysis": "definition",
+      "metrics": [
+        "totalMargin",
+        "patientMargin"
+      ]
+    }
+  },
+  {
+    "id": "coverage",
+    "question": "How many hospital reports have valid uncompensated-care measures in each year?",
+    "query": {
+      "targetCcn": "460010",
+      "anchorYear": 2024,
+      "startYear": 2017,
+      "endYear": 2024,
+      "mode": "fixed",
+      "filters": {
+        "category": "same",
+        "providerType": "same",
+        "bedBand": "same",
+        "scope": "national"
+      },
+      "analysis": "coverage",
+      "metrics": [
+        "uncompShare"
+      ]
+    }
+  },
+  {
+    "id": "ambiguous",
+    "question": "Which hospitals have the best operating margin?",
+    "expected": "clarification",
+    "reason": "Operating margin is not patient-service or total margin."
+  },
+  {
+    "id": "ownership",
+    "question": "Who owns Intermountain Medical Center, according to CMS enrollment disclosures?",
+    "reason": "Requires CMS ownership/enrollment and verified affiliation evidence; HCRIS control type alone is not a parent organization.",
+    "query": {
+      "analysis": "ownership",
+      "metrics": [
+        "totalMargin"
+      ],
+      "targetCcn": "460010",
+      "anchorYear": 2024,
+      "startYear": 2024,
+      "endYear": 2024
+    }
+  },
+  {
+    "id": "quality",
+    "question": "Did this acquisition improve clinical quality?",
+    "expected": "unsupported",
+    "reason": "Clinical outcomes and causal acquisition evidence are not in the loaded financial subset."
+  }
+]

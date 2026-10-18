@@ -26,3 +26,11 @@ data/dashboard/
 *.key
 credentials*
 .aws/
+
+# AI deployment build artifacts and Python caches
+infra/build/
+**/__pycache__/
+
+# Derived server-side organizational snapshot is packaged privately for AWS.
+docs/hospitals/lab/providers.json
+graph/build/

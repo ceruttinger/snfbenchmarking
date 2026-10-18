@@ -1,0 +1,771 @@
+{
+  "version": "1.0.0",
+  "entity": "hospital_cost_report",
+  "grain": [
+    "CCN",
+    "CMS source dataset year"
+  ],
+  "identity": {
+    "key": "CCN",
+    "reportKey": "reportId",
+    "physicalCampusEquivalent": false,
+    "ownershipHistoryLoaded": false
+  },
+  "years": [
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "metrics": {
+    "occupancy": {
+      "id": "occupancy",
+      "label": "Occupancy",
+      "synonyms": [
+        "occupancy",
+        "bed utilization"
+      ],
+      "unit": "percent",
+      "expression": {
+        "op": "ratio",
+        "args": [
+          {
+            "field": "days"
+          },
+          {
+            "field": "availableDays"
+          }
+        ]
+      },
+      "description": "Patient days / available bed-days. Values outside 0\u2013100% are unavailable.",
+      "inputs": [
+        "days",
+        "availableDays"
+      ],
+      "sourceFields": [
+        "Total Days (V + XVIII + XIX + Unknown)",
+        "Total Bed Days Available"
+      ],
+      "aggregation": "Unweighted median of valid facility ratios; never ratio of cohort totals.",
+      "missingPolicy": "Null on missing/nonfinite inputs or nonpositive denominator; zero is retained.",
+      "eligibility": "300\u2013430 inclusive report days for benchmarking and history.",
+      "minimumValidPeers": 5,
+      "scope": "CMS hospital cost-report complex; not necessarily a single physical campus.",
+      "validRange": [
+        0,
+        1
+      ]
+    },
+    "lengthOfStay": {
+      "id": "lengthOfStay",
+      "label": "Average length of stay",
+      "synonyms": [
+        "length of stay",
+        "ALOS"
+      ],
+      "unit": "days",
+      "expression": {
+        "op": "ratio",
+        "args": [
+          {
+            "field": "days"
+          },
+          {
+            "field": "discharges"
+          }
+        ]
+      },
+      "description": "Aggregate reported days / discharges; not adjusted for case mix.",
+      "inputs": [
+        "days",
+        "discharges"
+      ],
+      "sourceFields": [
+        "Total Days (V + XVIII + XIX + Unknown)",
+        "Total Discharges (V + XVIII + XIX + Unknown)"
+      ],
+      "aggregation": "Unweighted median of valid facility ratios; never ratio of cohort totals.",
+      "missingPolicy": "Null on missing/nonfinite inputs or nonpositive denominator; zero is retained.",
+      "eligibility": "300\u2013430 inclusive report days for benchmarking and history.",
+      "minimumValidPeers": 5,
+      "scope": "CMS hospital cost-report complex; not necessarily a single physical campus."
+    },
+    "patientMargin": {
+      "id": "patientMargin",
+      "label": "Patient-service margin",
+      "synonyms": [
+        "patient service margin"
+      ],
+      "unit": "percent",
+      "expression": {
+        "op": "ratio",
+        "args": [
+          {
+            "field": "patientIncome"
+          },
+          {
+            "field": "netPatientRevenue"
+          }
+        ]
+      },
+      "description": "Not RAND operating margin.",
+      "inputs": [
+        "patientIncome",
+        "netPatientRevenue"
+      ],
+      "sourceFields": [
+        "Net Income from Service to Patients",
+        "Net Patient Revenue"
+      ],
+      "aggregation": "Unweighted median of valid facility ratios; never ratio of cohort totals.",
+      "missingPolicy": "Null on missing/nonfinite inputs or nonpositive denominator; zero is retained.",
+      "eligibility": "300\u2013430 inclusive report days for benchmarking and history.",
+      "minimumValidPeers": 5,
+      "scope": "CMS hospital cost-report complex; not necessarily a single physical campus."
+    },
+    "totalMargin": {
+      "id": "totalMargin",
+      "label": "Total margin",
+      "synonyms": [
+        "total margin",
+        "net margin"
+      ],
+      "unit": "percent",
+      "expression": {
+        "op": "ratio",
+        "args": [
+          {
+            "field": "netIncome"
+          },
+          {
+            "op": "add",
+            "args": [
+              {
+                "field": "netPatientRevenue"
+              },
+              {
+                "field": "otherIncome"
+              }
+            ]
+          }
+        ]
+      },
+      "description": "RAND total-margin formula using CMS inputs; not operating margin.",
+      "inputs": [
+        "netIncome",
+        "netPatientRevenue",
+        "otherIncome"
+      ],
+      "sourceFields": [
+        "Net Income",
+        "Net Patient Revenue",
+        "Total Other Income"
+      ],
+      "aggregation": "Unweighted median of valid facility ratios; never ratio of cohort totals.",
+      "missingPolicy": "Null on missing/nonfinite inputs or nonpositive denominator; zero is retained.",
+      "eligibility": "300\u2013430 inclusive report days for benchmarking and history.",
+      "minimumValidPeers": 5,
+      "scope": "CMS hospital cost-report complex; not necessarily a single physical campus."
+    },
+    "currentRatio": {
+      "id": "currentRatio",
+      "label": "Current ratio",
+      "synonyms": [
+        "liquidity",
+        "current ratio"
+      ],
+      "unit": "ratio",
+      "expression": {
+        "op": "ratio",
+        "args": [
+          {
+            "field": "currentAssets"
+          },
+          {
+            "field": "currentLiabilities"
+          }
+        ]
+      },
+      "description": "Current assets / current liabilities. Not days cash on hand.",
+      "inputs": [
+        "currentAssets",
+        "currentLiabilities"
+      ],
+      "sourceFields": [
+        "Total Current Assets",
+        "Total Current Liabilities"
+      ],
+      "aggregation": "Unweighted median of valid facility ratios; never ratio of cohort totals.",
+      "missingPolicy": "Null on missing/nonfinite inputs or nonpositive denominator; zero is retained.",
+      "eligibility": "300\u2013430 inclusive report days for benchmarking and history.",
+      "minimumValidPeers": 5,
+      "scope": "CMS hospital cost-report complex; not necessarily a single physical campus."
+    },
+    "leverage": {
+      "id": "leverage",
+      "label": "Liabilities / assets",
+      "synonyms": [
+        "liabilities to assets"
+      ],
+      "unit": "percent",
+      "expression": {
+        "op": "ratio",
+        "args": [
+          {
+            "field": "liabilities"
+          },
+          {
+            "field": "assets"
+          }
+        ]
+      },
+      "description": "All liabilities, not debt-only leverage.",
+      "inputs": [
+        "liabilities",
+        "assets"
+      ],
+      "sourceFields": [
+        "Total Liabilities",
+        "Total Assets"
+      ],
+      "aggregation": "Unweighted median of valid facility ratios; never ratio of cohort totals.",
+      "missingPolicy": "Null on missing/nonfinite inputs or nonpositive denominator; zero is retained.",
+      "eligibility": "300\u2013430 inclusive report days for benchmarking and history.",
+      "minimumValidPeers": 5,
+      "scope": "CMS hospital cost-report complex; not necessarily a single physical campus."
+    },
+    "medicareShare": {
+      "id": "medicareShare",
+      "label": "Medicare day share",
+      "synonyms": [
+        "Medicare share"
+      ],
+      "unit": "percent",
+      "expression": {
+        "op": "ratio",
+        "args": [
+          {
+            "field": "medicareDays"
+          },
+          {
+            "field": "days"
+          }
+        ]
+      },
+      "description": "Title XVIII days / total days. Not a validated Medicare Advantage-inclusive share.",
+      "inputs": [
+        "medicareDays",
+        "days"
+      ],
+      "sourceFields": [
+        "Total Days Title XVIII",
+        "Total Days (V + XVIII + XIX + Unknown)"
+      ],
+      "aggregation": "Unweighted median of valid facility ratios; never ratio of cohort totals.",
+      "missingPolicy": "Null on missing/nonfinite inputs or nonpositive denominator; zero is retained.",
+      "eligibility": "300\u2013430 inclusive report days for benchmarking and history.",
+      "minimumValidPeers": 5,
+      "scope": "CMS hospital cost-report complex; not necessarily a single physical campus."
+    },
+    "medicaidShare": {
+      "id": "medicaidShare",
+      "label": "Medicaid day share",
+      "synonyms": [
+        "Medicaid share"
+      ],
+      "unit": "percent",
+      "expression": {
+        "op": "ratio",
+        "args": [
+          {
+            "field": "medicaidDays"
+          },
+          {
+            "field": "days"
+          }
+        ]
+      },
+      "description": "Title XIX days / total days. Managed-care scope is not separately validated.",
+      "inputs": [
+        "medicaidDays",
+        "days"
+      ],
+      "sourceFields": [
+        "Total Days Title XIX",
+        "Total Days (V + XVIII + XIX + Unknown)"
+      ],
+      "aggregation": "Unweighted median of valid facility ratios; never ratio of cohort totals.",
+      "missingPolicy": "Null on missing/nonfinite inputs or nonpositive denominator; zero is retained.",
+      "eligibility": "300\u2013430 inclusive report days for benchmarking and history.",
+      "minimumValidPeers": 5,
+      "scope": "CMS hospital cost-report complex; not necessarily a single physical campus."
+    },
+    "uncompShare": {
+      "id": "uncompShare",
+      "label": "Uncompensated care / expense",
+      "synonyms": [
+        "uncompensated care share"
+      ],
+      "unit": "percent",
+      "expression": {
+        "op": "ratio",
+        "args": [
+          {
+            "field": "uncompensated"
+          },
+          {
+            "field": "operatingExpense"
+          }
+        ]
+      },
+      "description": "Not all unreimbursed Medicaid/CHIP costs.",
+      "inputs": [
+        "uncompensated",
+        "operatingExpense"
+      ],
+      "sourceFields": [
+        "Cost of Uncompensated Care",
+        "Less Total Operating Expense"
+      ],
+      "aggregation": "Unweighted median of valid facility ratios; never ratio of cohort totals.",
+      "missingPolicy": "Null on missing/nonfinite inputs or nonpositive denominator; zero is retained.",
+      "eligibility": "300\u2013430 inclusive report days for benchmarking and history.",
+      "minimumValidPeers": 5,
+      "scope": "CMS hospital cost-report complex; not necessarily a single physical campus."
+    },
+    "beds": {
+      "id": "beds",
+      "label": "Reported beds",
+      "synonyms": [
+        "beds",
+        "size"
+      ],
+      "unit": "number",
+      "expression": {
+        "field": "beds"
+      },
+      "description": "Reported balance; not annualized.",
+      "inputs": [
+        "beds"
+      ],
+      "sourceFields": [
+        "Number of Beds"
+      ],
+      "aggregation": "Unweighted median of valid facility ratios; never ratio of cohort totals.",
+      "missingPolicy": "Null on missing/nonfinite inputs or nonpositive denominator; zero is retained.",
+      "eligibility": "300\u2013430 inclusive report days for benchmarking and history.",
+      "minimumValidPeers": 5,
+      "scope": "CMS hospital cost-report complex; not necessarily a single physical campus."
+    },
+    "discharges": {
+      "id": "discharges",
+      "label": "Discharges \u00b7 annualized",
+      "synonyms": [
+        "discharges",
+        "admissions"
+      ],
+      "unit": "number",
+      "expression": {
+        "op": "annualize",
+        "field": "discharges"
+      },
+      "description": "Reported discharges normalized to 365.25 days; admissions are not a separately measured field.",
+      "inputs": [
+        "discharges",
+        "reportDays"
+      ],
+      "sourceFields": [
+        "Total Discharges (V + XVIII + XIX + Unknown)",
+        "Derived: inclusive fiscal-end minus fiscal-begin dates"
+      ],
+      "aggregation": "Unweighted median of valid facility ratios; never ratio of cohort totals.",
+      "missingPolicy": "Null on missing/nonfinite inputs or nonpositive denominator; zero is retained.",
+      "eligibility": "300\u2013430 inclusive report days for benchmarking and history.",
+      "minimumValidPeers": 5,
+      "scope": "CMS hospital cost-report complex; not necessarily a single physical campus."
+    },
+    "patientDays": {
+      "id": "patientDays",
+      "label": "Patient days \u00b7 annualized",
+      "synonyms": [
+        "patient days"
+      ],
+      "unit": "number",
+      "expression": {
+        "op": "annualize",
+        "field": "days"
+      },
+      "description": "Reported patient days normalized to 365.25 days.",
+      "inputs": [
+        "days",
+        "reportDays"
+      ],
+      "sourceFields": [
+        "Total Days (V + XVIII + XIX + Unknown)",
+        "Derived: inclusive fiscal-end minus fiscal-begin dates"
+      ],
+      "aggregation": "Unweighted median of valid facility ratios; never ratio of cohort totals.",
+      "missingPolicy": "Null on missing/nonfinite inputs or nonpositive denominator; zero is retained.",
+      "eligibility": "300\u2013430 inclusive report days for benchmarking and history.",
+      "minimumValidPeers": 5,
+      "scope": "CMS hospital cost-report complex; not necessarily a single physical campus."
+    },
+    "revenue": {
+      "id": "revenue",
+      "label": "Net patient revenue \u00b7 annualized",
+      "synonyms": [
+        "net patient revenue",
+        "revenue"
+      ],
+      "unit": "money",
+      "expression": {
+        "op": "annualize",
+        "field": "netPatientRevenue"
+      },
+      "description": "Nominal dollars normalized to 365.25 days; not inflation adjusted.",
+      "inputs": [
+        "netPatientRevenue",
+        "reportDays"
+      ],
+      "sourceFields": [
+        "Net Patient Revenue",
+        "Derived: inclusive fiscal-end minus fiscal-begin dates"
+      ],
+      "aggregation": "Unweighted median of valid facility ratios; never ratio of cohort totals.",
+      "missingPolicy": "Null on missing/nonfinite inputs or nonpositive denominator; zero is retained.",
+      "eligibility": "300\u2013430 inclusive report days for benchmarking and history.",
+      "minimumValidPeers": 5,
+      "scope": "CMS hospital cost-report complex; not necessarily a single physical campus."
+    },
+    "expense": {
+      "id": "expense",
+      "label": "Operating expense \u00b7 annualized",
+      "synonyms": [
+        "operating expense",
+        "expense"
+      ],
+      "unit": "money",
+      "expression": {
+        "op": "annualize",
+        "field": "operatingExpense"
+      },
+      "description": "Nominal dollars normalized to 365.25 days; not inflation adjusted.",
+      "inputs": [
+        "operatingExpense",
+        "reportDays"
+      ],
+      "sourceFields": [
+        "Less Total Operating Expense",
+        "Derived: inclusive fiscal-end minus fiscal-begin dates"
+      ],
+      "aggregation": "Unweighted median of valid facility ratios; never ratio of cohort totals.",
+      "missingPolicy": "Null on missing/nonfinite inputs or nonpositive denominator; zero is retained.",
+      "eligibility": "300\u2013430 inclusive report days for benchmarking and history.",
+      "minimumValidPeers": 5,
+      "scope": "CMS hospital cost-report complex; not necessarily a single physical campus."
+    }
+  },
+  "dimensions": {
+    "ccn": {
+      "sourceField": "Provider CCN"
+    },
+    "name": {
+      "sourceField": "Hospital Name"
+    },
+    "state": {
+      "sourceField": "State Code"
+    },
+    "city": {
+      "sourceField": "City"
+    },
+    "county": {
+      "sourceField": "County"
+    },
+    "kind": {
+      "sourceField": "CCN Facility Type"
+    },
+    "providerType": {
+      "sourceField": "Provider Type"
+    },
+    "control": {
+      "sourceField": "Type of Control"
+    },
+    "rural": {
+      "sourceField": "Rural Versus Urban"
+    },
+    "beds": {
+      "sourceField": "Number of Beds"
+    },
+    "begin": {
+      "sourceField": "Fiscal Year Begin Date"
+    },
+    "end": {
+      "sourceField": "Fiscal Year End Date"
+    }
+  },
+  "policies": {
+    "peerMinimum": 5,
+    "periodDays": [
+      300,
+      430
+    ],
+    "reportSelection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+    "time": "Dataset year is a grouping, not a calendar-year standardization. Many reports end the following year.",
+    "changes": "Adjacent datasets; eligible, nonoverlapping target periods with gap <=60 days. Percent differences are percentage points.",
+    "money": "Nominal USD. Flow annualization uses 365.25 / report days.",
+    "ranking": "Eligible matching hospitals; target is included in a market ranking but excluded from its own peer benchmark.",
+    "cohortModes": [
+      "fixed",
+      "dynamic",
+      "balanced"
+    ],
+    "balanced": "Metric-specific fixed CCNs with valid values in every selected dataset.",
+    "scope": "Descriptive; no case-mix, wage, teaching or clinical-quality adjustment."
+  },
+  "relationships": [
+    {
+      "from": "hospital",
+      "predicate": "HAS_COST_REPORT",
+      "to": "cost_report",
+      "status": "loaded",
+      "join": "CCN"
+    },
+    {
+      "from": "hospital",
+      "predicate": "LOCATED_IN",
+      "to": "geography",
+      "status": "loaded",
+      "join": "state + county/city, as reported"
+    },
+    {
+      "from": "hospital",
+      "predicate": "OPERATED_BY",
+      "to": "health_system",
+      "status": "not_loaded",
+      "reason": "Requires dated and verified system/operator observations; name similarity is not ownership evidence."
+    },
+    {
+      "from": "hospital",
+      "predicate": "ENROLLED_AS",
+      "to": "cms_enrollment",
+      "status": "loaded",
+      "join": "Exact CCN"
+    },
+    {
+      "from": "cms_enrollment",
+      "predicate": "HAS_NPI",
+      "to": "organization_npi",
+      "status": "loaded",
+      "join": "Exact CMS-reported NPI; NPPES organization enrichment on demand"
+    },
+    {
+      "from": "hospital",
+      "predicate": "REPORTED_OWNERSHIP_INTEREST_OR_CONTROL",
+      "to": "cms_organizational_associate",
+      "status": "loaded",
+      "join": "Exact CMS enrollment ID; role and association date preserved"
+    }
+  ],
+  "unavailable": [
+    "RAND observation files and commercial prices",
+    "RAND operating margin",
+    "Dated system ownership and acquisitions",
+    "Other HCRIS provider financial families",
+    "Clinical quality and causality",
+    "Inflation-adjusted dollars",
+    "Days cash on hand"
+  ],
+  "sources": {
+    "2022": {
+      "source": "https://data.cms.gov/data-api/v1/dataset/8457c184-a531-40db-8597-2497fec80c7a/data",
+      "sourceType": "CMS paginated JSON API",
+      "queriedAt": "2026-10-13T16:55:30-06:00",
+      "apiRecordsSha256": "b56bb0224b20f2bbab6c9e2d3e4411924a6e5616220156ff6ee133389b17aaa2",
+      "inputReports": 6069,
+      "selectedReports": 6004,
+      "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+      "standardPeriodReports": 5902,
+      "types": {
+        "STH": 3215,
+        "CAH": 1363,
+        "LTCH": 342,
+        "RH": 343,
+        "CH": 93,
+        "PH": 630,
+        "RNMHC": 10,
+        "ORD": 8
+      }
+    },
+    "2023": {
+      "source": "https://data.cms.gov/data-api/v1/dataset/f08d4c46-c0e4-4bcb-a54a-c62c87d59251/data",
+      "sourceType": "CMS paginated JSON API",
+      "queriedAt": "2026-10-13T16:55:35-06:00",
+      "apiRecordsSha256": "7a770b8c1503125feee99eb15e4fb5067baaa21fa86b90c4b8e1ddbc959e494d",
+      "inputReports": 6109,
+      "selectedReports": 6046,
+      "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+      "standardPeriodReports": 5877,
+      "types": {
+        "STH": 3210,
+        "CAH": 1374,
+        "LTCH": 336,
+        "RH": 376,
+        "CH": 91,
+        "PH": 640,
+        "RNMHC": 10,
+        "TC": 1,
+        "ORD": 8
+      }
+    },
+    "2017": {
+      "source": "https://data.cms.gov/data-api/v1/dataset/62b6b160-3f7f-4a31-898e-996a410fc9a1/data",
+      "sourceType": "CMS paginated JSON API",
+      "queriedAt": "2026-10-13T17:39:57-06:00",
+      "apiRecordsSha256": "dc0622197e00e9613a2c733f21c3f41685f73c3405eeaefc5f18deba6c025ffa",
+      "inputReports": 6175,
+      "selectedReports": 6077,
+      "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+      "standardPeriodReports": 5947,
+      "types": {
+        "STH": 3347,
+        "CAH": 1343,
+        "LTCH": 405,
+        "RH": 278,
+        "CH": 99,
+        "PH": 580,
+        "RNMHC": 16,
+        "ORD": 9
+      }
+    },
+    "2018": {
+      "source": "https://data.cms.gov/data-api/v1/dataset/2caad1a6-e674-47ce-84e7-d14a945e38c9/data",
+      "sourceType": "CMS paginated JSON API",
+      "queriedAt": "2026-10-13T17:40:05-06:00",
+      "apiRecordsSha256": "dac337861a3cf05ccfca23e781dc3da3f7ab3dc821df4144341d4121ce1ab97d",
+      "inputReports": 6161,
+      "selectedReports": 6049,
+      "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+      "standardPeriodReports": 5888,
+      "types": {
+        "STH": 3313,
+        "CAH": 1353,
+        "LTCH": 379,
+        "RH": 289,
+        "CH": 97,
+        "PH": 595,
+        "RNMHC": 14,
+        "ORD": 9
+      }
+    },
+    "2019": {
+      "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data",
+      "sourceType": "CMS paginated JSON API",
+      "queriedAt": "2026-10-13T17:40:13-06:00",
+      "apiRecordsSha256": "52778ec4b98121a9bfc3cf2001dfdeef89e4901f39a1e2af6a3af40c3eff5f21",
+      "inputReports": 6125,
+      "selectedReports": 6017,
+      "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+      "standardPeriodReports": 5848,
+      "types": {
+        "STH": 3271,
+        "CAH": 1355,
+        "LTCH": 362,
+        "RH": 302,
+        "CH": 95,
+        "PH": 610,
+        "RNMHC": 13,
+        "ORD": 9
+      }
+    },
+    "2020": {
+      "source": "https://data.cms.gov/data-api/v1/dataset/4ebc26db-f8f2-4f7e-89cd-a5bc84dcbfbd/data",
+      "sourceType": "CMS paginated JSON API",
+      "queriedAt": "2026-10-13T17:40:22-06:00",
+      "apiRecordsSha256": "1f04d7b3027269669b36db5f5eaaa3267e300a4f8f801cb66f8e4bf413dc68ce",
+      "inputReports": 6060,
+      "selectedReports": 5990,
+      "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+      "standardPeriodReports": 5862,
+      "types": {
+        "STH": 3244,
+        "CAH": 1355,
+        "LTCH": 347,
+        "RH": 314,
+        "CH": 94,
+        "PH": 615,
+        "RNMHC": 13,
+        "ORD": 8
+      }
+    },
+    "2021": {
+      "source": "https://data.cms.gov/data-api/v1/dataset/98b7383e-ad67-44d5-a7d8-0a80a92a72c1/data",
+      "sourceType": "CMS paginated JSON API",
+      "queriedAt": "2026-10-13T17:40:30-06:00",
+      "apiRecordsSha256": "02d71f7eda76a864e2402514dee30aece4015e5e3b9d8b8f92d848d41706bbdd",
+      "inputReports": 6058,
+      "selectedReports": 5984,
+      "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+      "standardPeriodReports": 5883,
+      "types": {
+        "STH": 3222,
+        "CAH": 1357,
+        "LTCH": 343,
+        "RH": 328,
+        "CH": 91,
+        "PH": 623,
+        "RNMHC": 12,
+        "ORD": 8
+      }
+    },
+    "2024": {
+      "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data",
+      "sourceType": "CMS paginated JSON API",
+      "queriedAt": "2026-10-13T17:40:39-06:00",
+      "apiRecordsSha256": "9f51185a7f5d6789e39780a96debab8f7dbc18f490e07e330f35e77822fc4d5d",
+      "inputReports": 6109,
+      "selectedReports": 6026,
+      "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+      "standardPeriodReports": 5846,
+      "types": {
+        "STH": 3170,
+        "CAH": 1377,
+        "LTCH": 328,
+        "RH": 391,
+        "CH": 94,
+        "PH": 648,
+        "RNMHC": 9,
+        "TC": 1,
+        "ORD": 8
+      }
+    }
+  },
+  "providerLayer": {
+    "coverage": {
+      "enrollmentRowsQueried": 9161,
+      "ownerRowsQueried": 146859,
+      "providerRowsRetained": 5962,
+      "hospitalCcns": 5962,
+      "organizationalRelationships": 16044,
+      "nonOrganizationalOrUnidentifiedOwnerRowsOmitted": 124522
+    },
+    "sources": {
+      "enrollments": {
+        "url": "https://data.cms.gov/data-api/v1/dataset/f6f6505c-e8b0-4d57-b258-e2b94133aaf2/data",
+        "vintage": "2026-08-01"
+      },
+      "owners": {
+        "url": "https://data.cms.gov/data-api/v1/dataset/029c119f-f79c-49be-9100-344d31d10344/data",
+        "vintage": "2026-08-02"
+      }
+    },
+    "observedAt": "2026-10-18T17:26:46.108802+00:00",
+    "nppesApi": "https://npiregistry.cms.hhs.gov/api/?version=2.1",
+    "nppesMode": "Exact CMS-reported NPI, organization-only lookup on demand; national NPPES is not bulk ingested.",
+    "ownershipRule": "Source-reported enrollment disclosures, not an audited ultimate-parent registry. Association dates have no inferred termination dates."
+  },
+  "catalogSha256": "61902172f25823206b4f349d693ff19535d5e932d149068b2fac7ca5f0c9f1ae"
+}

@@ -1,0 +1,25 @@
+'use strict';
+const assert=require('node:assert/strict'),H=require('../docs/hospitals/longitudinal.js');
+const report=(ccn,year,v,extra={})=>({ccn,kind:'STH',providerType:'1',control:'2',beds:50,state:'UT',city:'A',county:'B',reportDays:365,begin:year+'-01-01',end:year+'-12-31',patientIncome:v,netPatientRevenue:100,...extra});
+const peers=Array.from({length:6},(_,i)=>'00000'+(i+2)),target=report('000001',2023,20);
+const data=[2021,2022,2023].map(y=>({year:y,records:[report(target.ccn,y,(y-2021)*10),...peers.map((id,i)=>report(id,y,i*10,{control:y===2022&&i===0?'4':'2'}))]}));
+let s=H.series(data,target,{ownership:'nonprofit'},peers,'patientMargin','fixed');
+assert.equal(s[0].value,0);assert.equal(s[0].median,.25);assert.equal(s[1].valid,6);assert.equal(s[1].change,.1);assert.equal(s[0].change,null);assert.equal(s[1].growth,null);assert.equal(s[2].growth,null);assert.ok(Math.abs(s[2].gapChange-.1)<1e-12);assert.equal(s[2].percentile,100*2.5/6);
+s=H.series(data,target,{ownership:'nonprofit'},peers,'patientMargin','dynamic');assert.equal(s[1].valid,5);assert.equal(s[1].median,.3);
+data[1].records=data[1].records.filter(r=>r.ccn!==peers[0]);
+s=H.series(data,target,{},peers,'patientMargin','fixed');assert.equal(s[1].valid,5);assert.equal(s[1].defined,6);
+s=H.series(data,target,{},peers,'patientMargin','balanced');assert.equal(s[0].defined,5);assert.equal(s[0].median,.3);
+data[1].records[0]={...data[1].records[0],reportDays:30};
+s=H.series(data,target,{},peers,'patientMargin','fixed');assert.equal(s[1].value,null);assert.equal(s[1].change,null);assert.equal(s[2].change,null);
+data[1].records=data[1].records.filter(r=>r.ccn!==target.ccn);
+s=H.series(data,target,{},peers,'patientMargin','dynamic');assert.equal(s[1].defined,0);assert.equal(s[1].median,null);assert.equal(s[1].report,undefined);
+const singleton=H.series([data[0]],target,{},peers.slice(0,4),'patientMargin','fixed');assert.equal(singleton[0].median,null);assert.equal(singleton[0].percentile,null);
+assert.equal(H.quantile([0,10,20,30],.25),7.5);
+assert.equal(H.metrics.revenue.get({reportDays:365,netPatientRevenue:100}),100*365.25/365);
+assert.equal(H.metrics.revenue.get({reportDays:30,netPatientRevenue:100}),null);
+assert.equal(H.metrics.revenue.get({reportDays:365,netPatientRevenue:null}),null);
+const overlap={year:2022,report:report(target.ccn,2022,10,{begin:'2021-12-01'})};assert.equal(H.comparable({year:2021,report:report(target.ccn,2021,10)},overlap),false);
+assert.equal(H.comparable({year:2021,report:report(target.ccn,2021,10)},{year:2023,report:report(target.ccn,2023,10)}),false);
+console.log('Historical cohort modes, missing years, period overlap, zero, small groups, annualization and change checks passed.');
+
+const volume=H.series([2021,2022].map(y=>({year:y,records:[report(target.ccn,y,10,{beds:y===2021?50:100})]})),target,{},[],'beds','fixed');assert.equal(volume[1].growth,1);

@@ -1,0 +1,1007 @@
+{
+  "catalogSha256": "7493789160cd34b39107750aa766a8dda1669461666f39942f4186a2ece4514c",
+  "baseline": 2019,
+  "endpoint": 2024,
+  "ruralFinance": [
+    {
+      "year": 2017,
+      "group": "CAH",
+      "hospitals": 1250,
+      "validMargins": 1232,
+      "medianMarginPct": 1.7402171159161157,
+      "lossPct": 40.01623376623377
+    },
+    {
+      "year": 2017,
+      "group": "Other rural",
+      "hospitals": 932,
+      "validMargins": 896,
+      "medianMarginPct": 2.3791244472237407,
+      "lossPct": 38.058035714285715
+    },
+    {
+      "year": 2017,
+      "group": "Urban",
+      "hospitals": 2329,
+      "validMargins": 2258,
+      "medianMarginPct": 5.262337508259848,
+      "lossPct": 27.236492471213463
+    },
+    {
+      "year": 2018,
+      "group": "CAH",
+      "hospitals": 1255,
+      "validMargins": 1238,
+      "medianMarginPct": 1.6574059757536224,
+      "lossPct": 39.17609046849758
+    },
+    {
+      "year": 2018,
+      "group": "Other rural",
+      "hospitals": 973,
+      "validMargins": 944,
+      "medianMarginPct": 2.6209612182627313,
+      "lossPct": 37.71186440677966
+    },
+    {
+      "year": 2018,
+      "group": "Urban",
+      "hospitals": 2245,
+      "validMargins": 2173,
+      "medianMarginPct": 5.2065679215983165,
+      "lossPct": 28.531983433041876
+    },
+    {
+      "year": 2019,
+      "group": "CAH",
+      "hospitals": 1274,
+      "validMargins": 1258,
+      "medianMarginPct": 3.1126331659838127,
+      "lossPct": 31.955484896661368
+    },
+    {
+      "year": 2019,
+      "group": "Other rural",
+      "hospitals": 1028,
+      "validMargins": 991,
+      "medianMarginPct": 3.784591899602869,
+      "lossPct": 32.99697275479314
+    },
+    {
+      "year": 2019,
+      "group": "Urban",
+      "hospitals": 2137,
+      "validMargins": 2082,
+      "medianMarginPct": 5.213634833758367,
+      "lossPct": 28.338136407300674
+    },
+    {
+      "year": 2020,
+      "group": "CAH",
+      "hospitals": 1312,
+      "validMargins": 1296,
+      "medianMarginPct": 9.015501427849411,
+      "lossPct": 18.90432098765432
+    },
+    {
+      "year": 2020,
+      "group": "Other rural",
+      "hospitals": 1155,
+      "validMargins": 1121,
+      "medianMarginPct": 7.211033963877514,
+      "lossPct": 20.428189116859947
+    },
+    {
+      "year": 2020,
+      "group": "Urban",
+      "hospitals": 2013,
+      "validMargins": 1958,
+      "medianMarginPct": 7.302111834776909,
+      "lossPct": 21.70582226762002
+    },
+    {
+      "year": 2021,
+      "group": "CAH",
+      "hospitals": 1329,
+      "validMargins": 1313,
+      "medianMarginPct": 9.54894877593503,
+      "lossPct": 18.583396801218584
+    },
+    {
+      "year": 2021,
+      "group": "Other rural",
+      "hospitals": 1200,
+      "validMargins": 1169,
+      "medianMarginPct": 5.404336904704415,
+      "lossPct": 27.37382378100941
+    },
+    {
+      "year": 2021,
+      "group": "Urban",
+      "hospitals": 1962,
+      "validMargins": 1932,
+      "medianMarginPct": 6.198779116165694,
+      "lossPct": 29.03726708074534
+    },
+    {
+      "year": 2022,
+      "group": "CAH",
+      "hospitals": 1350,
+      "validMargins": 1329,
+      "medianMarginPct": 3.2328662571376086,
+      "lossPct": 34.46200150489089
+    },
+    {
+      "year": 2022,
+      "group": "Other rural",
+      "hospitals": 1226,
+      "validMargins": 1196,
+      "medianMarginPct": 0.33125474507597963,
+      "lossPct": 48.82943143812709
+    },
+    {
+      "year": 2022,
+      "group": "Urban",
+      "hospitals": 1923,
+      "validMargins": 1884,
+      "medianMarginPct": 2.1444135484168623,
+      "lossPct": 41.98513800424629
+    },
+    {
+      "year": 2023,
+      "group": "CAH",
+      "hospitals": 1337,
+      "validMargins": 1317,
+      "medianMarginPct": 4.696321132917779,
+      "lossPct": 31.20728929384966
+    },
+    {
+      "year": 2023,
+      "group": "Other rural",
+      "hospitals": 1268,
+      "validMargins": 1239,
+      "medianMarginPct": 2.9750253676999607,
+      "lossPct": 36.077481840193705
+    },
+    {
+      "year": 2023,
+      "group": "Urban",
+      "hospitals": 1840,
+      "validMargins": 1802,
+      "medianMarginPct": 5.03128146778781,
+      "lossPct": 31.132075471698112
+    },
+    {
+      "year": 2024,
+      "group": "CAH",
+      "hospitals": 1343,
+      "validMargins": 1331,
+      "medianMarginPct": 5.6376083452078865,
+      "lossPct": 28.024042073628852
+    },
+    {
+      "year": 2024,
+      "group": "Other rural",
+      "hospitals": 1280,
+      "validMargins": 1250,
+      "medianMarginPct": 5.140444623113454,
+      "lossPct": 29.04
+    },
+    {
+      "year": 2024,
+      "group": "Urban",
+      "hospitals": 1760,
+      "validMargins": 1730,
+      "medianMarginPct": 6.070772239865981,
+      "lossPct": 27.86127167630058
+    }
+  ],
+  "capacity": {
+    "matchedHospitals": 4143,
+    "beds2019": 712647.0,
+    "beds2024": 637867.0,
+    "largestReductions": [
+      {
+        "ccn": "131316",
+        "hospital": "BEAR LAKE MEMORIAL HOSPITAL",
+        "state": "ID",
+        "beds2019": 52913.0,
+        "beds2024": 21.0,
+        "bedChange": -52892.0
+      },
+      {
+        "ccn": "370215",
+        "hospital": "OKLAHOMA HEART HOSPITAL",
+        "state": "OK",
+        "beds2019": 28401.0,
+        "beds2024": 97.0,
+        "bedChange": -28304.0
+      },
+      {
+        "ccn": "391300",
+        "hospital": "JERSEY SHORE HOSPITAL",
+        "state": "PA",
+        "beds2019": 1605.0,
+        "beds2024": 25.0,
+        "bedChange": -1580.0
+      },
+      {
+        "ccn": "470003",
+        "hospital": "UNIVERSITY OF VERMONT MEDICAL CENTER",
+        "state": "VT",
+        "beds2019": 401.0,
+        "beds2024": 65.0,
+        "bedChange": -336.0
+      },
+      {
+        "ccn": "450058",
+        "hospital": "BAPTIST HEALTH SYSTEM",
+        "state": "TX",
+        "beds2019": 1454.0,
+        "beds2024": 1137.0,
+        "bedChange": -317.0
+      },
+      {
+        "ccn": "190064",
+        "hospital": "OUR LADY OF THE LAKE  RMC",
+        "state": "LA",
+        "beds2019": 957.0,
+        "beds2024": 647.0,
+        "bedChange": -310.0
+      },
+      {
+        "ccn": "100167",
+        "hospital": "HCA FLORIDA MERCY HOSPITAL",
+        "state": "FL",
+        "beds2019": 574.0,
+        "beds2024": 276.0,
+        "bedChange": -298.0
+      },
+      {
+        "ccn": "180011",
+        "hospital": "SAINT JOSEPH LONDON",
+        "state": "KY",
+        "beds2019": 345.0,
+        "beds2024": 126.0,
+        "bedChange": -219.0
+      },
+      {
+        "ccn": "250031",
+        "hospital": "MERIT HEALTH RIVER REGION",
+        "state": "MS",
+        "beds2019": 301.0,
+        "beds2024": 85.0,
+        "bedChange": -216.0
+      },
+      {
+        "ccn": "100040",
+        "hospital": "ASCENSION ST. VINCENTS RIVERSIDE",
+        "state": "FL",
+        "beds2019": 479.0,
+        "beds2024": 289.0,
+        "bedChange": -190.0
+      },
+      {
+        "ccn": "220074",
+        "hospital": "SOUTHCOAST HOSPITALS GROUP  INC",
+        "state": "MA",
+        "beds2019": 835.0,
+        "beds2024": 659.0,
+        "bedChange": -176.0
+      },
+      {
+        "ccn": "110028",
+        "hospital": "UNIVERSITY HEALTH SERVICES  INC.",
+        "state": "GA",
+        "beds2019": 595.0,
+        "beds2024": 423.0,
+        "bedChange": -172.0
+      },
+      {
+        "ccn": "250040",
+        "hospital": "SINGING RIVER HEALTH SYSTEM",
+        "state": "MS",
+        "beds2019": 328.0,
+        "beds2024": 156.0,
+        "bedChange": -172.0
+      },
+      {
+        "ccn": "050180",
+        "hospital": "JOHN MUIR MEDICAL CENTER - WC",
+        "state": "CA",
+        "beds2019": 506.0,
+        "beds2024": 335.0,
+        "bedChange": -171.0
+      },
+      {
+        "ccn": "340126",
+        "hospital": "WILSON MEDICAL CENTER",
+        "state": "NC",
+        "beds2019": 270.0,
+        "beds2024": 100.0,
+        "bedChange": -170.0
+      },
+      {
+        "ccn": "050567",
+        "hospital": "MISSION HOSPITAL REG MEDICAL CENTER",
+        "state": "CA",
+        "beds2019": 465.0,
+        "beds2024": 311.0,
+        "bedChange": -154.0
+      },
+      {
+        "ccn": "100296",
+        "hospital": "DOCTORS HOSPITAL",
+        "state": "FL",
+        "beds2019": 281.0,
+        "beds2024": 128.0,
+        "bedChange": -153.0
+      },
+      {
+        "ccn": "050043",
+        "hospital": "SUMMIT MEDICAL CENTER",
+        "state": "CA",
+        "beds2019": 403.0,
+        "beds2024": 251.0,
+        "bedChange": -152.0
+      },
+      {
+        "ccn": "420026",
+        "hospital": "MUSC HEALTH COLUMBIA MEDICAL CENTER",
+        "state": "SC",
+        "beds2019": 332.0,
+        "beds2024": 180.0,
+        "bedChange": -152.0
+      },
+      {
+        "ccn": "250099",
+        "hospital": "GREENWOOD LEFLORE HOSPITAL",
+        "state": "MS",
+        "beds2019": 173.0,
+        "beds2024": 25.0,
+        "bedChange": -148.0
+      },
+      {
+        "ccn": "250048",
+        "hospital": "ST. DOMINIC-JACKSON MEMORIAL HOSP",
+        "state": "MS",
+        "beds2019": 553.0,
+        "beds2024": 407.0,
+        "bedChange": -146.0
+      },
+      {
+        "ccn": "390156",
+        "hospital": "MERCY CATHOLIC MEDICAL CENTER",
+        "state": "PA",
+        "beds2019": 292.0,
+        "beds2024": 153.0,
+        "bedChange": -139.0
+      },
+      {
+        "ccn": "390162",
+        "hospital": "ST LUKES HOSPITAL - EASTON CAMPUS",
+        "state": "PA",
+        "beds2019": 164.0,
+        "beds2024": 29.0,
+        "bedChange": -135.0
+      },
+      {
+        "ccn": "010113",
+        "hospital": "MOBILE INFIRMARY MEDICAL CENTER",
+        "state": "AL",
+        "beds2019": 596.0,
+        "beds2024": 462.0,
+        "bedChange": -134.0
+      },
+      {
+        "ccn": "330259",
+        "hospital": "MERCY MEDICAL CENTER",
+        "state": "NY",
+        "beds2019": 299.0,
+        "beds2024": 166.0,
+        "bedChange": -133.0
+      }
+    ]
+  },
+  "workforce": {
+    "matchedHospitals": 4115,
+    "hospitalsWithDaysGrowingFasterThanFte": 1972,
+    "medianFteGrowthPct": 4.481357947227638,
+    "medianPatientDaysGrowthPct": 2.654315100357696,
+    "largestWorkloadIncreases": [
+      {
+        "ccn": "210044",
+        "hospital": "GREATER BALTIMORE MEDICAL CENTER",
+        "state": "MD",
+        "fte2019": 3070.0,
+        "fte2024": 54.97,
+        "fteGrowthPct": -98.20944625407166,
+        "patientDaysGrowthPct": -11.080636458155125,
+        "daysPerFteGrowthPct": 4866.025942759027
+      },
+      {
+        "ccn": "160079",
+        "hospital": "MERCY MEDICAL CENTER",
+        "state": "IA",
+        "fte2019": 1788.66,
+        "fte2024": 102.41,
+        "fteGrowthPct": -94.27448480985767,
+        "patientDaysGrowthPct": 8.966017339298782,
+        "daysPerFteGrowthPct": 1803.165282434432
+      },
+      {
+        "ccn": "150091",
+        "hospital": "HUNTINGTON MEMORIAL HOSPITAL",
+        "state": "IN",
+        "fte2019": 2684.0,
+        "fte2024": 224.08,
+        "fteGrowthPct": -91.65126676602087,
+        "patientDaysGrowthPct": 4.658980798512902,
+        "daysPerFteGrowthPct": 1153.5911480864363
+      },
+      {
+        "ccn": "240047",
+        "hospital": "ST. LUKES HOSPITAL OF DULUTH",
+        "state": "MN",
+        "fte2019": 2379.34,
+        "fte2024": 141.48,
+        "fteGrowthPct": -94.0538132423277,
+        "patientDaysGrowthPct": -26.606422051710965,
+        "daysPerFteGrowthPct": 1134.2965490209363
+      },
+      {
+        "ccn": "231329",
+        "hospital": "CARO COMMUNITY HOSPITAL",
+        "state": "MI",
+        "fte2019": 105.0,
+        "fte2024": 86.4,
+        "fteGrowthPct": -17.714285714285705,
+        "patientDaysGrowthPct": 786.1627608464446,
+        "daysPerFteGrowthPct": 976.9339107508872
+      },
+      {
+        "ccn": "351313",
+        "hospital": "SOUTHWEST HEALTHCARE SERVICES",
+        "state": "ND",
+        "fte2019": 76.1,
+        "fte2024": 82.15,
+        "fteGrowthPct": 7.9500657030223465,
+        "patientDaysGrowthPct": 1035.2075992033092,
+        "daysPerFteGrowthPct": 951.604361526133
+      },
+      {
+        "ccn": "171300",
+        "hospital": "GRISELL MEMORIAL HOSPITAL DIST #1",
+        "state": "KS",
+        "fte2019": 53.19,
+        "fte2024": 50.76,
+        "fteGrowthPct": -4.5685279187817285,
+        "patientDaysGrowthPct": 858.4851244687311,
+        "daysPerFteGrowthPct": 904.3700506401065
+      },
+      {
+        "ccn": "230029",
+        "hospital": "TRINITY HEALTH OAKLAND",
+        "state": "MI",
+        "fte2019": 2290.31,
+        "fte2024": 325.16,
+        "fteGrowthPct": -85.80279525479084,
+        "patientDaysGrowthPct": 14.573255076618196,
+        "daysPerFteGrowthPct": 707.0127685894003
+      },
+      {
+        "ccn": "461303",
+        "hospital": "SANPETE VALLEY HOSPITAL",
+        "state": "UT",
+        "fte2019": 90.56,
+        "fte2024": 9.88,
+        "fteGrowthPct": -89.09010600706713,
+        "patientDaysGrowthPct": -25.388759224992175,
+        "daysPerFteGrowthPct": 583.8860288041203
+      },
+      {
+        "ccn": "291304",
+        "hospital": "PERSHING GENERAL HOSPITAL",
+        "state": "NV",
+        "fte2019": 62.9,
+        "fte2024": 75.22,
+        "fteGrowthPct": 19.58664546899842,
+        "patientDaysGrowthPct": 605.3233393641768,
+        "daysPerFteGrowthPct": 489.80109074723106
+      },
+      {
+        "ccn": "171324",
+        "hospital": "SATANTA DISTRICT HOSPITAL",
+        "state": "KS",
+        "fte2019": 85.4,
+        "fte2024": 84.24,
+        "fteGrowthPct": -1.3583138173302256,
+        "patientDaysGrowthPct": 460.0969078632394,
+        "daysPerFteGrowthPct": 467.8095433466364
+      },
+      {
+        "ccn": "391307",
+        "hospital": "TYRONE HOSPITAL",
+        "state": "PA",
+        "fte2019": 156.1,
+        "fte2024": 101.56,
+        "fteGrowthPct": -34.93914157591287,
+        "patientDaysGrowthPct": 258.59293083037375,
+        "daysPerFteGrowthPct": 451.16538501990277
+      },
+      {
+        "ccn": "440008",
+        "hospital": "HENDERSON COUNTY COMMUNITY HOSPITAL",
+        "state": "TN",
+        "fte2019": 102.62,
+        "fte2024": 114.23,
+        "fteGrowthPct": 11.313584096667316,
+        "patientDaysGrowthPct": 494.07919205790637,
+        "daysPerFteGrowthPct": 433.6987366627186
+      },
+      {
+        "ccn": "501320",
+        "hospital": "QUINCY VALLEY MEDICAL CENTER",
+        "state": "WA",
+        "fte2019": 44.29,
+        "fte2024": 55.13,
+        "fteGrowthPct": 24.475050801535335,
+        "patientDaysGrowthPct": 480.76181292189,
+        "daysPerFteGrowthPct": 366.5688498877291
+      },
+      {
+        "ccn": "140049",
+        "hospital": "WEST SUBURBAN HOSP MED CTR",
+        "state": "IL",
+        "fte2019": 3126.92,
+        "fte2024": 590.02,
+        "fteGrowthPct": -81.13095314238932,
+        "patientDaysGrowthPct": -14.2618469015796,
+        "daysPerFteGrowthPct": 354.3851830217836
+      },
+      {
+        "ccn": "351302",
+        "hospital": "MCKENZIE COUNTY HEALTHCARE SYSTEM",
+        "state": "ND",
+        "fte2019": 298.7,
+        "fte2024": 236.67,
+        "fteGrowthPct": -20.76665550719786,
+        "patientDaysGrowthPct": 257.91220877912207,
+        "daysPerFteGrowthPct": 351.719173373574
+      },
+      {
+        "ccn": "141308",
+        "hospital": "WASHINGTON COUNTY HOSPITAL",
+        "state": "IL",
+        "fte2019": 84.57,
+        "fte2024": 97.7,
+        "fteGrowthPct": 15.525600094596204,
+        "patientDaysGrowthPct": 419.8121186032967,
+        "daysPerFteGrowthPct": 349.95405189642577
+      },
+      {
+        "ccn": "441304",
+        "hospital": "JOHNSON COUNTY COMMUNITY HOSPITAL",
+        "state": "TN",
+        "fte2019": 50.67,
+        "fte2024": 51.15,
+        "fteGrowthPct": 0.9473060982829962,
+        "patientDaysGrowthPct": 353.4127456819536,
+        "daysPerFteGrowthPct": 349.15784601573006
+      },
+      {
+        "ccn": "050014",
+        "hospital": "SUTTER AMADOR HOSPITAL",
+        "state": "CA",
+        "fte2019": 1449.75,
+        "fte2024": 344.59,
+        "fteGrowthPct": -76.23107432315916,
+        "patientDaysGrowthPct": 5.367172905365591,
+        "daysPerFteGrowthPct": 343.2980031909044
+      },
+      {
+        "ccn": "451393",
+        "hospital": "CROCKETT MEDICAL CENTER",
+        "state": "TX",
+        "fte2019": 69.49,
+        "fte2024": 54.34,
+        "fteGrowthPct": -21.80169808605553,
+        "patientDaysGrowthPct": 226.02044494427383,
+        "daysPerFteGrowthPct": 316.9149929918584
+      },
+      {
+        "ccn": "171359",
+        "hospital": "GREELEY COUNTY HEALTH SERVICES",
+        "state": "KS",
+        "fte2019": 76.15,
+        "fte2024": 90.58,
+        "fteGrowthPct": 18.949441891004582,
+        "patientDaysGrowthPct": 383.3786854121926,
+        "daysPerFteGrowthPct": 306.3732269169625
+      },
+      {
+        "ccn": "441300",
+        "hospital": "ST THOMAS HICKMAN HOSPITAL",
+        "state": "TN",
+        "fte2019": 66.22,
+        "fte2024": 66.51,
+        "fteGrowthPct": 0.4379341588643948,
+        "patientDaysGrowthPct": 274.1667128833676,
+        "daysPerFteGrowthPct": 272.5352537533694
+      },
+      {
+        "ccn": "171322",
+        "hospital": "HAMILTON COUNTY HOSPITAL",
+        "state": "KS",
+        "fte2019": 25.76,
+        "fte2024": 9.15,
+        "fteGrowthPct": -64.47981366459628,
+        "patientDaysGrowthPct": 30.690230787844964,
+        "daysPerFteGrowthPct": 267.93227815244666
+      },
+      {
+        "ccn": "140197",
+        "hospital": "METHODIST HOSPITAL OF CHICAGO",
+        "state": "IL",
+        "fte2019": 437.81,
+        "fte2024": 110.41,
+        "fteGrowthPct": -74.78129782325666,
+        "patientDaysGrowthPct": -8.750485060147462,
+        "daysPerFteGrowthPct": 261.83271565815454
+      },
+      {
+        "ccn": "371336",
+        "hospital": "NEWMAN MEMORIAL HOSPITAL",
+        "state": "OK",
+        "fte2019": 43.78,
+        "fte2024": 72.95,
+        "fteGrowthPct": 66.62859753312014,
+        "patientDaysGrowthPct": 478.5933840749414,
+        "daysPerFteGrowthPct": 247.235344137093
+      }
+    ]
+  },
+  "notes": [
+    "General short-term hospital reports including CAHs; report complex may span campuses.",
+    "Rural finance uses changing annual cohorts; endpoints use matched CCNs, eligible nonoverlapping fiscal periods and valid inputs.",
+    "No causal, closure, shortage, acuity, inflation or occupational staffing adjustment. Extreme changes require reporting-boundary review.",
+    "Patient days per all-occupation payroll FTE omits outpatient work. Missing and zero FTE denominators are excluded.",
+    "Workforce sources may be refreshed later than the frozen financial snapshot; exact report ID, CCN and fiscal-period joins do not establish same revision vintage."
+  ],
+  "sources": {
+    "financial": {
+      "2022": {
+        "source": "https://data.cms.gov/data-api/v1/dataset/8457c184-a531-40db-8597-2497fec80c7a/data",
+        "sourceType": "CMS paginated JSON API",
+        "queriedAt": "2026-10-13T16:55:30-06:00",
+        "apiRecordsSha256": "b56bb0224b20f2bbab6c9e2d3e4411924a6e5616220156ff6ee133389b17aaa2",
+        "inputReports": 6069,
+        "selectedReports": 6004,
+        "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+        "standardPeriodReports": 5902,
+        "types": {
+          "STH": 3215,
+          "CAH": 1363,
+          "LTCH": 342,
+          "RH": 343,
+          "CH": 93,
+          "PH": 630,
+          "RNMHC": 10,
+          "ORD": 8
+        }
+      },
+      "2023": {
+        "source": "https://data.cms.gov/data-api/v1/dataset/f08d4c46-c0e4-4bcb-a54a-c62c87d59251/data",
+        "sourceType": "CMS paginated JSON API",
+        "queriedAt": "2026-10-13T16:55:35-06:00",
+        "apiRecordsSha256": "7a770b8c1503125feee99eb15e4fb5067baaa21fa86b90c4b8e1ddbc959e494d",
+        "inputReports": 6109,
+        "selectedReports": 6046,
+        "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+        "standardPeriodReports": 5877,
+        "types": {
+          "STH": 3210,
+          "CAH": 1374,
+          "LTCH": 336,
+          "RH": 376,
+          "CH": 91,
+          "PH": 640,
+          "RNMHC": 10,
+          "TC": 1,
+          "ORD": 8
+        }
+      },
+      "2017": {
+        "source": "https://data.cms.gov/data-api/v1/dataset/62b6b160-3f7f-4a31-898e-996a410fc9a1/data",
+        "sourceType": "CMS paginated JSON API",
+        "queriedAt": "2026-10-13T17:39:57-06:00",
+        "apiRecordsSha256": "dc0622197e00e9613a2c733f21c3f41685f73c3405eeaefc5f18deba6c025ffa",
+        "inputReports": 6175,
+        "selectedReports": 6077,
+        "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+        "standardPeriodReports": 5947,
+        "types": {
+          "STH": 3347,
+          "CAH": 1343,
+          "LTCH": 405,
+          "RH": 278,
+          "CH": 99,
+          "PH": 580,
+          "RNMHC": 16,
+          "ORD": 9
+        }
+      },
+      "2018": {
+        "source": "https://data.cms.gov/data-api/v1/dataset/2caad1a6-e674-47ce-84e7-d14a945e38c9/data",
+        "sourceType": "CMS paginated JSON API",
+        "queriedAt": "2026-10-13T17:40:05-06:00",
+        "apiRecordsSha256": "dac337861a3cf05ccfca23e781dc3da3f7ab3dc821df4144341d4121ce1ab97d",
+        "inputReports": 6161,
+        "selectedReports": 6049,
+        "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+        "standardPeriodReports": 5888,
+        "types": {
+          "STH": 3313,
+          "CAH": 1353,
+          "LTCH": 379,
+          "RH": 289,
+          "CH": 97,
+          "PH": 595,
+          "RNMHC": 14,
+          "ORD": 9
+        }
+      },
+      "2019": {
+        "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data",
+        "sourceType": "CMS paginated JSON API",
+        "queriedAt": "2026-10-13T17:40:13-06:00",
+        "apiRecordsSha256": "52778ec4b98121a9bfc3cf2001dfdeef89e4901f39a1e2af6a3af40c3eff5f21",
+        "inputReports": 6125,
+        "selectedReports": 6017,
+        "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+        "standardPeriodReports": 5848,
+        "types": {
+          "STH": 3271,
+          "CAH": 1355,
+          "LTCH": 362,
+          "RH": 302,
+          "CH": 95,
+          "PH": 610,
+          "RNMHC": 13,
+          "ORD": 9
+        }
+      },
+      "2020": {
+        "source": "https://data.cms.gov/data-api/v1/dataset/4ebc26db-f8f2-4f7e-89cd-a5bc84dcbfbd/data",
+        "sourceType": "CMS paginated JSON API",
+        "queriedAt": "2026-10-13T17:40:22-06:00",
+        "apiRecordsSha256": "1f04d7b3027269669b36db5f5eaaa3267e300a4f8f801cb66f8e4bf413dc68ce",
+        "inputReports": 6060,
+        "selectedReports": 5990,
+        "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+        "standardPeriodReports": 5862,
+        "types": {
+          "STH": 3244,
+          "CAH": 1355,
+          "LTCH": 347,
+          "RH": 314,
+          "CH": 94,
+          "PH": 615,
+          "RNMHC": 13,
+          "ORD": 8
+        }
+      },
+      "2021": {
+        "source": "https://data.cms.gov/data-api/v1/dataset/98b7383e-ad67-44d5-a7d8-0a80a92a72c1/data",
+        "sourceType": "CMS paginated JSON API",
+        "queriedAt": "2026-10-13T17:40:30-06:00",
+        "apiRecordsSha256": "02d71f7eda76a864e2402514dee30aece4015e5e3b9d8b8f92d848d41706bbdd",
+        "inputReports": 6058,
+        "selectedReports": 5984,
+        "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+        "standardPeriodReports": 5883,
+        "types": {
+          "STH": 3222,
+          "CAH": 1357,
+          "LTCH": 343,
+          "RH": 328,
+          "CH": 91,
+          "PH": 623,
+          "RNMHC": 12,
+          "ORD": 8
+        }
+      },
+      "2024": {
+        "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data",
+        "sourceType": "CMS paginated JSON API",
+        "queriedAt": "2026-10-13T17:40:39-06:00",
+        "apiRecordsSha256": "9f51185a7f5d6789e39780a96debab8f7dbc18f490e07e330f35e77822fc4d5d",
+        "inputReports": 6109,
+        "selectedReports": 6026,
+        "selection": "Prefer a 300\u2013430-day report, then longest duration, latest end date, highest report ID. One report per CCN/source year; not a calendar-year aggregation.",
+        "standardPeriodReports": 5846,
+        "types": {
+          "STH": 3170,
+          "CAH": 1377,
+          "LTCH": 328,
+          "RH": 391,
+          "CH": 94,
+          "PH": 648,
+          "RNMHC": 9,
+          "TC": 1,
+          "ORD": 8
+        }
+      }
+    },
+    "workforce": {
+      "2017": {
+        "year": 2017,
+        "source": "https://data.cms.gov/data-api/v1/dataset/62b6b160-3f7f-4a31-898e-996a410fc9a1/data",
+        "queriedAt": "2026-10-19T03:30:44.663856+00:00",
+        "apiRecordsSha256": "bbc62002e8cd3026e6ed91d06ebb3304c033548ffbd2a429610e40fc0f05d808",
+        "inputReports": 6175,
+        "selectedReports": 6077,
+        "coverage": {
+          "matchedReports": 6077,
+          "payrollFteValid": 5970,
+          "salariesValid": 5994,
+          "residentFteValid": 1341
+        },
+        "join": "Exact report ID + CCN + fiscal begin/end against existing financial snapshot. Unmatched reports remain null.",
+        "fields": {
+          "payrollFte": "FTE - Employees on Payroll",
+          "residentFte": "Number of Interns and Residents (FTE)",
+          "salaries": "Total Salaries From Worksheet A"
+        },
+        "missingPolicy": "Blank, nonfinite and negative values unavailable; reported zero retained. No imputation."
+      },
+      "2018": {
+        "year": 2018,
+        "source": "https://data.cms.gov/data-api/v1/dataset/2caad1a6-e674-47ce-84e7-d14a945e38c9/data",
+        "queriedAt": "2026-10-19T03:30:51.839304+00:00",
+        "apiRecordsSha256": "c2e66641501fa951bdb3dcbd6325749cf780f1fc27d2771e071f45b4ca5e70a4",
+        "inputReports": 6161,
+        "selectedReports": 6049,
+        "coverage": {
+          "matchedReports": 6049,
+          "payrollFteValid": 5941,
+          "residentFteValid": 1353,
+          "salariesValid": 5971
+        },
+        "join": "Exact report ID + CCN + fiscal begin/end against existing financial snapshot. Unmatched reports remain null.",
+        "fields": {
+          "payrollFte": "FTE - Employees on Payroll",
+          "residentFte": "Number of Interns and Residents (FTE)",
+          "salaries": "Total Salaries From Worksheet A"
+        },
+        "missingPolicy": "Blank, nonfinite and negative values unavailable; reported zero retained. No imputation."
+      },
+      "2019": {
+        "year": 2019,
+        "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data",
+        "queriedAt": "2026-10-19T03:30:59.322812+00:00",
+        "apiRecordsSha256": "0f307b1f1a5abdb9baae60c3479e6639a5f2d7d8d3c2f5477a8a5982a404578a",
+        "inputReports": 6125,
+        "selectedReports": 6017,
+        "coverage": {
+          "matchedReports": 6017,
+          "payrollFteValid": 5910,
+          "residentFteValid": 1386,
+          "salariesValid": 5943
+        },
+        "join": "Exact report ID + CCN + fiscal begin/end against existing financial snapshot. Unmatched reports remain null.",
+        "fields": {
+          "payrollFte": "FTE - Employees on Payroll",
+          "residentFte": "Number of Interns and Residents (FTE)",
+          "salaries": "Total Salaries From Worksheet A"
+        },
+        "missingPolicy": "Blank, nonfinite and negative values unavailable; reported zero retained. No imputation."
+      },
+      "2020": {
+        "year": 2020,
+        "source": "https://data.cms.gov/data-api/v1/dataset/4ebc26db-f8f2-4f7e-89cd-a5bc84dcbfbd/data",
+        "queriedAt": "2026-10-19T03:31:06.152674+00:00",
+        "apiRecordsSha256": "fcac0928be2ec66065e81a546ab4ad20997a6e43e8789e5aa6e15de351b1b5fd",
+        "inputReports": 6060,
+        "selectedReports": 5990,
+        "coverage": {
+          "matchedReports": 5990,
+          "payrollFteValid": 5859,
+          "residentFteValid": 1407,
+          "salariesValid": 5911
+        },
+        "join": "Exact report ID + CCN + fiscal begin/end against existing financial snapshot. Unmatched reports remain null.",
+        "fields": {
+          "payrollFte": "FTE - Employees on Payroll",
+          "residentFte": "Number of Interns and Residents (FTE)",
+          "salaries": "Total Salaries From Worksheet A"
+        },
+        "missingPolicy": "Blank, nonfinite and negative values unavailable; reported zero retained. No imputation."
+      },
+      "2021": {
+        "year": 2021,
+        "source": "https://data.cms.gov/data-api/v1/dataset/98b7383e-ad67-44d5-a7d8-0a80a92a72c1/data",
+        "queriedAt": "2026-10-19T03:31:12.725029+00:00",
+        "apiRecordsSha256": "be4457fa3ff0e1c9a5d4a9cb939d7cd2c7bfc9dad7002d70c6436d544f3c8541",
+        "inputReports": 6058,
+        "selectedReports": 5984,
+        "coverage": {
+          "matchedReports": 5984,
+          "payrollFteValid": 5884,
+          "residentFteValid": 1456,
+          "salariesValid": 5908
+        },
+        "join": "Exact report ID + CCN + fiscal begin/end against existing financial snapshot. Unmatched reports remain null.",
+        "fields": {
+          "payrollFte": "FTE - Employees on Payroll",
+          "residentFte": "Number of Interns and Residents (FTE)",
+          "salaries": "Total Salaries From Worksheet A"
+        },
+        "missingPolicy": "Blank, nonfinite and negative values unavailable; reported zero retained. No imputation."
+      },
+      "2022": {
+        "year": 2022,
+        "source": "https://data.cms.gov/data-api/v1/dataset/8457c184-a531-40db-8597-2497fec80c7a/data",
+        "queriedAt": "2026-10-19T03:31:20.090803+00:00",
+        "apiRecordsSha256": "fe167f62e103f7ef80c0b489f75217b0fc771e9196059863deb824f970796bba",
+        "inputReports": 6069,
+        "selectedReports": 6004,
+        "coverage": {
+          "matchedReports": 6004,
+          "payrollFteValid": 5892,
+          "residentFteValid": 1506,
+          "salariesValid": 5922
+        },
+        "join": "Exact report ID + CCN + fiscal begin/end against existing financial snapshot. Unmatched reports remain null.",
+        "fields": {
+          "payrollFte": "FTE - Employees on Payroll",
+          "residentFte": "Number of Interns and Residents (FTE)",
+          "salaries": "Total Salaries From Worksheet A"
+        },
+        "missingPolicy": "Blank, nonfinite and negative values unavailable; reported zero retained. No imputation."
+      },
+      "2023": {
+        "year": 2023,
+        "source": "https://data.cms.gov/data-api/v1/dataset/f08d4c46-c0e4-4bcb-a54a-c62c87d59251/data",
+        "queriedAt": "2026-10-19T03:31:26.776161+00:00",
+        "apiRecordsSha256": "fa781cd072c996fa120b6901e21a6d581f99868faba98ef5da01bc20ced83328",
+        "inputReports": 6109,
+        "selectedReports": 6046,
+        "coverage": {
+          "matchedReports": 6046,
+          "payrollFteValid": 5910,
+          "residentFteValid": 1528,
+          "salariesValid": 5962
+        },
+        "join": "Exact report ID + CCN + fiscal begin/end against existing financial snapshot. Unmatched reports remain null.",
+        "fields": {
+          "payrollFte": "FTE - Employees on Payroll",
+          "residentFte": "Number of Interns and Residents (FTE)",
+          "salaries": "Total Salaries From Worksheet A"
+        },
+        "missingPolicy": "Blank, nonfinite and negative values unavailable; reported zero retained. No imputation."
+      },
+      "2024": {
+        "year": 2024,
+        "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data",
+        "queriedAt": "2026-10-19T03:31:33.853967+00:00",
+        "apiRecordsSha256": "b535d6e3d3397e10b3fde79abe75c73694d6bf867a82d6027985c613da640045",
+        "inputReports": 6109,
+        "selectedReports": 6026,
+        "coverage": {
+          "matchedReports": 6026,
+          "payrollFteValid": 5903,
+          "residentFteValid": 1580,
+          "salariesValid": 5945
+        },
+        "join": "Exact report ID + CCN + fiscal begin/end against existing financial snapshot. Unmatched reports remain null.",
+        "fields": {
+          "payrollFte": "FTE - Employees on Payroll",
+          "residentFte": "Number of Interns and Residents (FTE)",
+          "salaries": "Total Salaries From Worksheet A"
+        },
+        "missingPolicy": "Blank, nonfinite and negative values unavailable; reported zero retained. No imputation."
+      }
+    }
+  }
+}

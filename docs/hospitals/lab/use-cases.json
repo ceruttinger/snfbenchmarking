@@ -220,5 +220,37 @@
     "question": "Did this acquisition improve clinical quality?",
     "expected": "unsupported",
     "reason": "Clinical outcomes and causal acquisition evidence are not in the loaded financial subset."
+  },
+  {
+    "id": "workforce",
+    "question": "Show payroll employee FTE trends for the target hospital versus the same peers from 2019 to 2024.",
+    "query": {
+      "analysis": "trend",
+      "metrics": [
+        "payrollFte"
+      ],
+      "startYear": 2019,
+      "endYear": 2024,
+      "mode": "fixed"
+    }
+  },
+  {
+    "id": "workload",
+    "question": "Which Utah general short-term hospitals had the largest increase in patient days per payroll FTE from 2019 to 2024?",
+    "query": {
+      "analysis": "rank",
+      "metrics": [
+        "patientDaysPerFte"
+      ],
+      "startYear": 2019,
+      "endYear": 2024,
+      "sortBy": "change",
+      "filters": {
+        "scope": "state",
+        "geoState": "UT",
+        "providerType": "1",
+        "category": "any"
+      }
+    }
   }
 ]

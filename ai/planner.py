@@ -7,6 +7,7 @@ MODEL=os.environ.get('BEDROCK_MODEL_ID','')
 
 def plan(question,context):
  if not isinstance(question,str) or not 1<=len(question.strip())<=2000:raise QueryError('Please ask a question of 1–2,000 characters.')
+ if re.search(r'vacanc|turnover|burnout|nurse.to.patient|nursing hours|agency (spend|cost|hours)|contract labo[u]?r|RN wage|nurse wage|staffing shortage|employed (physician|clinician)',question,re.I):return {'clarification':'The loaded workforce measures are hospital-wide payroll employee FTEs, Worksheet A salaries and defined intern/resident FTEs. They do not establish vacancies, turnover, occupational wages, contract labor, individual employment or staffing shortages. I can show payroll FTE trends and patient days per FTE as descriptive context.'}
  relationship_question=re.search(r'who own|owner of|owned by|ownership of|acqui|bought|who operat|which system',question,re.I)
  years=[int(y) for y in re.findall(r'\b(?:19|20)\d{2}\b',question)]
  if relationship_question and (any(y<2026 for y in years) or re.search(r'historical|before|after|used to|acqui|bought',question,re.I)):return {'clarification':'The loaded CMS ownership disclosures are a 2026 snapshot. Association dates do not establish a historical ownership interval or acquisition history. I can show source-reported organizational interests and control roles, but cannot verify who owned the hospital in a prior financial year.'}

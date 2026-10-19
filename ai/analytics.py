@@ -14,6 +14,8 @@ def eligible(r): return bool(r) and 300<=r.get('reportDays',0)<=430
 def metric(key,r):
  def calc(e):
   if 'field' in e and 'op' not in e:return r.get(e['field'])
+  if e['op']=='scale':
+   v=calc(e['arg']);return v*e['factor'] if finite(v) else None
   if e['op']=='annualize':return r[e['field']]*365.25/r['reportDays'] if eligible(r) and finite(r.get(e['field'])) else None
   a,b=map(calc,e['args'])
   if not finite(a) or not finite(b):return None
@@ -24,7 +26,14 @@ def metric(key,r):
 @lru_cache(maxsize=8)
 def dataset(year):
  with gzip.open(BASE/f'data-{year}.json.gz','rt') as f:d=json.load(f)
- return {str(r[0]):dict(zip(d['columns'],r)) for r in d['rows']}
+ records={str(r[0]):dict(zip(d['columns'],r)) for r in d['rows']}
+ workforce=BASE/'workforce'/f'data-{year}.json.gz'
+ if workforce.exists():
+  with gzip.open(workforce,'rt') as f:w=json.load(f)
+  for row in w['rows']:
+   extra=dict(zip(w['columns'],row));r=records.get(extra['ccn'])
+   if r and str(r['reportId'])==str(extra['reportId']):r.update({k:v for k,v in extra.items() if k not in ['ccn','reportId']})
+ return records
 def ownership(r):
  try:c=int(r['control'])
  except (ValueError,TypeError,KeyError):return 'unknown'
@@ -112,6 +121,9 @@ def execute(query):
  q=validate(query);target=dataset(q['anchorYear']).get(q['targetCcn'])
  if not target and q['analysis']!='definition':raise QueryError('Target CCN has no report in the anchor dataset. Choose another anchor year.')
  result={'query':q,'catalogVersion':CAT['version'],'catalogSha256':CAT['catalogSha256'],'queryId':hashlib.sha256(json.dumps(q,sort_keys=True).encode()).hexdigest()[:16],'metrics':{k:CAT['metrics'][k] for k in q['metrics']},'warnings':['Descriptive comparison; not adjusted for case mix, teaching or wages.','Actual fiscal periods differ. Dataset year is not calendar-year standardization.','Dollar values are nominal; missing values are not zero.'],'sources':[{'year':y,**{k:CAT['sources'][str(y)][k] for k in ['source','queriedAt','apiRecordsSha256']}} for y in range(q['startYear'],q['endYear']+1)],'target':{k:target[k] for k in ['ccn','name','state','city','county']} if target else None}
+ if any(k in CAT.get('workforceMetrics',[]) for k in q['metrics']):
+  result['sources'] += [{'year':str(y)+' workforce',**{k:CAT['workforceSources'][str(y)][k] for k in ['source','queriedAt','apiRecordsSha256']}} for y in range(q['startYear'],q['endYear']+1)]
+  result['warnings'].append('Workforce fields are a later API refresh joined to frozen finances by exact report ID, CCN and fiscal period; same report revision vintage is not guaranteed. Payroll FTEs cover all reported employee occupations. Workload per FTE is not a nursing ratio; salaries per FTE are not occupational wages. Contract labor, vacancies and clinician employment are not established.')
  if q['analysis']=='ownership':
   from providers import inspect
   result['provider']=inspect(q['targetCcn']);result['rows']=result['provider']['organizationalRelationships'];result['metrics']={};result['sources']=[{'year':'CMS '+kind+' '+src['vintage'],'source':src['url'],'queriedAt':result['provider']['queriedAt'],'apiRecordsSha256':result['provider']['snapshotSha256']} for kind,src in result['provider']['sources'].items()];result['answer']='CMS-reported organizational ownership interests and control roles for the selected hospital. Exact enrollment-ID joins are evidence of the reported association, not proof of ultimate-parent ownership. NPPES identifies the enrolled organization, not its owner.';return result

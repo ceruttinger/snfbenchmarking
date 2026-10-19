@@ -36,3 +36,7 @@ Run `python graph/open_inspection.py` in this checkout after deployment. It open
 Stopping the EC2 instance preserves its disk. Terminating it or deleting the stack can delete the root disk; retain the private import archive and any desired database backup first. The deployment script deliberately refuses to overwrite an existing Neo4j stack. Refreshes and ownership restatements need explicit snapshot/version handling.
 
 References: [Neo4j Docker](https://neo4j.com/docs/operations-manual/current/docker/introduction/), [LOAD CSV](https://neo4j.com/docs/cypher-manual/current/clauses/load-csv/), [AWS Session Manager port forwarding](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html).
+
+## Workforce update
+
+`python3 graph/update.py` imports the rebuilt versioned artifact into this existing instance with MERGE and checks workforce properties. It retains prior catalog lineage and ownership evidence. An initially stopped instance is temporarily started and restored to stopped afterward. New report properties include payrollFte, residentFte, salaries and seven metric_ properties; WORKFORCE_FROM_SOURCE preserves separate API refresh lineage. Run the six queries in `graph/workforce.cypher`. See `planning/WORKFORCE.md` for limitations.

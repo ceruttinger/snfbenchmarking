@@ -1,0 +1,170 @@
+{
+  "2017": {
+    "year": 2017,
+    "source": "https://data.cms.gov/data-api/v1/dataset/62b6b160-3f7f-4a31-898e-996a410fc9a1/data",
+    "queriedAt": "2026-10-19T03:30:44.663856+00:00",
+    "apiRecordsSha256": "bbc62002e8cd3026e6ed91d06ebb3304c033548ffbd2a429610e40fc0f05d808",
+    "inputReports": 6175,
+    "selectedReports": 6077,
+    "coverage": {
+      "matchedReports": 6077,
+      "payrollFteValid": 5970,
+      "salariesValid": 5994,
+      "residentFteValid": 1341
+    },
+    "join": "Exact report ID + CCN + fiscal begin/end against existing financial snapshot. Unmatched reports remain null.",
+    "fields": {
+      "payrollFte": "FTE - Employees on Payroll",
+      "residentFte": "Number of Interns and Residents (FTE)",
+      "salaries": "Total Salaries From Worksheet A"
+    },
+    "missingPolicy": "Blank, nonfinite and negative values unavailable; reported zero retained. No imputation."
+  },
+  "2018": {
+    "year": 2018,
+    "source": "https://data.cms.gov/data-api/v1/dataset/2caad1a6-e674-47ce-84e7-d14a945e38c9/data",
+    "queriedAt": "2026-10-19T03:30:51.839304+00:00",
+    "apiRecordsSha256": "c2e66641501fa951bdb3dcbd6325749cf780f1fc27d2771e071f45b4ca5e70a4",
+    "inputReports": 6161,
+    "selectedReports": 6049,
+    "coverage": {
+      "matchedReports": 6049,
+      "payrollFteValid": 5941,
+      "residentFteValid": 1353,
+      "salariesValid": 5971
+    },
+    "join": "Exact report ID + CCN + fiscal begin/end against existing financial snapshot. Unmatched reports remain null.",
+    "fields": {
+      "payrollFte": "FTE - Employees on Payroll",
+      "residentFte": "Number of Interns and Residents (FTE)",
+      "salaries": "Total Salaries From Worksheet A"
+    },
+    "missingPolicy": "Blank, nonfinite and negative values unavailable; reported zero retained. No imputation."
+  },
+  "2019": {
+    "year": 2019,
+    "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data",
+    "queriedAt": "2026-10-19T03:30:59.322812+00:00",
+    "apiRecordsSha256": "0f307b1f1a5abdb9baae60c3479e6639a5f2d7d8d3c2f5477a8a5982a404578a",
+    "inputReports": 6125,
+    "selectedReports": 6017,
+    "coverage": {
+      "matchedReports": 6017,
+      "payrollFteValid": 5910,
+      "residentFteValid": 1386,
+      "salariesValid": 5943
+    },
+    "join": "Exact report ID + CCN + fiscal begin/end against existing financial snapshot. Unmatched reports remain null.",
+    "fields": {
+      "payrollFte": "FTE - Employees on Payroll",
+      "residentFte": "Number of Interns and Residents (FTE)",
+      "salaries": "Total Salaries From Worksheet A"
+    },
+    "missingPolicy": "Blank, nonfinite and negative values unavailable; reported zero retained. No imputation."
+  },
+  "2020": {
+    "year": 2020,
+    "source": "https://data.cms.gov/data-api/v1/dataset/4ebc26db-f8f2-4f7e-89cd-a5bc84dcbfbd/data",
+    "queriedAt": "2026-10-19T03:31:06.152674+00:00",
+    "apiRecordsSha256": "fcac0928be2ec66065e81a546ab4ad20997a6e43e8789e5aa6e15de351b1b5fd",
+    "inputReports": 6060,
+    "selectedReports": 5990,
+    "coverage": {
+      "matchedReports": 5990,
+      "payrollFteValid": 5859,
+      "residentFteValid": 1407,
+      "salariesValid": 5911
+    },
+    "join": "Exact report ID + CCN + fiscal begin/end against existing financial snapshot. Unmatched reports remain null.",
+    "fields": {
+      "payrollFte": "FTE - Employees on Payroll",
+      "residentFte": "Number of Interns and Residents (FTE)",
+      "salaries": "Total Salaries From Worksheet A"
+    },
+    "missingPolicy": "Blank, nonfinite and negative values unavailable; reported zero retained. No imputation."
+  },
+  "2021": {
+    "year": 2021,
+    "source": "https://data.cms.gov/data-api/v1/dataset/98b7383e-ad67-44d5-a7d8-0a80a92a72c1/data",
+    "queriedAt": "2026-10-19T03:31:12.725029+00:00",
+    "apiRecordsSha256": "be4457fa3ff0e1c9a5d4a9cb939d7cd2c7bfc9dad7002d70c6436d544f3c8541",
+    "inputReports": 6058,
+    "selectedReports": 5984,
+    "coverage": {
+      "matchedReports": 5984,
+      "payrollFteValid": 5884,
+      "residentFteValid": 1456,
+      "salariesValid": 5908
+    },
+    "join": "Exact report ID + CCN + fiscal begin/end against existing financial snapshot. Unmatched reports remain null.",
+    "fields": {
+      "payrollFte": "FTE - Employees on Payroll",
+      "residentFte": "Number of Interns and Residents (FTE)",
+      "salaries": "Total Salaries From Worksheet A"
+    },
+    "missingPolicy": "Blank, nonfinite and negative values unavailable; reported zero retained. No imputation."
+  },
+  "2022": {
+    "year": 2022,
+    "source": "https://data.cms.gov/data-api/v1/dataset/8457c184-a531-40db-8597-2497fec80c7a/data",
+    "queriedAt": "2026-10-19T03:31:20.090803+00:00",
+    "apiRecordsSha256": "fe167f62e103f7ef80c0b489f75217b0fc771e9196059863deb824f970796bba",
+    "inputReports": 6069,
+    "selectedReports": 6004,
+    "coverage": {
+      "matchedReports": 6004,
+      "payrollFteValid": 5892,
+      "residentFteValid": 1506,
+      "salariesValid": 5922
+    },
+    "join": "Exact report ID + CCN + fiscal begin/end against existing financial snapshot. Unmatched reports remain null.",
+    "fields": {
+      "payrollFte": "FTE - Employees on Payroll",
+      "residentFte": "Number of Interns and Residents (FTE)",
+      "salaries": "Total Salaries From Worksheet A"
+    },
+    "missingPolicy": "Blank, nonfinite and negative values unavailable; reported zero retained. No imputation."
+  },
+  "2023": {
+    "year": 2023,
+    "source": "https://data.cms.gov/data-api/v1/dataset/f08d4c46-c0e4-4bcb-a54a-c62c87d59251/data",
+    "queriedAt": "2026-10-19T03:31:26.776161+00:00",
+    "apiRecordsSha256": "fa781cd072c996fa120b6901e21a6d581f99868faba98ef5da01bc20ced83328",
+    "inputReports": 6109,
+    "selectedReports": 6046,
+    "coverage": {
+      "matchedReports": 6046,
+      "payrollFteValid": 5910,
+      "residentFteValid": 1528,
+      "salariesValid": 5962
+    },
+    "join": "Exact report ID + CCN + fiscal begin/end against existing financial snapshot. Unmatched reports remain null.",
+    "fields": {
+      "payrollFte": "FTE - Employees on Payroll",
+      "residentFte": "Number of Interns and Residents (FTE)",
+      "salaries": "Total Salaries From Worksheet A"
+    },
+    "missingPolicy": "Blank, nonfinite and negative values unavailable; reported zero retained. No imputation."
+  },
+  "2024": {
+    "year": 2024,
+    "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data",
+    "queriedAt": "2026-10-19T03:31:33.853967+00:00",
+    "apiRecordsSha256": "b535d6e3d3397e10b3fde79abe75c73694d6bf867a82d6027985c613da640045",
+    "inputReports": 6109,
+    "selectedReports": 6026,
+    "coverage": {
+      "matchedReports": 6026,
+      "payrollFteValid": 5903,
+      "residentFteValid": 1580,
+      "salariesValid": 5945
+    },
+    "join": "Exact report ID + CCN + fiscal begin/end against existing financial snapshot. Unmatched reports remain null.",
+    "fields": {
+      "payrollFte": "FTE - Employees on Payroll",
+      "residentFte": "Number of Interns and Residents (FTE)",
+      "salaries": "Total Salaries From Worksheet A"
+    },
+    "missingPolicy": "Blank, nonfinite and negative values unavailable; reported zero retained. No imputation."
+  }
+}

@@ -13,3 +13,7 @@ Build the deployment template with `python infra/build_template.py`, package wit
 See `planning/AI_SEMANTIC_ARCHITECTURE.md` for semantics, limits, next AI components and validation.
 
 Coverage analysis currently reports dataset-wide metadata totals. Historical-owner questions are refused; the current disclosure snapshot does not establish past ownership. Questions are interpreted as individual requests using explicit UI context; typed multi-turn result-set follow-ups are future work.
+
+## Workforce extension
+
+Catalog 1.1.0 adds seven workforce measures backed by three CMS API fields and exact report-ID/CCN/period joins. See `planning/WORKFORCE.md` for scope and reproducibility. Run `python3 ai/test_workforce.py`. Guided comparisons do not require a model call; the two new language examples are included in `eval_planner.py`.

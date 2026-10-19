@@ -52,7 +52,14 @@
           "discharges",
           "patientDays",
           "revenue",
-          "expense"
+          "expense",
+          "payrollFte",
+          "residentFte",
+          "salaries",
+          "ftePer100Beds",
+          "dischargesPerFte",
+          "patientDaysPerFte",
+          "salaryPerFte"
         ]
       }
     },

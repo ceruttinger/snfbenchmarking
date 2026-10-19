@@ -103,7 +103,8 @@ The 85% threshold is an exploratory filter, not a universal safe-capacity standa
 MATCH (h:Hospital)-[:HAS_COST_REPORT]->(a:CostReport {datasetYear:2019}),
       (h)-[:HAS_COST_REPORT]->(b:CostReport {datasetYear:2024})
 WHERE a.eligible AND b.eligible AND a.providerType='1' AND b.providerType='1'
-  AND a.fiscalEnd<b.fiscalBegin AND a.beds>0 AND b.beds>=0
+  AND a.fiscalEnd<b.fiscalBegin AND a.beds>0 AND b.beds>0
+  AND a.beds<=10000 AND b.beds<=10000 AND b.beds>=a.beds/4 AND b.beds<=a.beds*4
 RETURN h.id AS ccn, h.name AS hospital, h.state AS latestState,
        a.beds AS beds2019, b.beds AS beds2024,
        b.beds-a.beds AS bedChange,
@@ -111,7 +112,7 @@ RETURN h.id AS ccn, h.name AS hospital, h.state AS latestState,
 ORDER BY bedChange LIMIT 50;
 ```
 
-Reported bed changes may reflect reporting boundaries or service changes; they are not necessarily physical closures or staffed-bed changes.
+Capacity queries screen out endpoints above 10,000 beds, zero endpoints and more than fourfold changes; excluded records need separate review. Reported bed changes may reflect reporting boundaries or service changes; they are not necessarily physical closures or staffed-bed changes.
 
 ## 8. Which hospitals experienced the greatest growth in inpatient demand?
 
@@ -209,7 +210,8 @@ MATCH (h:Hospital)-[:HAS_COST_REPORT]->(a:CostReport {datasetYear:2019}),
       (a)-[:REPORTED_IN]->(g:Geography {kind:'county'}),
       (b)-[:REPORTED_IN]->(g)
 WHERE a.eligible AND b.eligible AND a.providerType='1' AND b.providerType='1'
-  AND a.fiscalEnd<b.fiscalBegin AND a.beds>=0 AND b.beds>=0
+  AND a.fiscalEnd<b.fiscalBegin AND a.beds>0 AND b.beds>0
+  AND a.beds<=10000 AND b.beds<=10000 AND b.beds>=a.beds/4 AND b.beds<=a.beds*4
 RETURN g.state AS state, g.name AS county, count(DISTINCT h) AS matchedHospitals,
        sum(a.beds) AS beds2019, sum(b.beds) AS beds2024,
        sum(b.beds-a.beds) AS bedChange

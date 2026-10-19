@@ -13,12 +13,15 @@ for y in YEARS:
   rural.append({'year':y,'group':group,'hospitals':len(rows),'validMargins':len(margins),
     'medianMarginPct':100*med(margins) if len(margins)>=5 else None,
     'lossPct':100*sum(v<0 for v in margins)/len(margins) if len(margins)>=5 else None})
-before=dataset(2019);after=dataset(2024);capacity=[];workforce=[]
+before=dataset(2019);after=dataset(2024);capacity=[];workforce=[];capacityReview=[]
 for c,b in after.items():
  a=before.get(c)
  if not a or not eligible(a) or not eligible(b) or a['providerType']!='1' or b['providerType']!='1' or a['end']>=b['begin']:continue
  if finite(a['beds']) and a['beds']>0 and finite(b['beds']) and b['beds']>=0:
-  capacity.append({'ccn':c,'hospital':b['name'],'state':b['state'],'beds2019':a['beds'],'beds2024':b['beds'],'bedChange':b['beds']-a['beds']})
+  row={'ccn':c,'hospital':b['name'],'state':b['state'],'beds2019':a['beds'],'beds2024':b['beds'],'bedChange':b['beds']-a['beds']}
+  reason='Reported beds exceed 10,000' if max(a['beds'],b['beds'])>10000 else 'Zero endpoint or more than fourfold bed change' if b['beds']==0 or max(a['beds'],b['beds'])/min(a['beds'],b['beds'])>4 else None
+  if reason:capacityReview.append({**row,'reviewReason':reason})
+  else:capacity.append(row)
  f0=metric('payrollFte',a);f1=metric('payrollFte',b);d0=metric('patientDays',a);d1=metric('patientDays',b)
  if all(finite(v) and v>0 for v in [f0,f1,d0,d1]):
   workforce.append({'ccn':c,'hospital':b['name'],'state':b['state'],'fte2019':f0,'fte2024':f1,
@@ -27,7 +30,9 @@ for c,b in after.items():
 capacity.sort(key=lambda r:(r['bedChange'],r['ccn']))
 workforce.sort(key=lambda r:(-r['daysPerFteGrowthPct'],r['ccn']))
 payload={'catalogSha256':CAT['catalogSha256'],'baseline':2019,'endpoint':2024,'ruralFinance':rural,
- 'capacity':{'matchedHospitals':len(capacity),'beds2019':sum(r['beds2019'] for r in capacity),'beds2024':sum(r['beds2024'] for r in capacity),'largestReductions':[r for r in capacity if r['bedChange']<0][:25]},
+ 'capacity':{'matchedHospitals':len(capacity),'reviewExcludedHospitals':len(capacityReview),'reviewRules':'Either endpoint over 10,000 reported beds; zero endpoint; or more than fourfold endpoint difference. Screening flags require review, not proof of error. No values imputed.',
+   'reviewRecords':sorted(capacityReview,key=lambda r:r['bedChange']),
+   'beds2019':sum(r['beds2019'] for r in capacity),'beds2024':sum(r['beds2024'] for r in capacity),'largestReductions':[r for r in capacity if r['bedChange']<0][:25]},
  'workforce':{'matchedHospitals':len(workforce),'hospitalsWithDaysGrowingFasterThanFte':sum(r['daysPerFteGrowthPct']>0 for r in workforce),
    'medianFteGrowthPct':med([r['fteGrowthPct'] for r in workforce]),'medianPatientDaysGrowthPct':med([r['patientDaysGrowthPct'] for r in workforce]),
    'largestWorkloadIncreases':[r for r in workforce if r['daysPerFteGrowthPct']>0][:25]},

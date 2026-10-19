@@ -35,4 +35,10 @@ class WorkforceTests(unittest.TestCase):
   from planner import plan
   for q in ['Show nurse-to-patient ratios','Rank hospitals by turnover','Which hospitals have staffing shortages?']:
    self.assertIn('clarification',plan(q,{}))
+ def test_capacity_review_is_visible_and_excluded(self):
+  p=json.loads((a.BASE/'lab/policy.json').read_text());c=p['capacity']
+  self.assertEqual(c['matchedHospitals']+c['reviewExcludedHospitals'],4143)
+  self.assertEqual(c['reviewExcludedHospitals'],len(c['reviewRecords']))
+  self.assertTrue(any(r['ccn']=='131316' and r['beds2019']>10000 for r in c['reviewRecords']))
+  self.assertTrue(all(0<r['beds2019']<=10000 and 0<r['beds2024']<=10000 and .25<=r['beds2024']/r['beds2019']<=4 for r in c['largestReductions']))
 if __name__=='__main__':unittest.main()

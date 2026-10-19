@@ -7,6 +7,9 @@ MODEL=os.environ.get('BEDROCK_MODEL_ID','')
 
 def plan(question,context):
  if not isinstance(question,str) or not 1<=len(question.strip())<=2000:raise QueryError('Please ask a question of 1–2,000 characters.')
+ relationship_question=re.search(r'who own|owner of|owned by|ownership of|acqui|bought|who operat|which system',question,re.I)
+ years=[int(y) for y in re.findall(r'\b(?:19|20)\d{2}\b',question)]
+ if relationship_question and (any(y<2026 for y in years) or re.search(r'historical|before|after|used to|acqui|bought',question,re.I)):return {'clarification':'The loaded CMS ownership disclosures are a 2026 snapshot. Association dates do not establish a historical ownership interval or acquisition history. I can show source-reported organizational interests and control roles, but cannot verify who owned the hospital in a prior financial year.'}
  if re.search(r'\boperating margin\b',question,re.I) and not re.search(r'total margin|patient.service margin',question,re.I):return {'clarification':'RAND operating margin is not loaded. I can calculate patient-service margin or total margin; which would you like?'}
  current=dataset(context.get('anchorYear',2024)).get(context.get('targetCcn','460010'))
  if current and re.search(r'who owns|ownership|owning entity|owner of',question,re.I) and (current['name'].lower() in question.lower() or re.search(r'this hospital|target hospital',question,re.I)):

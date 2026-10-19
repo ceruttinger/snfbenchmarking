@@ -11,3 +11,5 @@ Run the local site and read-only API: `BEDROCK_MODEL_ID=mistral.mistral-large-3-
 Build the deployment template with `python infra/build_template.py`, package with `python infra/package.py`, then deploy the isolated AWS draft with `python infra/deploy.py`. Deployment outputs and evaluation artifacts stay in ignored `infra/build/`. The deployment script does not alter DNS or GitHub Pages.
 
 See `planning/AI_SEMANTIC_ARCHITECTURE.md` for semantics, limits, next AI components and validation.
+
+Coverage analysis currently reports dataset-wide metadata totals. Historical-owner questions are refused; the current disclosure snapshot does not establish past ownership. Questions are interpreted as individual requests using explicit UI context; typed multi-turn result-set follow-ups are future work.

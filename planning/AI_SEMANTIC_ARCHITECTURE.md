@@ -41,3 +41,11 @@ No API key or AWS credential is shipped to a browser. CMS API financial response
 ## Validation
 
 Run `python ai/test_analytics.py`, `node hospitals/test_metrics.cjs`, `node hospitals/test_history.cjs`, and `python hospitals/test_api.py`. Semantic formulas were cross-checked against 2,016 observations from the existing JavaScript engine. Run live `ai/eval_planner.py` only with an authorized model/budget; it writes its result under ignored `infra/build/`. All package and snapshot hashes are retained. Browser QA must include a compound question, ambiguity, source metadata and NPPES/ownership inspection.
+
+## Deployed inspection graph
+
+The AWS Neo4j inspection phase is complete. Verification returned 98,094 nodes, 373,414 relationships, 48,193 cost reports and 16,044 organizational disclosure assertions. Neo4j returned the same 2024 Intermountain occupancy and total margin as the semantic engine and a 638-hospital valid occupancy peer count with median 0.7533562622695437. Missing ownership percentages remain null (2,851 assertions). The instance uses private loopback database ports accessed through SSM; its password stays in Secrets Manager. See `graph/README.md` and `graph/inspection-summary.json` for evidence, coverage and access instructions.
+
+NPI references cover CMS hospital enrollment identities; the loaded NPPES attributes are a bounded sample of 11 organizations. Exact-NPI NPPES and exact-associate cross-category CMS enrollment lookups remain available on demand in the app. The loaded sample demonstrates 80 cross-category enrollments for a disclosed organizational associate; it is not a complete national cross-category ownership census. Historical-owner questions are explicitly refused because a 2026 disclosure snapshot does not establish a historical ownership interval. Dataset coverage questions describe dataset-wide metadata totals; defined-peer coverage is shown in trend results.
+
+For the next AI iteration, add typed conversational state (the previous validated query and explicit result IDs), evidence review for probabilistic organization matches, independently authored holdout questions, and parameterized read-only graph tools. A model must not turn co-location, name similarity, enrollment association or an inferred alias into verified ownership.

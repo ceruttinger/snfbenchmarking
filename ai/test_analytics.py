@@ -30,6 +30,10 @@ class EngineTests(unittest.TestCase):
   for c in json.loads((a.BASE/'lab/use-cases.json').read_text()):
    if 'query' in c:
     r=a.execute(c['query']);self.assertIn('catalogSha256',r);self.assertTrue(r['sources'])
+ def test_historical_ownership_is_not_inferred(self):
+  from planner import plan
+  r=plan('Who owned Intermountain Medical Center in 2019?',{'targetCcn':'460010','anchorYear':2024})
+  self.assertIn('clarification',r);self.assertNotIn('query',r)
  def test_ownership_crosswalk(self):
   from providers import layer
   d=layer();self.assertGreater(len(d['providers']),5000);self.assertGreater(len(d['relationships']),10000)

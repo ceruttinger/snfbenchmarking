@@ -1,0 +1,40 @@
+{
+  "counts": {
+    "hospitals": 6785,
+    "reports": 48193,
+    "geographies": 6898,
+    "sources": 11,
+    "organizations": 8069,
+    "enrollments": 6020,
+    "npis": 6004,
+    "ownership_assertions": 16044,
+    "taxonomies": 26,
+    "npi_taxonomies": 40,
+    "catalogs": 1,
+    "metrics": 14,
+    "fields": 29,
+    "metric_fields": 28
+  },
+  "catalogSha256": "61902172f25823206b4f349d693ff19535d5e932d149068b2fac7ca5f0c9f1ae",
+  "financialFacilityYears": 48193,
+  "nppesEnrichedOrganizations": 11,
+  "nppesCoverage": "Identifiers are national hospital enrollment references; NPPES attributes are a bounded exact-NPI sample, not the full national NPPES database.",
+  "ownershipPolicy": "Only source-reported organizational interests/control roles. No inferred ultimate-parent edges. Current disclosures are not financial-year ownership histories.",
+  "databaseVerification": {
+    "edition": "Neo4j Community",
+    "version": "5.26.32",
+    "nodes": 98094,
+    "relationships": 373414,
+    "costReports": 48193,
+    "ownershipAssertions": 16044,
+    "example2024TargetCcn": "460010",
+    "example2024Occupancy": 0.7843553936450112,
+    "example2024TotalMargin": 0.08552293118495197,
+    "example2024OccupancyPeerCount": 638,
+    "example2024OccupancyPeerMedian": 0.7533562622695437,
+    "missingOwnershipPercentagesPreserved": 2851
+  },
+  "access": "Private database ports through authenticated AWS SSM; password in AWS Secrets Manager.",
+  "verifiedDate": "2026-10-18",
+  "importArtifactSha256": "1c02ad0a4df8bdcf17159d982c7c73a7f9f88a1141f3522a91f660567d7354c1"
+}

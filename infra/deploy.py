@@ -1,5 +1,5 @@
 """Deploy an isolated AWS draft. Does not change production DNS or GitHub Pages."""
-import hashlib,json,mimetypes,time
+import hashlib,json,mimetypes,time,sys
 from pathlib import Path
 import boto3
 from botocore.exceptions import ClientError
@@ -35,7 +35,7 @@ else:raise RuntimeError('Draft deployment is still running; inspect the existing
 outputs={o['OutputKey']:o['OutputValue'] for o in stack['Outputs']}
 # All uploaded files come from the existing public docs tree. Ownership snapshots stay server-side.
 count=0
-for p in (ROOT/'docs').rglob('*'):
+for p in ([] if '--runtime-only' in sys.argv else (ROOT/'docs').rglob('*')):
  if not p.is_file() or p.name in ['CNAME','.DS_Store','providers.json']:continue
  rel=p.relative_to(ROOT/'docs').as_posix();content=mimetypes.guess_type(p.name)[0] or 'application/octet-stream'
  if p.suffix=='.gz':content='application/gzip'

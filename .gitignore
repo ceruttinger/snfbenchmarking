@@ -33,4 +33,5 @@ infra/build/
 
 # Derived server-side organizational snapshot is packaged privately for AWS.
 docs/hospitals/lab/providers.json
+docs/hospitals/lab/network.json
 graph/build/

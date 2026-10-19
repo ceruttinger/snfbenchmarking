@@ -4,6 +4,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'ai'))
 from analytics import CAT,YEARS,dataset,metric,eligible
 from providers import layer
+from ownership_roles import classify
 OUT=Path(__file__).parent/'build';OUT.mkdir(exist_ok=True)
 providers=layer();enrichment=json.loads((OUT/'provider-enrichment.json').read_text()) if (OUT/'provider-enrichment.json').exists() else {}
 counts={};files={}
@@ -37,7 +38,7 @@ for p in providers['providers']:
 for r in providers['relationships']:
  oid='cms:associate:'+r['ownerAssociateId'];orgs.setdefault(oid,{'id':oid,'associateId':r['ownerAssociateId'],'name':r['ownerName'],'ultimateParentResolved':'false'})
  aid=hashlib.sha256(json.dumps([r['ccn'],r['enrollmentId'],oid,r['roleCode'],r['associationDate'],r['percentage'],providers['snapshotSha256']],sort_keys=True).encode()).hexdigest()
- assertions.append({'id':aid,'ccn':r['ccn'],'organizationId':oid,'enrollmentId':r['enrollmentId'],'relationship':r['relationship'],'role':r['role'],'roleCode':r['roleCode'],'percentage':r['percentage'],'associationDate':r['associationDate'],'evidenceStatus':r['evidenceStatus'],'observedAt':r['observedAt'],'sourceVintage':r['sourceVintage'],'snapshotId':'cms:owners:'+providers['snapshotSha256']})
+ assertions.append({'id':aid,'ccn':r['ccn'],'organizationId':oid,'enrollmentId':r['enrollmentId'],'relationship':classify(r['role']),'role':r['role'],'roleCode':r['roleCode'],'percentage':r['percentage'],'associationDate':r['associationDate'],'evidenceStatus':r['evidenceStatus'],'observedAt':r['observedAt'],'sourceVintage':r['sourceVintage'],'snapshotId':'cms:owners:'+providers['snapshotSha256']})
 for g in enrichment.get('crossCategoryEnrollments',[]):
  if g.get('status')!='source_reported':continue
  sid='cms:cross-category:'+g['associateId'];sources.append({'id':sid,'name':'CMS Medicare FFS Public Provider Enrollment','datasetYear':'','vintage':g['sourceVintage'],'url':g['source'],'queriedAt':g['queriedAt'],'sha256':hashlib.sha256(json.dumps(g,sort_keys=True).encode()).hexdigest()})
@@ -77,11 +78,16 @@ numeric=['beds','days','availableDays','discharges','medicareDays','medicaidDays
 numeric+=['payrollFte','residentFte','salaries']
 sets=','.join('n.'+k+'=toFloat(row.'+k+')' for k in numeric)
 load('reports',"MATCH (h:Hospital {id:row.ccn}),(s:SourceSnapshot {id:row.snapshotId}),(c:SemanticCatalog {id:row.catalogId}),(g:Geography {id:row.stateId}) MERGE (n:CostReport {id:row.id}) SET n.datasetYear=toInteger(row.datasetYear),n.reportId=row.reportId,n.ccn=row.ccn,n.fiscalBegin=date(row.begin),n.fiscalEnd=date(row.end),n.reportDays=toInteger(row.reportDays),n.eligible=toBoolean(row.eligible),n.kind=row.kind,n.providerType=row.providerType,n.control=row.control,n.rural=row.rural,"+sets+" MERGE (h)-[:HAS_COST_REPORT]->(n) MERGE (n)-[:FROM_SOURCE]->(s) MERGE (n)-[:INTERPRETED_WITH]->(c) MERGE (n)-[:REPORTED_IN]->(g) WITH n,row OPTIONAL MATCH (city:Geography {id:row.cityId}) FOREACH (_ IN CASE WHEN city IS NULL THEN [] ELSE [1] END | MERGE (n)-[:REPORTED_IN]->(city)) WITH n,row OPTIONAL MATCH (county:Geography {id:row.countyId}) FOREACH (_ IN CASE WHEN county IS NULL THEN [] ELSE [1] END | MERGE (n)-[:REPORTED_IN]->(county))")
+statements.append("MATCH (:Hospital)-[r:REPORTED_CONTROL_ROLE]->() WHERE NOT toUpper(r.role) CONTAINS 'OPERATIONAL/MANAGERIAL CONTROL' DELETE r;")
 load('ownership_assertions',"MATCH (h:Hospital {id:row.ccn}),(o:Organization {id:row.organizationId}),(s:SourceSnapshot {id:row.snapshotId}) MERGE (a:OwnershipAssertion {id:row.id}) SET a.role=row.role,a.roleCode=row.roleCode,a.percentage=toFloat(row.percentage),a.associationDate=row.associationDate,a.evidenceStatus=row.evidenceStatus,a.sourceVintage=row.sourceVintage,a.observedAt=row.observedAt,a.enrollmentId=row.enrollmentId MERGE (h)-[:HAS_OWNERSHIP_ASSERTION]->(a) MERGE (a)-[:ASSOCIATE]->(o) MERGE (a)-[:FROM_SOURCE]->(s) FOREACH (_ IN CASE WHEN row.relationship='REPORTED_OWNERSHIP_INTEREST' THEN [1] ELSE [] END | MERGE (h)-[r:REPORTED_OWNERSHIP_INTEREST {assertionId:row.id}]->(o) SET r.role=row.role,r.percentage=toFloat(row.percentage),r.evidenceStatus=row.evidenceStatus,r.sourceVintage=row.sourceVintage) FOREACH (_ IN CASE WHEN row.relationship='REPORTED_CONTROL_ROLE' THEN [1] ELSE [] END | MERGE (h)-[r:REPORTED_CONTROL_ROLE {assertionId:row.id}]->(o) SET r.role=row.role,r.evidenceStatus=row.evidenceStatus,r.sourceVintage=row.sourceVintage)")
 (OUT/'load.cypher').write_text('\n\n'.join(statements)+'\n')
 load('reports',"MATCH (r:CostReport {id:row.id}),(s:SourceSnapshot {id:row.workforceSnapshotId}) MERGE (r)-[:WORKFORCE_FROM_SOURCE]->(s)")
+load('ownership_assertions',"MATCH (h:Hospital {id:row.ccn}),(a:OwnershipAssertion {id:row.id}),(o:Organization {id:row.organizationId}) SET a.category='Hospital',a.relationshipKind=row.relationship FOREACH (_ IN CASE WHEN row.relationship='REPORTED_ASSOCIATION_ROLE' THEN [1] ELSE [] END | MERGE (h)-[r:REPORTED_ASSOCIATION_ROLE {assertionId:row.id}]->(o) SET r.role=row.role,r.evidenceStatus='source_reported',r.sourceVintage=row.sourceVintage)")
+from network_extension import extend
+network_summary=extend(Path(__file__).resolve().parents[1],write,load,statements)
 (OUT/'load.cypher').write_text('\n\n'.join(statements)+'\n')
 summary={'counts':counts,'catalogSha256':catalog_id,'financialFacilityYears':len(reports),'nppesEnrichedOrganizations':sum(x['enumerationType']=='NPI-2' for x in npi.values()),'nppesCoverage':'Identifiers are national hospital enrollment references; NPPES attributes are a bounded exact-NPI sample, not the full national NPPES database.','ownershipPolicy':'Only source-reported organizational interests/control roles. No inferred ultimate-parent edges. Current disclosures are not financial-year ownership histories.'}
+summary['network']=network_summary
 (OUT/'graph-manifest.json').write_text(json.dumps(summary,indent=2)+'\n')
 with zipfile.ZipFile(OUT/'neo4j-import.zip','w',zipfile.ZIP_DEFLATED) as z:
  for p in list(files.values())+[OUT/'load.cypher',OUT/'graph-manifest.json']:z.write(p,p.name)

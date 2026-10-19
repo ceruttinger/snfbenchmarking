@@ -19,6 +19,9 @@ def route(path,body):
  if path=='/api/health':return {'status':'ok','catalogVersion':CAT['version'],'catalogSha256':CAT['catalogSha256'],'modelConfigured':bool(os.environ.get('BEDROCK_MODEL_ID')),'years':CAT['years']}
  if not isinstance(body,dict):raise QueryError('Send a JSON object.')
  reserve_call('request',2000)
+ if path=='/api/network':
+  from network import inspect
+  return {'execution':'Exact CMS organizational IDs and dated event evidence','network':inspect(body.get('ccn'))}
  if path=='/api/provider':
   from providers import inspect
   return {'execution':'CMS enrollment evidence + exact-NPI NPPES lookup','provider':inspect(body.get('ccn'))}

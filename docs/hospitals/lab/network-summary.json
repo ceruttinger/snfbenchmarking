@@ -1,0 +1,1038 @@
+{
+  "coverage": [
+    {
+      "category": "Hospital",
+      "facilities": 5962,
+      "organizationalAssertions": 16044,
+      "ownershipCoverage": "Organizational disclosures",
+      "vintage": "2026-08-02",
+      "unit": "Retained CCNs"
+    },
+    {
+      "category": "SNF",
+      "facilities": 14231,
+      "organizationalAssertions": 84760,
+      "omittedIndividualOrUnidentifiedRows": 215190,
+      "ownershipCoverage": "Organizational disclosures",
+      "vintage": "2026-10-01",
+      "unit": "Retained CCNs",
+      "enrollmentRowsQueried": 14404,
+      "retainedEnrollmentRows": 14231,
+      "omittedEnrollmentRows": 173
+    },
+    {
+      "category": "Home health",
+      "facilities": 11429,
+      "organizationalAssertions": 21373,
+      "omittedIndividualOrUnidentifiedRows": 81208,
+      "ownershipCoverage": "Organizational disclosures",
+      "vintage": "2026-10-01",
+      "unit": "Retained CCNs",
+      "enrollmentRowsQueried": 11522,
+      "retainedEnrollmentRows": 11429,
+      "omittedEnrollmentRows": 93
+    },
+    {
+      "category": "Hospice",
+      "facilities": 4706,
+      "organizationalAssertions": 18215,
+      "omittedIndividualOrUnidentifiedRows": 51954,
+      "ownershipCoverage": "Organizational disclosures",
+      "vintage": "2026-10-01",
+      "unit": "Retained CCNs",
+      "enrollmentRowsQueried": 5690,
+      "retainedEnrollmentRows": 4706,
+      "omittedEnrollmentRows": 984
+    },
+    {
+      "category": "FQHC",
+      "facilities": 9927,
+      "organizationalAssertions": 2587,
+      "omittedIndividualOrUnidentifiedRows": 146773,
+      "ownershipCoverage": "Organizational disclosures",
+      "vintage": "2026-10-01",
+      "unit": "Retained CCNs",
+      "enrollmentRowsQueried": 11166,
+      "retainedEnrollmentRows": 9927,
+      "omittedEnrollmentRows": 1239
+    },
+    {
+      "category": "RHC",
+      "facilities": 5385,
+      "organizationalAssertions": 6176,
+      "omittedIndividualOrUnidentifiedRows": 60842,
+      "ownershipCoverage": "Organizational disclosures",
+      "vintage": "2026-10-01",
+      "unit": "Retained CCNs",
+      "enrollmentRowsQueried": 5626,
+      "retainedEnrollmentRows": 5385,
+      "omittedEnrollmentRows": 241
+    },
+    {
+      "category": "Renal",
+      "facilities": 7493,
+      "organizationalAssertions": 0,
+      "ownershipCoverage": "Enrollment only; ownership unavailable in this layer",
+      "vintage": "2026-07-01",
+      "unit": "Medicare enrollment identities"
+    },
+    {
+      "category": "CMHC",
+      "facilities": 90,
+      "organizationalAssertions": 0,
+      "ownershipCoverage": "Enrollment only; ownership unavailable in this layer",
+      "vintage": "2026-07-01",
+      "unit": "Medicare enrollment identities"
+    }
+  ],
+  "crossCategoryOrganizations": 2355,
+  "largestCrossCategoryFootprints": [
+    {
+      "associateId": "8628988441",
+      "organization": "TRINITY HEALTH CORPORATION",
+      "facilityCount": 121,
+      "categoryCount": 6,
+      "categories": {
+        "Hospital": 58,
+        "Hospice": 13,
+        "Home health": 17,
+        "SNF": 16,
+        "FQHC": 2,
+        "RHC": 15
+      }
+    },
+    {
+      "associateId": "1355259755",
+      "organization": "COMMONSPIRIT HEALTH",
+      "facilityCount": 247,
+      "categoryCount": 5,
+      "categories": {
+        "Hospital": 113,
+        "Home health": 46,
+        "RHC": 52,
+        "Hospice": 20,
+        "SNF": 16
+      }
+    },
+    {
+      "associateId": "0446167381",
+      "organization": "HCA INC",
+      "facilityCount": 207,
+      "categoryCount": 5,
+      "categories": {
+        "Hospital": 154,
+        "Home health": 26,
+        "RHC": 13,
+        "SNF": 3,
+        "Hospice": 11
+      }
+    },
+    {
+      "associateId": "6305755471",
+      "organization": "HEALTHTRUST INC - THE HOSPITAL COMPANY",
+      "facilityCount": 205,
+      "categoryCount": 5,
+      "categories": {
+        "Hospital": 151,
+        "Home health": 26,
+        "RHC": 13,
+        "SNF": 3,
+        "Hospice": 12
+      }
+    },
+    {
+      "associateId": "1052593506",
+      "organization": "HCA HEALTHCARE INC",
+      "facilityCount": 202,
+      "categoryCount": 5,
+      "categories": {
+        "Hospital": 149,
+        "Home health": 25,
+        "RHC": 13,
+        "SNF": 3,
+        "Hospice": 12
+      }
+    },
+    {
+      "associateId": "3971608001",
+      "organization": "HERCULES HOLDING II",
+      "facilityCount": 194,
+      "categoryCount": 5,
+      "categories": {
+        "Hospital": 141,
+        "Home health": 26,
+        "RHC": 13,
+        "SNF": 3,
+        "Hospice": 11
+      }
+    },
+    {
+      "associateId": "7416089834",
+      "organization": "SANFORD",
+      "facilityCount": 184,
+      "categoryCount": 5,
+      "categories": {
+        "Hospice": 12,
+        "RHC": 36,
+        "Hospital": 31,
+        "SNF": 89,
+        "Home health": 16
+      }
+    },
+    {
+      "associateId": "1456827369",
+      "organization": "FRISCO HOLDING II",
+      "facilityCount": 154,
+      "categoryCount": 5,
+      "categories": {
+        "Hospital": 133,
+        "RHC": 13,
+        "Hospice": 4,
+        "Home health": 3,
+        "SNF": 1
+      }
+    },
+    {
+      "associateId": "8921040940",
+      "organization": "LEGACY LIFEPOINT HEALTH LLC",
+      "facilityCount": 152,
+      "categoryCount": 5,
+      "categories": {
+        "RHC": 78,
+        "Home health": 19,
+        "Hospice": 6,
+        "Hospital": 41,
+        "SNF": 8
+      }
+    },
+    {
+      "associateId": "4587571393",
+      "organization": "HISTORIC LIFEPOINT HOSPITALS LLC",
+      "facilityCount": 139,
+      "categoryCount": 5,
+      "categories": {
+        "RHC": 73,
+        "Home health": 19,
+        "Hospice": 6,
+        "Hospital": 34,
+        "SNF": 7
+      }
+    },
+    {
+      "associateId": "3678480480",
+      "organization": "LIFEPOINT HOSPITALS HOLDINGS LLC",
+      "facilityCount": 138,
+      "categoryCount": 5,
+      "categories": {
+        "RHC": 73,
+        "Home health": 19,
+        "Hospice": 5,
+        "Hospital": 34,
+        "SNF": 7
+      }
+    },
+    {
+      "associateId": "9032028105",
+      "organization": "HTI HOSPITAL HOLDINGS INC",
+      "facilityCount": 89,
+      "categoryCount": 5,
+      "categories": {
+        "Hospital": 65,
+        "RHC": 10,
+        "SNF": 3,
+        "Hospice": 6,
+        "Home health": 5
+      }
+    },
+    {
+      "associateId": "4688619463",
+      "organization": "BON SECOURS MERCY HEALTH INC",
+      "facilityCount": 73,
+      "categoryCount": 5,
+      "categories": {
+        "Hospital": 38,
+        "RHC": 11,
+        "SNF": 3,
+        "Home health": 10,
+        "Hospice": 11
+      }
+    },
+    {
+      "associateId": "8224946835",
+      "organization": "ASCENSION HEALTH",
+      "facilityCount": 66,
+      "categoryCount": 5,
+      "categories": {
+        "Hospital": 29,
+        "Home health": 30,
+        "RHC": 4,
+        "Hospice": 2,
+        "SNF": 1
+      }
+    },
+    {
+      "associateId": "3870494834",
+      "organization": "ASPIRUS, INC",
+      "facilityCount": 64,
+      "categoryCount": 5,
+      "categories": {
+        "RHC": 42,
+        "SNF": 1,
+        "Hospital": 15,
+        "Hospice": 4,
+        "Home health": 2
+      }
+    },
+    {
+      "associateId": "8224945860",
+      "organization": "AVERA HEALTH",
+      "facilityCount": 54,
+      "categoryCount": 5,
+      "categories": {
+        "Hospital": 21,
+        "SNF": 11,
+        "RHC": 20,
+        "Home health": 1,
+        "Hospice": 1
+      }
+    },
+    {
+      "associateId": "2062320559",
+      "organization": "DIGNITY HEALTH",
+      "facilityCount": 52,
+      "categoryCount": 5,
+      "categories": {
+        "Hospital": 29,
+        "Home health": 8,
+        "RHC": 8,
+        "Hospice": 4,
+        "SNF": 3
+      }
+    },
+    {
+      "associateId": "9537076153",
+      "organization": "SUTTER HEALTH",
+      "facilityCount": 51,
+      "categoryCount": 5,
+      "categories": {
+        "Home health": 15,
+        "Hospital": 23,
+        "Hospice": 8,
+        "SNF": 1,
+        "RHC": 4
+      }
+    },
+    {
+      "associateId": "6608784731",
+      "organization": "MCLAREN HEALTH CARE CORPORATION",
+      "facilityCount": 46,
+      "categoryCount": 5,
+      "categories": {
+        "RHC": 24,
+        "SNF": 4,
+        "Home health": 6,
+        "Hospital": 10,
+        "Hospice": 2
+      }
+    },
+    {
+      "associateId": "8325958515",
+      "organization": "UPMC",
+      "facilityCount": 45,
+      "categoryCount": 5,
+      "categories": {
+        "RHC": 10,
+        "Hospital": 27,
+        "SNF": 5,
+        "Home health": 1,
+        "Hospice": 2
+      }
+    },
+    {
+      "associateId": "4183092620",
+      "organization": "BELLIN GUNDERSEN HEALTH SYSTEM INC",
+      "facilityCount": 44,
+      "categoryCount": 5,
+      "categories": {
+        "Home health": 2,
+        "RHC": 28,
+        "Hospital": 9,
+        "Hospice": 2,
+        "SNF": 3
+      }
+    },
+    {
+      "associateId": "5496994568",
+      "organization": "WEST VIRGINIA UNITED HEALTH SYSTEM, INC",
+      "facilityCount": 39,
+      "categoryCount": 5,
+      "categories": {
+        "Hospital": 17,
+        "Hospice": 1,
+        "SNF": 7,
+        "Home health": 3,
+        "RHC": 11
+      }
+    },
+    {
+      "associateId": "9133425614",
+      "organization": "MARSHFIELD CLINIC HEALTH SYSTEM INC",
+      "facilityCount": 38,
+      "categoryCount": 5,
+      "categories": {
+        "RHC": 21,
+        "Hospital": 10,
+        "Hospice": 3,
+        "Home health": 3,
+        "SNF": 1
+      }
+    },
+    {
+      "associateId": "8426960204",
+      "organization": "SANFORD HEALTH",
+      "facilityCount": 37,
+      "categoryCount": 5,
+      "categories": {
+        "Hospice": 3,
+        "RHC": 15,
+        "Hospital": 14,
+        "Home health": 4,
+        "SNF": 1
+      }
+    },
+    {
+      "associateId": "3173613312",
+      "organization": "ESSENTIA HEALTH",
+      "facilityCount": 36,
+      "categoryCount": 5,
+      "categories": {
+        "RHC": 13,
+        "Hospital": 13,
+        "Hospice": 2,
+        "SNF": 5,
+        "Home health": 3
+      }
+    },
+    {
+      "associateId": "2961311063",
+      "organization": "PROVIDENCE HEALTH & SERVICES - WASHINGTON",
+      "facilityCount": 35,
+      "categoryCount": 5,
+      "categories": {
+        "Hospital": 13,
+        "RHC": 5,
+        "Hospice": 6,
+        "Home health": 9,
+        "SNF": 2
+      }
+    },
+    {
+      "associateId": "5496016727",
+      "organization": "BALLAD HEALTH",
+      "facilityCount": 34,
+      "categoryCount": 5,
+      "categories": {
+        "Hospital": 19,
+        "RHC": 6,
+        "SNF": 4,
+        "Home health": 3,
+        "Hospice": 2
+      }
+    },
+    {
+      "associateId": "5698071173",
+      "organization": "MCHS HOSPITALS INC",
+      "facilityCount": 28,
+      "categoryCount": 5,
+      "categories": {
+        "RHC": 16,
+        "Hospice": 3,
+        "Hospital": 5,
+        "Home health": 3,
+        "SNF": 1
+      }
+    },
+    {
+      "associateId": "7911807805",
+      "organization": "GUNDERSEN LUTHERAN HEALTH SYSTEM INC",
+      "facilityCount": 28,
+      "categoryCount": 5,
+      "categories": {
+        "Home health": 2,
+        "RHC": 14,
+        "Hospital": 7,
+        "Hospice": 2,
+        "SNF": 3
+      }
+    },
+    {
+      "associateId": "9638083652",
+      "organization": "SANFORD NORTH",
+      "facilityCount": 28,
+      "categoryCount": 5,
+      "categories": {
+        "Hospital": 8,
+        "RHC": 14,
+        "Home health": 2,
+        "Hospice": 2,
+        "SNF": 2
+      }
+    }
+  ],
+  "hospitalEvents": 779,
+  "eventsByYear": {
+    "2016": 54,
+    "2017": 58,
+    "2018": 94,
+    "2019": 126,
+    "2020": 72,
+    "2021": 89,
+    "2022": 38,
+    "2023": 76,
+    "2024": 93,
+    "2025": 65,
+    "2026": 14
+  },
+  "sources": {
+    "hospital:enrollments": {
+      "url": "https://data.cms.gov/data-api/v1/dataset/f6f6505c-e8b0-4d57-b258-e2b94133aaf2/data",
+      "vintage": "2026-08-01",
+      "title": "Hospital enrollments",
+      "sha256": "b6e46c919ec347079afb6d709f81ee58c2799e7a4c39d36da2ba2a61288820b5",
+      "queriedAt": "2026-10-18T17:26:46.108802+00:00"
+    },
+    "hospital:owners": {
+      "url": "https://data.cms.gov/data-api/v1/dataset/029c119f-f79c-49be-9100-344d31d10344/data",
+      "vintage": "2026-08-02",
+      "title": "Hospital owners",
+      "sha256": "b6e46c919ec347079afb6d709f81ee58c2799e7a4c39d36da2ba2a61288820b5",
+      "queriedAt": "2026-10-18T17:26:46.108802+00:00"
+    },
+    "SNF:enrollments": {
+      "title": "Skilled Nursing Facility Enrollments",
+      "vintage": "2026-10-01",
+      "url": "https://data.cms.gov/data-api/v1/dataset/5f2c306f-3b1c-42cd-b037-187b2ce22126/data",
+      "landingPage": {
+        "@type": "Document",
+        "title": "Skilled Nursing Facility Enrollments",
+        "accessURL": "https://data.cms.gov/provider-characteristics/hospitals-and-other-facilities/skilled-nursing-facility-enrollments"
+      },
+      "modified": "2026-10-19",
+      "columns": [
+        "ENROLLMENT ID",
+        "ENROLLMENT STATE",
+        "PROVIDER TYPE CODE",
+        "PROVIDER TYPE TEXT",
+        "NPI",
+        "MULTIPLE NPI FLAG",
+        "CCN",
+        "ASSOCIATE ID",
+        "ORGANIZATION NAME",
+        "DOING BUSINESS AS NAME",
+        "INCORPORATION DATE",
+        "INCORPORATION STATE",
+        "ORGANIZATION TYPE STRUCTURE",
+        "ORGANIZATION OTHER TYPE TEXT",
+        "PROPRIETARY_NONPROFIT",
+        "NURSING HOME PROVIDER NAME",
+        "AFFILIATION ENTITY NAME",
+        "AFFILIATION ENTITY ID",
+        "ADDRESS LINE 1",
+        "ADDRESS LINE 2",
+        "CITY",
+        "STATE",
+        "ZIP CODE"
+      ],
+      "inputRows": 14404,
+      "queriedAt": "2026-10-19T16:15:54.980105+00:00",
+      "sha256": "7daf4e80d18bdfac29b58adce045f7cade65089c5d893b36cc1a54bc7a76581d"
+    },
+    "SNF:owners": {
+      "title": "Skilled Nursing Facility All Owners",
+      "vintage": "2026-10-01",
+      "url": "https://data.cms.gov/data-api/v1/dataset/afe44b85-cc6d-40d7-b5df-00ae8910d1d2/data",
+      "landingPage": {
+        "@type": "Document",
+        "title": "Skilled Nursing Facility All Owners",
+        "accessURL": "https://data.cms.gov/provider-characteristics/hospitals-and-other-facilities/skilled-nursing-facility-all-owners"
+      },
+      "modified": "2026-10-19",
+      "columns": [
+        "ENROLLMENT ID",
+        "ASSOCIATE ID",
+        "ORGANIZATION NAME",
+        "ASSOCIATE ID - OWNER",
+        "TYPE - OWNER",
+        "ROLE CODE - OWNER",
+        "ROLE TEXT - OWNER",
+        "ASSOCIATION DATE - OWNER",
+        "FIRST NAME - OWNER",
+        "MIDDLE NAME - OWNER",
+        "LAST NAME - OWNER",
+        "TITLE - OWNER",
+        "ORGANIZATION NAME - OWNER",
+        "DOING BUSINESS AS NAME - OWNER",
+        "ADDRESS LINE 1 - OWNER",
+        "ADDRESS LINE 2 - OWNER",
+        "CITY - OWNER",
+        "STATE - OWNER",
+        "ZIP CODE - OWNER",
+        "PERCENTAGE OWNERSHIP",
+        "CREATED FOR ACQUISITION - OWNER",
+        "CORPORATION - OWNER",
+        "LLC - OWNER",
+        "MEDICAL PROVIDER SUPPLIER - OWNER",
+        "MANAGEMENT SERVICES COMPANY - OWNER",
+        "MEDICAL STAFFING COMPANY - OWNER",
+        "HOLDING COMPANY - OWNER",
+        "INVESTMENT FIRM - OWNER",
+        "FINANCIAL INSTITUTION - OWNER",
+        "CONSULTING FIRM - OWNER",
+        "FOR PROFIT - OWNER",
+        "NON PROFIT - OWNER",
+        "PRIVATE EQUITY COMPANY - OWNER",
+        "REIT - OWNER",
+        "CHAIN HOME OFFICE - OWNER",
+        "TRUST OR TRUSTEE - OWNER",
+        "OTHER TYPE - OWNER",
+        "OTHER TYPE TEXT - OWNER",
+        "PARENT COMPANY - OWNER",
+        "OWNED BY ANOTHER ORG OR IND - OWNER"
+      ],
+      "inputRows": 300738,
+      "queriedAt": "2026-10-19T16:17:05.684234+00:00",
+      "sha256": "110773fa09f6ecab84bc4039809dd96e4827d312fcee723c7af59c5c29094b94"
+    },
+    "Home health:enrollments": {
+      "title": "Home Health Agency Enrollments",
+      "vintage": "2026-10-01",
+      "url": "https://data.cms.gov/data-api/v1/dataset/15f64ab4-3172-4a27-b589-ebd67a6d28aa/data",
+      "landingPage": {
+        "@type": "Document",
+        "title": "Home Health Agency Enrollments",
+        "accessURL": "https://data.cms.gov/provider-characteristics/hospitals-and-other-facilities/home-health-agency-enrollments"
+      },
+      "modified": "2026-10-19",
+      "columns": [
+        "ENROLLMENT ID",
+        "ENROLLMENT STATE",
+        "PROVIDER TYPE CODE",
+        "PROVIDER TYPE TEXT",
+        "NPI",
+        "MULTIPLE NPI FLAG",
+        "CCN",
+        "ASSOCIATE ID",
+        "ORGANIZATION NAME",
+        "DOING BUSINESS AS NAME",
+        "INCORPORATION DATE",
+        "INCORPORATION STATE",
+        "ORGANIZATION TYPE STRUCTURE",
+        "ORGANIZATION OTHER TYPE TEXT",
+        "PROPRIETARY_NONPROFIT",
+        "ADDRESS LINE 1",
+        "ADDRESS LINE 2",
+        "CITY",
+        "STATE",
+        "ZIP CODE",
+        "PRACTICE LOCATION TYPE",
+        "LOCATION OTHER TYPE TEXT"
+      ],
+      "inputRows": 11522,
+      "queriedAt": "2026-10-19T16:17:09.718859+00:00",
+      "sha256": "b88773e2b8454882ad050a3df724e240d8138993ea61c7ac6c145d646b2d3afe"
+    },
+    "Home health:owners": {
+      "title": "Home Health Agency All Owners",
+      "vintage": "2026-10-01",
+      "url": "https://data.cms.gov/data-api/v1/dataset/fc009b2d-7846-44b1-b4a1-692f0c143879/data",
+      "landingPage": {
+        "@type": "Document",
+        "title": "Home Health Agency All Owners",
+        "accessURL": "https://data.cms.gov/provider-characteristics/hospitals-and-other-facilities/home-health-agency-all-owners"
+      },
+      "modified": "2026-10-19",
+      "columns": [
+        "ENROLLMENT ID",
+        "ASSOCIATE ID",
+        "ORGANIZATION NAME",
+        "ASSOCIATE ID - OWNER",
+        "TYPE - OWNER",
+        "ROLE CODE - OWNER",
+        "ROLE TEXT - OWNER",
+        "ASSOCIATION DATE - OWNER",
+        "FIRST NAME - OWNER",
+        "MIDDLE NAME - OWNER",
+        "LAST NAME - OWNER",
+        "TITLE - OWNER",
+        "ORGANIZATION NAME - OWNER",
+        "DOING BUSINESS AS NAME - OWNER",
+        "ADDRESS LINE 1 - OWNER",
+        "ADDRESS LINE 2 - OWNER",
+        "CITY - OWNER",
+        "STATE - OWNER",
+        "ZIP CODE - OWNER",
+        "PERCENTAGE OWNERSHIP",
+        "CREATED FOR ACQUISITION - OWNER",
+        "CORPORATION - OWNER",
+        "LLC - OWNER",
+        "MEDICAL PROVIDER SUPPLIER - OWNER",
+        "MANAGEMENT SERVICES COMPANY - OWNER",
+        "MEDICAL STAFFING COMPANY - OWNER",
+        "HOLDING COMPANY - OWNER",
+        "INVESTMENT FIRM - OWNER",
+        "FINANCIAL INSTITUTION - OWNER",
+        "CONSULTING FIRM - OWNER",
+        "FOR PROFIT - OWNER",
+        "NON PROFIT - OWNER",
+        "PRIVATE EQUITY COMPANY - OWNER",
+        "REIT - OWNER",
+        "CHAIN HOME OFFICE - OWNER",
+        "OTHER TYPE - OWNER",
+        "OTHER TYPE TEXT - OWNER",
+        "OWNED BY ANOTHER ORG OR IND - OWNER"
+      ],
+      "inputRows": 102942,
+      "queriedAt": "2026-10-19T16:17:31.796356+00:00",
+      "sha256": "6bab4476b9630a7e9aba32f561a7be281d8f9cb31e3a9a7b8bb7df75c06a5eab"
+    },
+    "Hospice:enrollments": {
+      "title": "Hospice Enrollments",
+      "vintage": "2026-10-01",
+      "url": "https://data.cms.gov/data-api/v1/dataset/25704213-e833-4b8b-9dbc-58dd17149209/data",
+      "landingPage": {
+        "@type": "Document",
+        "title": "Hospice Enrollments",
+        "accessURL": "https://data.cms.gov/provider-characteristics/hospitals-and-other-facilities/hospice-enrollments"
+      },
+      "modified": "2026-10-19",
+      "columns": [
+        "ENROLLMENT ID",
+        "ENROLLMENT STATE",
+        "PROVIDER TYPE CODE",
+        "PROVIDER TYPE TEXT",
+        "NPI",
+        "MULTIPLE NPI FLAG",
+        "CCN",
+        "ASSOCIATE ID",
+        "ORGANIZATION NAME",
+        "DOING BUSINESS AS NAME",
+        "INCORPORATION DATE",
+        "INCORPORATION STATE",
+        "ORGANIZATION TYPE STRUCTURE",
+        "ORGANIZATION OTHER TYPE TEXT",
+        "PROPRIETARY_NONPROFIT",
+        "ADDRESS LINE 1",
+        "ADDRESS LINE 2",
+        "CITY",
+        "STATE",
+        "ZIP CODE"
+      ],
+      "inputRows": 5690,
+      "queriedAt": "2026-10-19T16:17:33.826490+00:00",
+      "sha256": "6224757ed3ead1c301ca734a470cca0049fcc5a3f32c66a45e01651b63e96aee"
+    },
+    "Hospice:owners": {
+      "title": "Hospice All Owners",
+      "vintage": "2026-10-01",
+      "url": "https://data.cms.gov/data-api/v1/dataset/e983965e-1603-4cb8-82b5-c40090e380d1/data",
+      "landingPage": {
+        "@type": "Document",
+        "title": "Hospice All Owners",
+        "accessURL": "https://data.cms.gov/provider-characteristics/hospitals-and-other-facilities/hospice-all-owners"
+      },
+      "modified": "2026-10-19",
+      "columns": [
+        "ENROLLMENT ID",
+        "ASSOCIATE ID",
+        "ORGANIZATION NAME",
+        "ASSOCIATE ID - OWNER",
+        "TYPE - OWNER",
+        "ROLE CODE - OWNER",
+        "ROLE TEXT - OWNER",
+        "ASSOCIATION DATE - OWNER",
+        "FIRST NAME - OWNER",
+        "MIDDLE NAME - OWNER",
+        "LAST NAME - OWNER",
+        "TITLE - OWNER",
+        "ORGANIZATION NAME - OWNER",
+        "DOING BUSINESS AS NAME - OWNER",
+        "ADDRESS LINE 1 - OWNER",
+        "ADDRESS LINE 2 - OWNER",
+        "CITY - OWNER",
+        "STATE - OWNER",
+        "ZIP CODE - OWNER",
+        "PERCENTAGE OWNERSHIP",
+        "CREATED FOR ACQUISITION - OWNER",
+        "CORPORATION - OWNER",
+        "LLC - OWNER",
+        "MEDICAL PROVIDER SUPPLIER - OWNER",
+        "MANAGEMENT SERVICES COMPANY - OWNER",
+        "MEDICAL STAFFING COMPANY - OWNER",
+        "HOLDING COMPANY - OWNER",
+        "INVESTMENT FIRM - OWNER",
+        "FINANCIAL INSTITUTION - OWNER",
+        "CONSULTING FIRM - OWNER",
+        "FOR PROFIT - OWNER",
+        "NON PROFIT - OWNER",
+        "PRIVATE EQUITY COMPANY - OWNER",
+        "REIT - OWNER",
+        "CHAIN HOME OFFICE - OWNER",
+        "OTHER TYPE - OWNER",
+        "OTHER TYPE TEXT - OWNER",
+        "OWNED BY ANOTHER ORG OR IND - OWNER"
+      ],
+      "inputRows": 70717,
+      "queriedAt": "2026-10-19T16:17:50.060604+00:00",
+      "sha256": "471bc01eed4c3ff7f15d14bd11bb3ff3895fdcb4dcbbfe8f693cb18d42a208c3"
+    },
+    "FQHC:enrollments": {
+      "title": "Federally Qualified Health Center Enrollments",
+      "vintage": "2026-10-01",
+      "url": "https://data.cms.gov/data-api/v1/dataset/4bcae866-3411-439a-b762-90a6187c194b/data",
+      "landingPage": {
+        "@type": "Document",
+        "title": "Federally Qualified Health Center Enrollments",
+        "accessURL": "https://data.cms.gov/provider-characteristics/hospitals-and-other-facilities/federally-qualified-health-center-enrollments"
+      },
+      "modified": "2026-10-19",
+      "columns": [
+        "ENROLLMENT ID",
+        "ENROLLMENT STATE",
+        "PROVIDER TYPE CODE",
+        "PROVIDER TYPE TEXT",
+        "NPI",
+        "MULTIPLE NPI FLAG",
+        "CCN",
+        "ASSOCIATE ID",
+        "ORGANIZATION NAME",
+        "DOING BUSINESS AS NAME",
+        "INCORPORATION DATE",
+        "INCORPORATION STATE",
+        "ORGANIZATION TYPE STRUCTURE",
+        "ORGANIZATION OTHER TYPE TEXT",
+        "PROPRIETARY_NONPROFIT",
+        "ADDRESS LINE 1",
+        "ADDRESS LINE 2",
+        "CITY",
+        "STATE",
+        "ZIP CODE",
+        "TELEPHONE NUMBER"
+      ],
+      "inputRows": 11166,
+      "queriedAt": "2026-10-19T16:17:53.069330+00:00",
+      "sha256": "e98926986f60cff5f29591c98e097e2ca4dd5c21bde6f2ad60934a4a0232e0ec"
+    },
+    "FQHC:owners": {
+      "title": "Federally Qualified Health Center All Owners",
+      "vintage": "2026-10-01",
+      "url": "https://data.cms.gov/data-api/v1/dataset/ed289c89-0bb8-4221-a20a-85776066381b/data",
+      "landingPage": {
+        "@type": "Document",
+        "title": "Federally Qualified Health Center All Owners",
+        "accessURL": "https://data.cms.gov/provider-characteristics/hospitals-and-other-facilities/federally-qualified-health-center-all-owners"
+      },
+      "modified": "2026-10-19",
+      "columns": [
+        "ENROLLMENT ID",
+        "ASSOCIATE ID",
+        "ORGANIZATION NAME",
+        "ASSOCIATE ID - OWNER",
+        "TYPE - OWNER",
+        "ROLE CODE - OWNER",
+        "ROLE TEXT - OWNER",
+        "ASSOCIATION DATE - OWNER",
+        "FIRST NAME - OWNER",
+        "MIDDLE NAME - OWNER",
+        "LAST NAME - OWNER",
+        "TITLE - OWNER",
+        "ORGANIZATION NAME - OWNER",
+        "DOING BUSINESS AS NAME - OWNER",
+        "ADDRESS LINE 1 - OWNER",
+        "ADDRESS LINE 2 - OWNER",
+        "CITY - OWNER",
+        "STATE - OWNER",
+        "ZIP CODE - OWNER",
+        "PERCENTAGE OWNERSHIP",
+        "CREATED FOR ACQUISITION - OWNER",
+        "CORPORATION - OWNER",
+        "LLC - OWNER",
+        "MEDICAL PROVIDER SUPPLIER - OWNER",
+        "MANAGEMENT SERVICES COMPANY - OWNER",
+        "MEDICAL STAFFING COMPANY - OWNER",
+        "HOLDING COMPANY - OWNER",
+        "INVESTMENT FIRM - OWNER",
+        "FINANCIAL INSTITUTION - OWNER",
+        "CONSULTING FIRM - OWNER",
+        "FOR PROFIT - OWNER",
+        "NON PROFIT - OWNER",
+        "PRIVATE EQUITY COMPANY - OWNER",
+        "REIT - OWNER",
+        "CHAIN HOME OFFICE - OWNER",
+        "OTHER TYPE - OWNER",
+        "OTHER TYPE TEXT - OWNER",
+        "OWNED BY ANOTHER ORG OR IND - OWNER"
+      ],
+      "inputRows": 149586,
+      "queriedAt": "2026-10-19T16:18:26.211477+00:00",
+      "sha256": "ebdfc81616c4906fa77140840fec09b16cfb0a4c68cc1e75263977da8cf72dbd"
+    },
+    "RHC:enrollments": {
+      "title": "Rural Health Clinic Enrollments",
+      "vintage": "2026-10-01",
+      "url": "https://data.cms.gov/data-api/v1/dataset/3b7e7659-067e-41ea-8e36-f9ee2036e1f6/data",
+      "landingPage": {
+        "@type": "Document",
+        "title": "Rural Health Clinic Enrollments",
+        "accessURL": "https://data.cms.gov/provider-characteristics/hospitals-and-other-facilities/rural-health-clinic-enrollments"
+      },
+      "modified": "2026-10-19",
+      "columns": [
+        "ENROLLMENT ID",
+        "ENROLLMENT STATE",
+        "PROVIDER TYPE CODE",
+        "PROVIDER TYPE TEXT",
+        "NPI",
+        "MULTIPLE NPI FLAG",
+        "CCN",
+        "ASSOCIATE ID",
+        "ORGANIZATION NAME",
+        "DOING BUSINESS AS NAME",
+        "INCORPORATION DATE",
+        "INCORPORATION STATE",
+        "ORGANIZATION TYPE STRUCTURE",
+        "ORGANIZATION OTHER TYPE TEXT",
+        "PROPRIETARY_NONPROFIT",
+        "ADDRESS LINE 1",
+        "ADDRESS LINE 2",
+        "CITY",
+        "STATE",
+        "ZIP CODE",
+        "TELEPHONE NUMBER"
+      ],
+      "inputRows": 5626,
+      "queriedAt": "2026-10-19T16:18:28.343836+00:00",
+      "sha256": "6b3814514792faccb62c8b2951460e5a24a4935ebc4f053dda6843142202f528"
+    },
+    "RHC:owners": {
+      "title": "Rural Health Clinic All Owners",
+      "vintage": "2026-10-01",
+      "url": "https://data.cms.gov/data-api/v1/dataset/ab03c9bc-0c22-4ca4-b032-21dd3408210d/data",
+      "landingPage": {
+        "@type": "Document",
+        "title": "Rural Health Clinic All Owners",
+        "accessURL": "https://data.cms.gov/provider-characteristics/hospitals-and-other-facilities/rural-health-clinic-all-owners"
+      },
+      "modified": "2026-10-19",
+      "columns": [
+        "ENROLLMENT ID",
+        "ASSOCIATE ID",
+        "ORGANIZATION NAME",
+        "ASSOCIATE ID - OWNER",
+        "TYPE - OWNER",
+        "ROLE CODE - OWNER",
+        "ROLE TEXT - OWNER",
+        "ASSOCIATION DATE - OWNER",
+        "FIRST NAME - OWNER",
+        "MIDDLE NAME - OWNER",
+        "LAST NAME - OWNER",
+        "TITLE - OWNER",
+        "ORGANIZATION NAME - OWNER",
+        "DOING BUSINESS AS NAME - OWNER",
+        "ADDRESS LINE 1 - OWNER",
+        "ADDRESS LINE 2 - OWNER",
+        "CITY - OWNER",
+        "STATE - OWNER",
+        "ZIP CODE - OWNER",
+        "PERCENTAGE OWNERSHIP",
+        "CREATED FOR ACQUISITION - OWNER",
+        "CORPORATION - OWNER",
+        "LLC - OWNER",
+        "MEDICAL PROVIDER SUPPLIER - OWNER",
+        "MANAGEMENT SERVICES COMPANY - OWNER",
+        "MEDICAL STAFFING COMPANY - OWNER",
+        "HOLDING COMPANY - OWNER",
+        "INVESTMENT FIRM - OWNER",
+        "FINANCIAL INSTITUTION - OWNER",
+        "CONSULTING FIRM - OWNER",
+        "FOR PROFIT - OWNER",
+        "NON PROFIT - OWNER",
+        "PRIVATE EQUITY COMPANY - OWNER",
+        "REIT - OWNER",
+        "CHAIN HOME OFFICE - OWNER",
+        "OTHER TYPE - OWNER",
+        "OTHER TYPE TEXT - OWNER",
+        "OWNED BY ANOTHER ORG OR IND - OWNER"
+      ],
+      "inputRows": 67195,
+      "queriedAt": "2026-10-19T16:18:43.001756+00:00",
+      "sha256": "ced37ba13e9a6ce3502edd19c66b61dee519b1046a441d4ff7c57db12cd31c2c"
+    },
+    "hospital:chow": {
+      "title": "Hospital Change of Ownership",
+      "vintage": "2026-09-01",
+      "url": "https://data.cms.gov/data-api/v1/dataset/c04031db-54ce-461c-85d1-d2613d71f167/data",
+      "landingPage": {
+        "@type": "Document",
+        "title": "Hospital Change of Ownership",
+        "accessURL": "https://data.cms.gov/provider-characteristics/hospitals-and-other-facilities/hospital-change-of-ownership"
+      },
+      "modified": "2026-10-19",
+      "columns": [
+        "ENROLLMENT ID - BUYER",
+        "ENROLLMENT STATE - BUYER",
+        "PROVIDER TYPE CODE - BUYER",
+        "PROVIDER TYPE TEXT - BUYER",
+        "NPI - BUYER",
+        "MULTIPLE NPI FLAG - BUYER",
+        "CCN - BUYER",
+        "ASSOCIATE ID - BUYER",
+        "ORGANIZATION NAME - BUYER",
+        "DOING BUSINESS AS NAME - BUYER",
+        "CHOW TYPE CODE",
+        "CHOW TYPE TEXT",
+        "EFFECTIVE DATE",
+        "ENROLLMENT ID - SELLER",
+        "ENROLLMENT STATE - SELLER",
+        "PROVIDER TYPE CODE - SELLER",
+        "PROVIDER TYPE TEXT - SELLER",
+        "NPI - SELLER",
+        "MULTIPLE NPI FLAG - SELLER",
+        "CCN - SELLER",
+        "ASSOCIATE ID - SELLER",
+        "ORGANIZATION NAME - SELLER",
+        "DOING BUSINESS AS NAME - SELLER"
+      ],
+      "inputRows": 779,
+      "queriedAt": "2026-10-19T16:18:44.000473+00:00",
+      "sha256": "ce0c0e2243a8ac8a8658440495024c641253300c74849c6f4a9d9e3aa633aa4e"
+    },
+    "Renal:enrollments": {
+      "url": "https://data.cms.gov/data-api/v1/dataset/2457ea29-fc82-48b0-86ec-3b0755de7515/data",
+      "title": "CMS Medicare FFS enrollment \u00b7 Renal",
+      "vintage": "2026-07-01",
+      "inputRows": 7493,
+      "queriedAt": "2026-10-19T16:18:46.339061+00:00",
+      "sha256": "b0888ab9f21ab8d2377fc54d980ed5e03db8a8b787011916619a563bc6ff9853"
+    },
+    "CMHC:enrollments": {
+      "url": "https://data.cms.gov/data-api/v1/dataset/2457ea29-fc82-48b0-86ec-3b0755de7515/data",
+      "title": "CMS Medicare FFS enrollment \u00b7 CMHC",
+      "vintage": "2026-07-01",
+      "inputRows": 90,
+      "queriedAt": "2026-10-19T16:18:47.267593+00:00",
+      "sha256": "30bd94dfe4194f233e7795338c1445ecc6f6231697edb605a490a6ffb6553e39"
+    }
+  },
+  "snapshotSha256": "71a838ee4aaaa4bcc3225041d1e388c12e6ef6308a77de106c57b4d98033371c",
+  "queriedAt": "2026-10-19T16:18:47.279868+00:00",
+  "limitations": [
+    "Institutional rows without a numeric six-character CCN or legal organization name are omitted. Retained CCN units are not a complete physical-site census; renal and CMHC counts use enrollment identities.",
+    "Security, mortgage, ADP, trustee and other roles are associations, not assumed ownership or control.",
+    "Exact CMS associate IDs link disclosed organizations across categories; similar names are never merged.",
+    "No complete ultimate-parent hierarchy. Direct/indirect roles and percentages must not be summed across tiers.",
+    "Different source vintages; current disclosures are not historical ownership intervals.",
+    "CHOW is self-reported event evidence, not a continuous ownership history or causal attribution.",
+    "Renal and CMHC have enrollment identity only; missing ownership is unknown.",
+    "Only organizational owners are retained. Financial benchmarking still covers hospitals only."
+  ]
+}

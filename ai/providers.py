@@ -6,6 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 from urllib.request import urlopen,Request
 from urllib.parse import urlencode
 from analytics import BASE,QueryError
+from ownership_roles import classify
 @lru_cache(maxsize=1)
 def layer():return json.loads((BASE/'lab/providers.json').read_text())
 @lru_cache(maxsize=256)
@@ -36,9 +37,13 @@ def related_enrollments(associate):
 
 def inspect(ccn):
  if not isinstance(ccn,str) or not re.fullmatch(r'\d{6}',ccn):raise QueryError('Use a six-digit CCN.')
- d=layer();providers=[p for p in d['providers'] if p['ccn']==ccn];relationships=[r for r in d['relationships'] if r['ccn']==ccn];npis=sorted({p['npi'] for p in providers if re.fullmatch(r'\d{10}',p['npi'])})
+ d=layer();providers=[p for p in d['providers'] if p['ccn']==ccn];relationships=[{**r,'relationship':classify(r['role'])} for r in d['relationships'] if r['ccn']==ccn];npis=sorted({p['npi'] for p in providers if re.fullmatch(r'\d{10}',p['npi'])})
  with ThreadPoolExecutor(max_workers=5) as pool:organizations=list(pool.map(nppes,npis[:5]))
  owners={r['ownerAssociateId'] for r in relationships}
  with ThreadPoolExecutor(max_workers=5) as pool:cross_category=list(pool.map(related_enrollments,sorted(owners)[:5]))
  related=[r for r in d['relationships'] if r['ownerAssociateId'] in owners and r['ccn']!=ccn];relatedids=sorted({r['ccn'] for r in related})
- return {'ccn':ccn,'enrollments':providers,'organizationalRelationships':relationships,'nppes':organizations,'crossCategoryEnrollments':cross_category,'associateLookupLimit':5,'nppesLookupLimit':5,'npiCount':len(npis),'relatedHospitalCcns':relatedids[:50],'relatedHospitalCount':len(relatedids),'relationshipMeaning':'Other hospitals reporting at least one of the same organizational associates; shared disclosure is not proof of ultimate common control.','sources':d['sources'],'snapshotSha256':d['snapshotSha256'],'queriedAt':d['queriedAt'],'limitations':d['limitations']}
+ # The national cross-category evidence is a separate, exact-ID layer. Enrollments
+ # returned above remain distinct from its reported ownership interests.
+ from network import inspect as inspect_network
+ network=inspect_network(ccn)
+ return {'ccn':ccn,'enrollments':providers,'organizationalRelationships':relationships,'nppes':organizations,'crossCategoryEnrollments':cross_category,'network':network,'associateLookupLimit':5,'nppesLookupLimit':5,'npiCount':len(npis),'relatedHospitalCcns':relatedids[:50],'relatedHospitalCount':len(relatedids),'relationshipMeaning':'Other hospitals reporting at least one of the same organizational associates; shared disclosure is not proof of ultimate common control.','sources':d['sources'],'snapshotSha256':d['snapshotSha256'],'queriedAt':d['queriedAt'],'limitations':d['limitations']}

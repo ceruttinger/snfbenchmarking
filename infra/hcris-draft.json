@@ -291,6 +291,26 @@
         }
       }
     },
+    "NetworkRoute": {
+      "Type": "AWS::ApiGatewayV2::Route",
+      "Properties": {
+        "ApiId": {
+          "Ref": "Api"
+        },
+        "RouteKey": "POST /api/network",
+        "Target": {
+          "Fn::Join": [
+            "/",
+            [
+              "integrations",
+              {
+                "Ref": "Integration"
+              }
+            ]
+          ]
+        }
+      }
+    },
     "Stage": {
       "Type": "AWS::ApiGatewayV2::Stage",
       "Properties": {

@@ -1,0 +1,1119 @@
+{
+  "queriedAt": "2026-10-19T16:15:51.213578+00:00",
+  "sampleSelection": "Top ten flagged workforce changes plus first five flagged capacity changes; two endpoints each. Bounded, non-random audit, not validation of the entire dataset.",
+  "recordsChecked": 30,
+  "matchingSourceRecords": 30,
+  "results": [
+    {
+      "ccn": "210044",
+      "hospital": "GREATER BALTIMORE MEDICAL CENTER",
+      "year": 2019,
+      "reportId": "713573",
+      "begin": "2019-07-01",
+      "end": "2020-06-30",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 3070.0,
+          "apiValue": 3070.0,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 256251082.0,
+          "apiValue": 256251082.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 269.0,
+          "apiValue": 269.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 75983.0,
+          "apiValue": 75983.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data?size=2&filter%5Brpt_rec_num%5D=713573&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "072a1cea74206f12e10fca4efb1844fd59301ec549bb260e3e0c679fd80165d2"
+    },
+    {
+      "ccn": "210044",
+      "hospital": "GREATER BALTIMORE MEDICAL CENTER",
+      "year": 2024,
+      "reportId": "824080",
+      "begin": "2024-07-01",
+      "end": "2025-06-30",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 54.97,
+          "apiValue": 54.97,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 332742911.0,
+          "apiValue": 332742911.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 241.0,
+          "apiValue": 241.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 67379.0,
+          "apiValue": 67379.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data?size=2&filter%5Brpt_rec_num%5D=824080&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "d3dbe81092e9ce356d5db27b988804f915a521a8ebf81c24ead7b3daed8fb0ad"
+    },
+    {
+      "ccn": "160079",
+      "hospital": "MERCY MEDICAL CENTER",
+      "year": 2019,
+      "reportId": "751338",
+      "begin": "2019-07-01",
+      "end": "2020-06-30",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 1788.66,
+          "apiValue": 1788.66,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 132955602.0,
+          "apiValue": 132955602.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 207.0,
+          "apiValue": 207.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 38462.0,
+          "apiValue": 38462.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data?size=2&filter%5Brpt_rec_num%5D=751338&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "980a4620d8f99360542426836a3bffaf09a1722dbeed442176c4637abddd6426"
+    },
+    {
+      "ccn": "160079",
+      "hospital": "MERCY MEDICAL CENTER",
+      "year": 2024,
+      "reportId": "824275",
+      "begin": "2024-07-01",
+      "end": "2025-06-30",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 102.41,
+          "apiValue": 102.41,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 210727374.0,
+          "apiValue": 210727374.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 216.0,
+          "apiValue": 216.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 41796.0,
+          "apiValue": 41796.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data?size=2&filter%5Brpt_rec_num%5D=824275&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "60f92d3f3a624480e1fe8a51dbe4d3145080f19d4c83d846e281e9916d36dd6b"
+    },
+    {
+      "ccn": "150091",
+      "hospital": "HUNTINGTON MEMORIAL HOSPITAL",
+      "year": 2019,
+      "reportId": "739266",
+      "begin": "2019-01-01",
+      "end": "2019-12-31",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 2684.0,
+          "apiValue": 2684.0,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 16347199.0,
+          "apiValue": 16347199.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 36.0,
+          "apiValue": 36.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 4974.0,
+          "apiValue": 4974.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data?size=2&filter%5Brpt_rec_num%5D=739266&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "f1c8d431d9fc9ef2316a05288b829554f530d2b3c87390688e50e9ca9dac27b6"
+    },
+    {
+      "ccn": "150091",
+      "hospital": "HUNTINGTON MEMORIAL HOSPITAL",
+      "year": 2024,
+      "reportId": "832440",
+      "begin": "2024-01-01",
+      "end": "2024-12-31",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 224.08,
+          "apiValue": 224.08,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 20514047.0,
+          "apiValue": 20514047.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 36.0,
+          "apiValue": 36.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 5220.0,
+          "apiValue": 5220.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data?size=2&filter%5Brpt_rec_num%5D=832440&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "bf26f4e8addcc5a107537bb154c28b29882cc7a89c6450d1332183324c291891"
+    },
+    {
+      "ccn": "240047",
+      "hospital": "ST. LUKES HOSPITAL OF DULUTH",
+      "year": 2019,
+      "reportId": "757706",
+      "begin": "2019-01-01",
+      "end": "2019-12-31",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 2379.34,
+          "apiValue": 2379.34,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 243148648.0,
+          "apiValue": 243148648.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 238.0,
+          "apiValue": 238.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 54998.0,
+          "apiValue": 54998.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data?size=2&filter%5Brpt_rec_num%5D=757706&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "c4b656f1e0a156d4f2a69deb6601c2791d110d4beeebfea56da6bfcacf433d0e"
+    },
+    {
+      "ccn": "240047",
+      "hospital": "ST. LUKES HOSPITAL OF DULUTH",
+      "year": 2024,
+      "reportId": "837284",
+      "begin": "2024-07-01",
+      "end": "2025-06-30",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 141.48,
+          "apiValue": 141.48,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 269641790.0,
+          "apiValue": 269641790.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 238.0,
+          "apiValue": 238.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 40365.0,
+          "apiValue": 40365.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data?size=2&filter%5Brpt_rec_num%5D=837284&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "13388a6951a99b4ed8ec58cd30dbc4c76c51192aa3ef143510e7b9593154e396"
+    },
+    {
+      "ccn": "231329",
+      "hospital": "CARO COMMUNITY HOSPITAL",
+      "year": 2019,
+      "reportId": "694929",
+      "begin": "2018-10-01",
+      "end": "2019-09-30",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 105.0,
+          "apiValue": 105.0,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 6089339.0,
+          "apiValue": 6089339.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 25.0,
+          "apiValue": 25.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 149.0,
+          "apiValue": 149.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data?size=2&filter%5Brpt_rec_num%5D=694929&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "1ebdf69b1574a9cdb10108a704ed9ef10b0e9a0d16630042d62ef8d717634545"
+    },
+    {
+      "ccn": "231329",
+      "hospital": "CARO COMMUNITY HOSPITAL",
+      "year": 2024,
+      "reportId": "839293",
+      "begin": "2023-10-01",
+      "end": "2024-09-30",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 86.4,
+          "apiValue": 86.4,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 6552787.0,
+          "apiValue": 6552787.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 25.0,
+          "apiValue": 25.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 1324.0,
+          "apiValue": 1324.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data?size=2&filter%5Brpt_rec_num%5D=839293&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "7d4a6f1795efd4a03192a831f4e937ca99056d4d5b36535fffd2f7ed2633e661"
+    },
+    {
+      "ccn": "351313",
+      "hospital": "SOUTHWEST HEALTHCARE SERVICES",
+      "year": 2019,
+      "reportId": "691465",
+      "begin": "2019-01-01",
+      "end": "2019-12-31",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 76.1,
+          "apiValue": 76.1,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 6656874.0,
+          "apiValue": 6656874.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 23.0,
+          "apiValue": 23.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 856.0,
+          "apiValue": 856.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data?size=2&filter%5Brpt_rec_num%5D=691465&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "51d1693556e9880fc53de34919330d380911c35381bccf7b18ac1d5f23626140"
+    },
+    {
+      "ccn": "351313",
+      "hospital": "SOUTHWEST HEALTHCARE SERVICES",
+      "year": 2024,
+      "reportId": "835512",
+      "begin": "2024-01-01",
+      "end": "2024-12-31",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 82.15,
+          "apiValue": 82.15,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 5924561.0,
+          "apiValue": 5924561.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 35.0,
+          "apiValue": 35.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 9744.0,
+          "apiValue": 9744.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data?size=2&filter%5Brpt_rec_num%5D=835512&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "000c8ee87e0635295f58fec26269205c6b1e1e70b556d0e20c3c8390448a891b"
+    },
+    {
+      "ccn": "171300",
+      "hospital": "GRISELL MEMORIAL HOSPITAL DIST #1",
+      "year": 2019,
+      "reportId": "687389",
+      "begin": "2019-01-01",
+      "end": "2019-12-31",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 53.19,
+          "apiValue": 53.19,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 3005147.0,
+          "apiValue": 3005147.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 12.0,
+          "apiValue": 12.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 594.0,
+          "apiValue": 594.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data?size=2&filter%5Brpt_rec_num%5D=687389&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "d96db98a365efe29399e195e8110288f0581804c0ecb43d7abaef804a7f68a4e"
+    },
+    {
+      "ccn": "171300",
+      "hospital": "GRISELL MEMORIAL HOSPITAL DIST #1",
+      "year": 2024,
+      "reportId": "811551",
+      "begin": "2024-01-01",
+      "end": "2024-12-31",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 50.76,
+          "apiValue": 50.76,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 2681389.0,
+          "apiValue": 2681389.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 25.0,
+          "apiValue": 25.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 5709.0,
+          "apiValue": 5709.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data?size=2&filter%5Brpt_rec_num%5D=811551&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "e2bd690326c45d41b8c024390cda6d4a1be2472a0fd6edc84056c406e01642d3"
+    },
+    {
+      "ccn": "230029",
+      "hospital": "ST. JOSEPH MERCY HOSPITAL-OAKLAND",
+      "year": 2019,
+      "reportId": "837271",
+      "begin": "2019-07-01",
+      "end": "2020-06-30",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 2290.31,
+          "apiValue": 2290.31,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 184370394.0,
+          "apiValue": 184370394.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 333.0,
+          "apiValue": 333.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 73947.0,
+          "apiValue": 73947.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data?size=2&filter%5Brpt_rec_num%5D=837271&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "c9c0723462b497dc2fc56fac2464b609c981b56d276bd1449ab8a7d70e3e5c50"
+    },
+    {
+      "ccn": "230029",
+      "hospital": "TRINITY HEALTH OAKLAND",
+      "year": 2024,
+      "reportId": "828398",
+      "begin": "2024-07-01",
+      "end": "2025-06-30",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 325.16,
+          "apiValue": 325.16,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 201671661.0,
+          "apiValue": 201671661.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 298.0,
+          "apiValue": 298.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 84492.0,
+          "apiValue": 84492.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data?size=2&filter%5Brpt_rec_num%5D=828398&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "0f9e40244d474b3c5200aa1b539bb2f99bd971d0cfbc6f508e272bb9ffbb23fd"
+    },
+    {
+      "ccn": "461303",
+      "hospital": "SANPETE VALLEY HOSPITAL",
+      "year": 2019,
+      "reportId": "705913",
+      "begin": "2019-01-01",
+      "end": "2019-12-31",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 90.56,
+          "apiValue": 90.56,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 7304037.0,
+          "apiValue": 7304037.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 18.0,
+          "apiValue": 18.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 1763.0,
+          "apiValue": 1763.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data?size=2&filter%5Brpt_rec_num%5D=705913&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "4a42d6598ecad37df83512cdfbd64450b6b547c95d29c3fdb424d999558b5995"
+    },
+    {
+      "ccn": "461303",
+      "hospital": "SANPETE VALLEY HOSPITAL",
+      "year": 2024,
+      "reportId": "827330",
+      "begin": "2024-01-01",
+      "end": "2024-12-31",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 9.88,
+          "apiValue": 9.88,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 11133524.0,
+          "apiValue": 11133524.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 18.0,
+          "apiValue": 18.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 1319.0,
+          "apiValue": 1319.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data?size=2&filter%5Brpt_rec_num%5D=827330&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "0522d301e7458b51d592a7070c792d46645f987271f2d12427c27355ae8c5ab0"
+    },
+    {
+      "ccn": "291304",
+      "hospital": "PERSHING GENERAL HOSPITAL",
+      "year": 2019,
+      "reportId": "692206",
+      "begin": "2019-07-01",
+      "end": "2020-06-30",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 62.9,
+          "apiValue": 62.9,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 4954735.0,
+          "apiValue": 4954735.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 13.0,
+          "apiValue": 13.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 265.0,
+          "apiValue": 265.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data?size=2&filter%5Brpt_rec_num%5D=692206&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "ba12f7027b75dbc746e15e692ef36c035086ce60f2d883af7f40c0652ad12bc8"
+    },
+    {
+      "ccn": "291304",
+      "hospital": "PERSHING GENERAL HOSPITAL",
+      "year": 2024,
+      "reportId": "834530",
+      "begin": "2024-07-01",
+      "end": "2025-06-30",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 75.22,
+          "apiValue": 75.22,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 8662058.0,
+          "apiValue": 8662058.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 13.0,
+          "apiValue": 13.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 1864.0,
+          "apiValue": 1864.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data?size=2&filter%5Brpt_rec_num%5D=834530&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "70a9ece201ea46f09580462284177ed061015c021357fd6e3aeac353c713e3e5"
+    },
+    {
+      "ccn": "131316",
+      "hospital": "BEAR LAKE MEMORIAL HOSPITAL",
+      "year": 2019,
+      "reportId": "697399",
+      "begin": "2019-01-01",
+      "end": "2019-12-31",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 134.62,
+          "apiValue": 134.62,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 13030593.0,
+          "apiValue": 13030593.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 52913.0,
+          "apiValue": 52913.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 1995.0,
+          "apiValue": 1995.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data?size=2&filter%5Brpt_rec_num%5D=697399&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "9cff69d35ac3e9cb8686b40ee7821dc2085d0f4e919c2425831f26c17711875f"
+    },
+    {
+      "ccn": "131316",
+      "hospital": "BEAR LAKE MEMORIAL HOSPITAL",
+      "year": 2024,
+      "reportId": "810779",
+      "begin": "2024-01-01",
+      "end": "2024-12-31",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 141.73,
+          "apiValue": 141.73,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 18862430.0,
+          "apiValue": 18862430.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 21.0,
+          "apiValue": 21.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 1394.0,
+          "apiValue": 1394.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data?size=2&filter%5Brpt_rec_num%5D=810779&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "4189eeea3e683571b62be73a3124bd30f0b94086caa5d3f63e5b4c277ef0aafe"
+    },
+    {
+      "ccn": "370215",
+      "hospital": "OKLAHOMA HEART HOSPITAL",
+      "year": 2019,
+      "reportId": "745552",
+      "begin": "2019-01-01",
+      "end": "2019-12-31",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 1564.52,
+          "apiValue": 1564.52,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 140846798.0,
+          "apiValue": 140846798.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 28401.0,
+          "apiValue": 28401.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 29278.0,
+          "apiValue": 29278.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data?size=2&filter%5Brpt_rec_num%5D=745552&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "fc07dc9583f69bf5ae875c256593f3ccd3d498c5796eda55e9bc6a044c16d8c1"
+    },
+    {
+      "ccn": "370215",
+      "hospital": "OKLAHOMA HEART HOSPITAL",
+      "year": 2024,
+      "reportId": "813185",
+      "begin": "2024-01-01",
+      "end": "2024-12-31",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 1594.32,
+          "apiValue": 1594.32,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 191011892.0,
+          "apiValue": 191011892.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 97.0,
+          "apiValue": 97.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 22027.0,
+          "apiValue": 22027.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data?size=2&filter%5Brpt_rec_num%5D=813185&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "a855b69f26302d0f58e8c0a4d6930689cbc630eeb8f512b6fca3173aac209d2a"
+    },
+    {
+      "ccn": "391300",
+      "hospital": "JERSEY SHORE HOSPITAL",
+      "year": 2019,
+      "reportId": "736002",
+      "begin": "2019-07-01",
+      "end": "2020-06-30",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 212.0,
+          "apiValue": 212.0,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 13389601.0,
+          "apiValue": 13389601.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 1605.0,
+          "apiValue": 1605.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 1996.0,
+          "apiValue": 1996.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data?size=2&filter%5Brpt_rec_num%5D=736002&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "6b159ade10525ec454938ea1d569d5b3fc491a53dd826d9857e74ca10f4a95c7"
+    },
+    {
+      "ccn": "391300",
+      "hospital": "JERSEY SHORE HOSPITAL",
+      "year": 2024,
+      "reportId": "829404",
+      "begin": "2024-07-01",
+      "end": "2025-06-30",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 186.55,
+          "apiValue": 186.55,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 15855908.0,
+          "apiValue": 15855908.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 25.0,
+          "apiValue": 25.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 3947.0,
+          "apiValue": 3947.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data?size=2&filter%5Brpt_rec_num%5D=829404&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "a61d8db0971649fe2db7925098b07776354ad3e8213008d6faf03bf07fe4238f"
+    },
+    {
+      "ccn": "470003",
+      "hospital": "UNIVERSITY OF VERMONT MEDICAL CENTER",
+      "year": 2019,
+      "reportId": "820804",
+      "begin": "2018-10-01",
+      "end": "2019-09-30",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 6799.51,
+          "apiValue": 6799.51,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 612942200.0,
+          "apiValue": 612942200.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 401.0,
+          "apiValue": 401.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 121455.0,
+          "apiValue": 121455.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data?size=2&filter%5Brpt_rec_num%5D=820804&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "7cd0765cb2fb68d4f162b03a75a0e0c4ad6e5b592d66ff52893dbc5b71dec14a"
+    },
+    {
+      "ccn": "470003",
+      "hospital": "UNIVERSITY OF VERMONT MEDICAL CENTER",
+      "year": 2024,
+      "reportId": "839478",
+      "begin": "2023-10-01",
+      "end": "2024-09-30",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 7830.81,
+          "apiValue": 7830.81,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 908585720.0,
+          "apiValue": 908585720.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 65.0,
+          "apiValue": 65.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 137970.0,
+          "apiValue": 137970.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data?size=2&filter%5Brpt_rec_num%5D=839478&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "abdd5477bfb91eb9d45214d899f43ec6c936c62f7938a276a407ad6488f6ecf0"
+    },
+    {
+      "ccn": "250099",
+      "hospital": "GREENWOOD LEFLORE HOSPITAL",
+      "year": 2019,
+      "reportId": "746219",
+      "begin": "2018-10-01",
+      "end": "2019-09-30",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 696.14,
+          "apiValue": 696.14,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 50371978.0,
+          "apiValue": 50371978.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 173.0,
+          "apiValue": 173.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 20113.0,
+          "apiValue": 20113.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/90a10951-7457-4dc8-849d-4b344840f9c8/data?size=2&filter%5Brpt_rec_num%5D=746219&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "139cc2e4b9f47a73fe960ab1ac1605a7db24f688dc535d7e1fc5bb891f419c18"
+    },
+    {
+      "ccn": "250099",
+      "hospital": "GREENWOOD LEFLORE HOSPITAL",
+      "year": 2024,
+      "reportId": "808268",
+      "begin": "2023-10-01",
+      "end": "2024-09-30",
+      "checks": [
+        {
+          "field": "payrollFte",
+          "selectedValue": 376.08,
+          "apiValue": 376.08,
+          "match": true
+        },
+        {
+          "field": "salaries",
+          "selectedValue": 27605328.0,
+          "apiValue": 27605328.0,
+          "match": true
+        },
+        {
+          "field": "beds",
+          "selectedValue": 25.0,
+          "apiValue": 25.0,
+          "match": true
+        },
+        {
+          "field": "days",
+          "selectedValue": 2529.0,
+          "apiValue": 2529.0,
+          "match": true
+        }
+      ],
+      "status": "source_values_match",
+      "source": "https://data.cms.gov/data-api/v1/dataset/44060663-47d8-4ced-a115-b53b4c270acb/data?size=2&filter%5Brpt_rec_num%5D=808268&column=rpt_rec_num%2CProvider+CCN%2CFTE+-+Employees+on+Payroll%2CTotal+Salaries+From+Worksheet+A%2CNumber+of+Beds%2CTotal+Days+%28V+%2B+XVIII+%2B+XIX+%2B+Unknown%29",
+      "apiRecordSha256": "235fb94cf891b1df96b28a9668de54972a6584894ea54481d34c9507dc6a2a49"
+    }
+  ],
+  "meaning": "Matching source values verifies extraction/calculation inputs, not correctness of the provider filing, staffing scope or employment. No flagged record is automatically cleared by this audit."
+}

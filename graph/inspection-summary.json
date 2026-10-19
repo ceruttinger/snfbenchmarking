@@ -58,5 +58,110 @@
     "previousPowerState": "stopped",
     "restoredPowerState": "stopped",
     "catalogHistory": "Previous catalog and interpretation edges retained; top-level verification records the initial deployment."
+  },
+  "ownershipValidationExtension": {
+    "verifiedDate": "2026-10-19",
+    "catalogVersion": "1.1.1",
+    "catalogSha256": "175db2d36210c98a175fd3a10b9940919ef88b938c7d78b9a7ee0d8b8a267965",
+    "networkSnapshotSha256": "71a838ee4aaaa4bcc3225041d1e388c12e6ef6308a77de106c57b4d98033371c",
+    "graphArtifactSha256": "7c171a48f49bf6fc9403542ee4fabfc89accb976f8780327398fc28d5212b378",
+    "nodes": 439293,
+    "relationships": 1332188,
+    "organizationalAssertions": 149155,
+    "hospitalOwnershipEvents": 779,
+    "crossCategoryOrganizations": 2355,
+    "incorrectlyPromotedHospitalControlAssociations": 0,
+    "restoredPowerState": "stopped",
+    "coverage": [
+      {
+        "category": "Hospital",
+        "facilities": 5962,
+        "organizationalAssertions": 16044,
+        "ownershipCoverage": "Organizational disclosures",
+        "vintage": "2026-08-02",
+        "unit": "Retained CCNs"
+      },
+      {
+        "category": "SNF",
+        "facilities": 14231,
+        "organizationalAssertions": 84760,
+        "omittedIndividualOrUnidentifiedRows": 215190,
+        "ownershipCoverage": "Organizational disclosures",
+        "vintage": "2026-10-01",
+        "unit": "Retained CCNs",
+        "enrollmentRowsQueried": 14404,
+        "retainedEnrollmentRows": 14231,
+        "omittedEnrollmentRows": 173
+      },
+      {
+        "category": "Home health",
+        "facilities": 11429,
+        "organizationalAssertions": 21373,
+        "omittedIndividualOrUnidentifiedRows": 81208,
+        "ownershipCoverage": "Organizational disclosures",
+        "vintage": "2026-10-01",
+        "unit": "Retained CCNs",
+        "enrollmentRowsQueried": 11522,
+        "retainedEnrollmentRows": 11429,
+        "omittedEnrollmentRows": 93
+      },
+      {
+        "category": "Hospice",
+        "facilities": 4706,
+        "organizationalAssertions": 18215,
+        "omittedIndividualOrUnidentifiedRows": 51954,
+        "ownershipCoverage": "Organizational disclosures",
+        "vintage": "2026-10-01",
+        "unit": "Retained CCNs",
+        "enrollmentRowsQueried": 5690,
+        "retainedEnrollmentRows": 4706,
+        "omittedEnrollmentRows": 984
+      },
+      {
+        "category": "FQHC",
+        "facilities": 9927,
+        "organizationalAssertions": 2587,
+        "omittedIndividualOrUnidentifiedRows": 146773,
+        "ownershipCoverage": "Organizational disclosures",
+        "vintage": "2026-10-01",
+        "unit": "Retained CCNs",
+        "enrollmentRowsQueried": 11166,
+        "retainedEnrollmentRows": 9927,
+        "omittedEnrollmentRows": 1239
+      },
+      {
+        "category": "RHC",
+        "facilities": 5385,
+        "organizationalAssertions": 6176,
+        "omittedIndividualOrUnidentifiedRows": 60842,
+        "ownershipCoverage": "Organizational disclosures",
+        "vintage": "2026-10-01",
+        "unit": "Retained CCNs",
+        "enrollmentRowsQueried": 5626,
+        "retainedEnrollmentRows": 5385,
+        "omittedEnrollmentRows": 241
+      },
+      {
+        "category": "Renal",
+        "facilities": 7493,
+        "organizationalAssertions": 0,
+        "ownershipCoverage": "Enrollment only; ownership unavailable in this layer",
+        "vintage": "2026-07-01",
+        "unit": "Medicare enrollment identities"
+      },
+      {
+        "category": "CMHC",
+        "facilities": 90,
+        "organizationalAssertions": 0,
+        "ownershipCoverage": "Enrollment only; ownership unavailable in this layer",
+        "vintage": "2026-07-01",
+        "unit": "Medicare enrollment identities"
+      }
+    ],
+    "sourceAudit": {
+      "sampledRecords": 30,
+      "matchingRecords": 30,
+      "meaning": "Source agreement, not validation of filings or staffing scope."
+    }
   }
 }

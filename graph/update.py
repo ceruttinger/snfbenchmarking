@@ -24,7 +24,7 @@ try:
   if info and info[0]['PingStatus']=='Online':break
   time.sleep(5)
  else:raise RuntimeError('Existing server did not become available to SSM.')
- commands=['set -e','for i in $(seq 1 12); do aws s3 cp s3://'+d['artifactBucket']+'/'+key+' /var/lib/hcris-neo4j/workforce-import.zip --region '+d['region']+' && break; sleep 5; done',
+ commands=['set -e','for i in $(seq 1 12); do aws s3 cp s3://'+d['artifactBucket']+'/'+key+' /var/lib/hcris-neo4j/workforce-import.zip --no-progress --region '+d['region']+' && break; sleep 5; done',
   'python3 -c "import hashlib; assert hashlib.sha256(open(\'/var/lib/hcris-neo4j/workforce-import.zip\',\'rb\').read()).hexdigest()==\''+sha+'\'"',
   'python3 -c "import zipfile; zipfile.ZipFile(\'/var/lib/hcris-neo4j/workforce-import.zip\').extractall(\'/var/lib/hcris-neo4j/import\')"',
   'chown -R 7474:7474 /var/lib/hcris-neo4j/import',
@@ -33,6 +33,7 @@ try:
   "if ! docker exec hcris-neo4j bash -c 'export NEO4J_PASSWORD=$(printf \"%s\" \"$NEO4J_AUTH\" | cut -d/ -f2-); cypher-shell -u neo4j -f /import/load.cypher' > /var/lib/hcris-neo4j/workforce-import.log 2>&1; then tail -c 2000 /var/lib/hcris-neo4j/workforce-import.log; exit 1; fi",
   "docker exec hcris-neo4j bash -c 'export NEO4J_PASSWORD=$(printf \"%s\" \"$NEO4J_AUTH\" | cut -d/ -f2-); cypher-shell -u neo4j --format plain \"MATCH (r:CostReport) RETURN count(r) AS reports, count(r.payrollFte) AS payrollFteReports, count(r.residentFte) AS residentFteReports, count(r.salaries) AS salaryReports; MATCH (r:CostReport {ccn: \\\"460010\\\",datasetYear:2024}) RETURN r.payrollFte,r.metric_ftePer100Beds,r.metric_patientDaysPerFte,r.metric_salaryPerFte; MATCH (n) RETURN count(n) AS nodes; MATCH ()-[r]->() RETURN count(r) AS relationships;\"'"
  ]
+ commands.append("docker exec hcris-neo4j bash -c 'export NEO4J_PASSWORD=$(printf \"%s\" \"$NEO4J_AUTH\" | cut -d/ -f2-); cypher-shell -u neo4j --format plain \"MATCH (f:Facility) RETURN f.category AS category,count(f) AS identities ORDER BY category; MATCH (a:OwnershipAssertion) RETURN count(a) AS organizationalAssertions; MATCH (e:OwnershipEvent) RETURN count(e) AS hospitalEvents; MATCH (:Hospital)-[r:REPORTED_CONTROL_ROLE]->() WHERE NOT toUpper(r.role) CONTAINS \\\"OPERATIONAL/MANAGERIAL CONTROL\\\" RETURN count(r) AS incorrectlyPromotedAssociations;\"'")
  command=ssm.send_command(InstanceIds=[d['InstanceId']],DocumentName='AWS-RunShellScript',Parameters={'commands':commands,'executionTimeout':['1200']})['Command']['CommandId']
  print('Applying workforce properties and source lineage to existing graph.',flush=True)
  for _ in range(240):

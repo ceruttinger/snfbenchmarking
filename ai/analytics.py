@@ -122,6 +122,10 @@ def execute(query):
  if not target and q['analysis']!='definition':raise QueryError('Target CCN has no report in the anchor dataset. Choose another anchor year.')
  result={'query':q,'catalogVersion':CAT['version'],'catalogSha256':CAT['catalogSha256'],'queryId':hashlib.sha256(json.dumps(q,sort_keys=True).encode()).hexdigest()[:16],'metrics':{k:CAT['metrics'][k] for k in q['metrics']},'warnings':['Descriptive comparison; not adjusted for case mix, teaching or wages.','Actual fiscal periods differ. Dataset year is not calendar-year standardization.','Dollar values are nominal; missing values are not zero.'],'sources':[{'year':y,**{k:CAT['sources'][str(y)][k] for k in ['source','queriedAt','apiRecordsSha256']}} for y in range(q['startYear'],q['endYear']+1)],'target':{k:target[k] for k in ['ccn','name','state','city','county']} if target else None}
  if any(k in CAT.get('workforceMetrics',[]) for k in q['metrics']):
+  from quality import workforce_flags
+  flags=workforce_flags(dataset(q['startYear']).get(q['targetCcn']),dataset(q['endYear']).get(q['targetCcn'])) if q['startYear']<q['endYear'] else []
+  result['qualityReview']={'targetEndpointFlags':flags,'meaning':'Review flags do not establish errors or shortages; reported values remain visible. Peer medians use ordinary eligibility and missing-value rules, not this endpoint screen.'}
+  if flags:result['warnings'].append('Target endpoint data needs review: '+'; '.join(flags)+'. Reported values have not been corrected.')
   result['sources'] += [{'year':str(y)+' workforce',**{k:CAT['workforceSources'][str(y)][k] for k in ['source','queriedAt','apiRecordsSha256']}} for y in range(q['startYear'],q['endYear']+1)]
   result['warnings'].append('Workforce fields are a later API refresh joined to frozen finances by exact report ID, CCN and fiscal period; same report revision vintage is not guaranteed. Payroll FTEs cover all reported employee occupations. Workload per FTE is not a nursing ratio; salaries per FTE are not occupational wages. Contract labor, vacancies and clinician employment are not established.')
  if q['analysis']=='ownership':
@@ -134,16 +138,23 @@ def execute(query):
  elif q['analysis']=='coverage':
   result['rows']=[{'year':y,'reports':len(dataset(y)),'eligibleReports':sum(eligible(r) for r in dataset(y).values()),'validMetricReports':sum(eligible(r) and finite(metric(q['metrics'][0],r)) for r in dataset(y).values())} for y in range(q['startYear'],q['endYear']+1)];result['answer']='Coverage counts for published CMS API snapshots. Missing reports do not establish facility closures.'
  elif q['analysis']=='rank':
-  key=q['metrics'][0];earlier=dataset(q['startYear']);matches=cohort(dataset(q['endYear']).values(),target,q['filters'],True);out=[]
+  key=q['metrics'][0];earlier=dataset(q['startYear']);matches=cohort(dataset(q['endYear']).values(),target,q['filters'],True);out=[];review_excluded=[]
   def value(r,k,basis):
    v=metric(k,r)
    if basis=='value':return v
    prev=earlier.get(r['ccn']);return v-metric(k,prev) if q['startYear']<q['endYear'] and eligible(prev) and finite(v) and finite(metric(k,prev)) else None
   for r in matches:
+   if q['sortBy']=='change' and key in ['payrollFte','ftePer100Beds','dischargesPerFte','patientDaysPerFte','salaryPerFte']:
+    from quality import workforce_flags
+    reasons=workforce_flags(earlier.get(r['ccn']),r)
+    if reasons:review_excluded.append({'ccn':r['ccn'],'reasons':reasons});continue
    checks=[]
    for c in q['conditions']:
     v=value(r,c['metric'],c['basis']);checks.append(finite(v) and {'lt':lambda:v<c['value'],'lte':lambda:v<=c['value'],'gt':lambda:v>c['value'],'gte':lambda:v>=c['value']}[c['op']]())
    v=value(r,key,q['sortBy'])
    if finite(v) and all(checks):out.append({'ccn':r['ccn'],'hospital':r['name'],'state':r['state'],'city':r['city'],'beds':r['beds'],'value':v,'basis':q['sortBy'],'begin':r['begin'],'end':r['end'],'reportId':r['reportId']})
   out.sort(key=lambda r:(-r['value'] if q['direction']=='desc' else r['value'],r['ccn']));result['rows']=out[:q['limit']];result['matchedHospitals']=len(out);result['answer']=f"Found {len(out)} eligible matching hospitals; showing {len(result['rows'])}. Rankings include the target if it matches. Changes use the selected endpoints and eligible reports, not a causal estimate."
+  if review_excluded:
+   result['qualityReview']={'excludedEndpointCount':len(review_excluded),'excludedEndpoints':review_excluded,'meaning':'Endpoint workforce rankings exclude missing/nonpositive payroll FTE endpoints and more than fourfold FTE, annualized patient-day or workload changes. Review flags do not prove errors; raw trends remain available.'}
+   result['warnings'].append(str(len(review_excluded))+' candidate endpoints excluded by workforce review screens. Inspect quality review evidence; these are not staffing-shortage findings.')
  return result

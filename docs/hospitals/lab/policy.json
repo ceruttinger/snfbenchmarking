@@ -1,5 +1,5 @@
 {
-  "catalogSha256": "7493789160cd34b39107750aa766a8dda1669461666f39942f4186a2ece4514c",
+  "catalogSha256": "175db2d36210c98a175fd3a10b9940919ef88b938c7d78b9a7ee0d8b8a267965",
   "baseline": 2019,
   "endpoint": 2024,
   "ruralFinance": [
@@ -552,11 +552,12 @@
     ]
   },
   "workforce": {
-    "matchedHospitals": 4115,
-    "hospitalsWithDaysGrowingFasterThanFte": 1972,
-    "medianFteGrowthPct": 4.481357947227638,
-    "medianPatientDaysGrowthPct": 2.654315100357696,
-    "largestWorkloadIncreases": [
+    "matchedHospitals": 4052,
+    "hospitalsWithDaysGrowingFasterThanFte": 1941,
+    "candidateHospitals": 4115,
+    "reviewExcludedHospitals": 63,
+    "reviewRules": "Exclude more than fourfold changes in payroll FTEs, annualized patient days or patient days per FTE. Review flags are not proof of reporting error. No imputation.",
+    "reviewRecords": [
       {
         "ccn": "210044",
         "hospital": "GREATER BALTIMORE MEDICAL CENTER",
@@ -565,7 +566,11 @@
         "fte2024": 54.97,
         "fteGrowthPct": -98.20944625407166,
         "patientDaysGrowthPct": -11.080636458155125,
-        "daysPerFteGrowthPct": 4866.025942759027
+        "daysPerFteGrowthPct": 4866.025942759027,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "160079",
@@ -575,7 +580,11 @@
         "fte2024": 102.41,
         "fteGrowthPct": -94.27448480985767,
         "patientDaysGrowthPct": 8.966017339298782,
-        "daysPerFteGrowthPct": 1803.165282434432
+        "daysPerFteGrowthPct": 1803.165282434432,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "150091",
@@ -585,7 +594,11 @@
         "fte2024": 224.08,
         "fteGrowthPct": -91.65126676602087,
         "patientDaysGrowthPct": 4.658980798512902,
-        "daysPerFteGrowthPct": 1153.5911480864363
+        "daysPerFteGrowthPct": 1153.5911480864363,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "240047",
@@ -595,7 +608,11 @@
         "fte2024": 141.48,
         "fteGrowthPct": -94.0538132423277,
         "patientDaysGrowthPct": -26.606422051710965,
-        "daysPerFteGrowthPct": 1134.2965490209363
+        "daysPerFteGrowthPct": 1134.2965490209363,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "231329",
@@ -605,7 +622,11 @@
         "fte2024": 86.4,
         "fteGrowthPct": -17.714285714285705,
         "patientDaysGrowthPct": 786.1627608464446,
-        "daysPerFteGrowthPct": 976.9339107508872
+        "daysPerFteGrowthPct": 976.9339107508872,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "351313",
@@ -615,7 +636,11 @@
         "fte2024": 82.15,
         "fteGrowthPct": 7.9500657030223465,
         "patientDaysGrowthPct": 1035.2075992033092,
-        "daysPerFteGrowthPct": 951.604361526133
+        "daysPerFteGrowthPct": 951.604361526133,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "171300",
@@ -625,7 +650,11 @@
         "fte2024": 50.76,
         "fteGrowthPct": -4.5685279187817285,
         "patientDaysGrowthPct": 858.4851244687311,
-        "daysPerFteGrowthPct": 904.3700506401065
+        "daysPerFteGrowthPct": 904.3700506401065,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "230029",
@@ -635,7 +664,11 @@
         "fte2024": 325.16,
         "fteGrowthPct": -85.80279525479084,
         "patientDaysGrowthPct": 14.573255076618196,
-        "daysPerFteGrowthPct": 707.0127685894003
+        "daysPerFteGrowthPct": 707.0127685894003,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "461303",
@@ -645,7 +678,11 @@
         "fte2024": 9.88,
         "fteGrowthPct": -89.09010600706713,
         "patientDaysGrowthPct": -25.388759224992175,
-        "daysPerFteGrowthPct": 583.8860288041203
+        "daysPerFteGrowthPct": 583.8860288041203,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "291304",
@@ -655,7 +692,11 @@
         "fte2024": 75.22,
         "fteGrowthPct": 19.58664546899842,
         "patientDaysGrowthPct": 605.3233393641768,
-        "daysPerFteGrowthPct": 489.80109074723106
+        "daysPerFteGrowthPct": 489.80109074723106,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "171324",
@@ -665,7 +706,11 @@
         "fte2024": 84.24,
         "fteGrowthPct": -1.3583138173302256,
         "patientDaysGrowthPct": 460.0969078632394,
-        "daysPerFteGrowthPct": 467.8095433466364
+        "daysPerFteGrowthPct": 467.8095433466364,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "391307",
@@ -675,7 +720,10 @@
         "fte2024": 101.56,
         "fteGrowthPct": -34.93914157591287,
         "patientDaysGrowthPct": 258.59293083037375,
-        "daysPerFteGrowthPct": 451.16538501990277
+        "daysPerFteGrowthPct": 451.16538501990277,
+        "reviewReasons": [
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "440008",
@@ -685,7 +733,11 @@
         "fte2024": 114.23,
         "fteGrowthPct": 11.313584096667316,
         "patientDaysGrowthPct": 494.07919205790637,
-        "daysPerFteGrowthPct": 433.6987366627186
+        "daysPerFteGrowthPct": 433.6987366627186,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "501320",
@@ -695,7 +747,11 @@
         "fte2024": 55.13,
         "fteGrowthPct": 24.475050801535335,
         "patientDaysGrowthPct": 480.76181292189,
-        "daysPerFteGrowthPct": 366.5688498877291
+        "daysPerFteGrowthPct": 366.5688498877291,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "140049",
@@ -705,7 +761,11 @@
         "fte2024": 590.02,
         "fteGrowthPct": -81.13095314238932,
         "patientDaysGrowthPct": -14.2618469015796,
-        "daysPerFteGrowthPct": 354.3851830217836
+        "daysPerFteGrowthPct": 354.3851830217836,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "351302",
@@ -715,7 +775,10 @@
         "fte2024": 236.67,
         "fteGrowthPct": -20.76665550719786,
         "patientDaysGrowthPct": 257.91220877912207,
-        "daysPerFteGrowthPct": 351.719173373574
+        "daysPerFteGrowthPct": 351.719173373574,
+        "reviewReasons": [
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "141308",
@@ -725,7 +788,11 @@
         "fte2024": 97.7,
         "fteGrowthPct": 15.525600094596204,
         "patientDaysGrowthPct": 419.8121186032967,
-        "daysPerFteGrowthPct": 349.95405189642577
+        "daysPerFteGrowthPct": 349.95405189642577,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "441304",
@@ -735,7 +802,11 @@
         "fte2024": 51.15,
         "fteGrowthPct": 0.9473060982829962,
         "patientDaysGrowthPct": 353.4127456819536,
-        "daysPerFteGrowthPct": 349.15784601573006
+        "daysPerFteGrowthPct": 349.15784601573006,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "050014",
@@ -745,7 +816,11 @@
         "fte2024": 344.59,
         "fteGrowthPct": -76.23107432315916,
         "patientDaysGrowthPct": 5.367172905365591,
-        "daysPerFteGrowthPct": 343.2980031909044
+        "daysPerFteGrowthPct": 343.2980031909044,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "451393",
@@ -755,7 +830,10 @@
         "fte2024": 54.34,
         "fteGrowthPct": -21.80169808605553,
         "patientDaysGrowthPct": 226.02044494427383,
-        "daysPerFteGrowthPct": 316.9149929918584
+        "daysPerFteGrowthPct": 316.9149929918584,
+        "reviewReasons": [
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
       {
         "ccn": "171359",
@@ -765,8 +843,585 @@
         "fte2024": 90.58,
         "fteGrowthPct": 18.949441891004582,
         "patientDaysGrowthPct": 383.3786854121926,
-        "daysPerFteGrowthPct": 306.3732269169625
+        "daysPerFteGrowthPct": 306.3732269169625,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
       },
+      {
+        "ccn": "371336",
+        "hospital": "NEWMAN MEMORIAL HOSPITAL",
+        "state": "OK",
+        "fte2019": 43.78,
+        "fte2024": 72.95,
+        "fteGrowthPct": 66.62859753312014,
+        "patientDaysGrowthPct": 478.5933840749414,
+        "daysPerFteGrowthPct": 247.235344137093,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change"
+        ]
+      },
+      {
+        "ccn": "250009",
+        "hospital": "MAGNOLIA HOSPITAL",
+        "state": "MS",
+        "fte2019": 974.79,
+        "fte2024": 230.34,
+        "fteGrowthPct": -76.37029514049179,
+        "patientDaysGrowthPct": -18.695889536111398,
+        "daysPerFteGrowthPct": 244.07586107099922,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change"
+        ]
+      },
+      {
+        "ccn": "670102",
+        "hospital": "AD HOSPITAL EAST LLC",
+        "state": "TX",
+        "fte2019": 117.82,
+        "fte2024": 146.48,
+        "fteGrowthPct": 24.325241894415207,
+        "patientDaysGrowthPct": 300.32431305712566,
+        "daysPerFteGrowthPct": 221.9976144483243,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change"
+        ]
+      },
+      {
+        "ccn": "381308",
+        "hospital": "SALEM HEALTH WEST VALLEY",
+        "state": "OR",
+        "fte2019": 157.46,
+        "fte2024": 253.86,
+        "fteGrowthPct": 61.2218976247936,
+        "patientDaysGrowthPct": 413.245209618011,
+        "daysPerFteGrowthPct": 218.34708385114632,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change"
+        ]
+      },
+      {
+        "ccn": "251302",
+        "hospital": "MONROE REGIONAL HOSPITAL",
+        "state": "MS",
+        "fte2019": 153.12,
+        "fte2024": 25.3,
+        "fteGrowthPct": -83.47701149425288,
+        "patientDaysGrowthPct": -50.606599071921195,
+        "daysPerFteGrowthPct": 198.937452573416,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change"
+        ]
+      },
+      {
+        "ccn": "050766",
+        "hospital": "SUTTER SURGICAL HOSP - NORTH VALLEY",
+        "state": "CA",
+        "fte2019": 301.73,
+        "fte2024": 74.19,
+        "fteGrowthPct": -75.41179199946973,
+        "patientDaysGrowthPct": -40.21547281173663,
+        "daysPerFteGrowthPct": 143.1430838187722,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change"
+        ]
+      },
+      {
+        "ccn": "441322",
+        "hospital": "HOUSTON COUNTY COMMUNITY HOSPITAL",
+        "state": "TN",
+        "fte2019": 51.2,
+        "fte2024": 105.02,
+        "fteGrowthPct": 105.11718749999997,
+        "patientDaysGrowthPct": 358.6334256694368,
+        "daysPerFteGrowthPct": 123.59580455413415,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change"
+        ]
+      },
+      {
+        "ccn": "121302",
+        "hospital": "KOHALA HOSPITAL",
+        "state": "HI",
+        "fte2019": 40.64,
+        "fte2024": 118.68,
+        "fteGrowthPct": 192.0275590551181,
+        "patientDaysGrowthPct": 552.7971121806738,
+        "daysPerFteGrowthPct": 123.53955712017677,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change"
+        ]
+      },
+      {
+        "ccn": "030139",
+        "hospital": "ARIZONA GENERAL HOSPITAL",
+        "state": "AZ",
+        "fte2019": 150.72,
+        "fte2024": 453.7,
+        "fteGrowthPct": 201.02176220806794,
+        "patientDaysGrowthPct": 472.49938830437975,
+        "daysPerFteGrowthPct": 90.18538198200599,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change"
+        ]
+      },
+      {
+        "ccn": "310069",
+        "hospital": "INSPIRA MEDICAL CENTER MULLICA HILL",
+        "state": "NJ",
+        "fte2019": 417.05,
+        "fte2024": 2317.89,
+        "fteGrowthPct": 455.782280302122,
+        "patientDaysGrowthPct": 513.2275865030543,
+        "daysPerFteGrowthPct": 10.335936973324355,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold annualized patient-day change"
+        ]
+      },
+      {
+        "ccn": "371318",
+        "hospital": "FAIRFAX COMMUNITY HOSPITAL",
+        "state": "OK",
+        "fte2019": 13.89,
+        "fte2024": 92.36,
+        "fteGrowthPct": 564.9388048956083,
+        "patientDaysGrowthPct": 394.95307605523726,
+        "daysPerFteGrowthPct": -25.564116214733158,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold annualized patient-day change"
+        ]
+      },
+      {
+        "ccn": "450678",
+        "hospital": "WHITE ROCK MEDICAL CENTER",
+        "state": "TX",
+        "fte2019": 504.07,
+        "fte2024": 242.0,
+        "fteGrowthPct": -51.990794929275694,
+        "patientDaysGrowthPct": -76.3849142943166,
+        "daysPerFteGrowthPct": -50.81133780304201,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change"
+        ]
+      },
+      {
+        "ccn": "451307",
+        "hospital": "IRAAN GENERAL HOSPITAL DISTRICT",
+        "state": "TX",
+        "fte2019": 61.0,
+        "fte2024": 40.0,
+        "fteGrowthPct": -34.42622950819673,
+        "patientDaysGrowthPct": -75.48002205845489,
+        "daysPerFteGrowthPct": -62.60703363914373,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change"
+        ]
+      },
+      {
+        "ccn": "360026",
+        "hospital": "GREENE MEMORIAL HOSPITAL  INC.",
+        "state": "OH",
+        "fte2019": 266.0,
+        "fte2024": 139.54,
+        "fteGrowthPct": -47.54135338345865,
+        "patientDaysGrowthPct": -84.98853390574612,
+        "daysPerFteGrowthPct": -71.38419104864892,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change"
+        ]
+      },
+      {
+        "ccn": "400061",
+        "hospital": "UNIVERSITY DISCTRICT HOSPITAL",
+        "state": "PR",
+        "fte2019": 117.0,
+        "fte2024": 511.35,
+        "fteGrowthPct": 337.0512820512821,
+        "patientDaysGrowthPct": 8.407204557069313,
+        "daysPerFteGrowthPct": -75.19577015121324,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "111323",
+        "hospital": "TATTNALL HOSPITAL COMPANY  LLC",
+        "state": "GA",
+        "fte2019": 171.7,
+        "fte2024": 266.55,
+        "fteGrowthPct": 55.241700640652326,
+        "patientDaysGrowthPct": -62.378933484077635,
+        "daysPerFteGrowthPct": -75.7661334804582,
+        "reviewReasons": [
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "501302",
+        "hospital": "DAYTON GENERAL HOSPITAL",
+        "state": "WA",
+        "fte2019": 131.25,
+        "fte2024": 202.25,
+        "fteGrowthPct": 54.09523809523809,
+        "patientDaysGrowthPct": -63.10404339250493,
+        "daysPerFteGrowthPct": -76.05639404334374,
+        "reviewReasons": [
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "430090",
+        "hospital": "SIOUX FALLS SPECIALTY HOSPITAL",
+        "state": "SD",
+        "fte2019": 288.76,
+        "fte2024": 358.16,
+        "fteGrowthPct": 24.03379969524866,
+        "patientDaysGrowthPct": -70.47384749803783,
+        "daysPerFteGrowthPct": -76.19507539516809,
+        "reviewReasons": [
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "250099",
+        "hospital": "GREENWOOD LEFLORE HOSPITAL",
+        "state": "MS",
+        "fte2019": 696.14,
+        "fte2024": 376.08,
+        "fteGrowthPct": -45.976384060677454,
+        "patientDaysGrowthPct": -87.460397932012,
+        "daysPerFteGrowthPct": -76.7886657530069,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "451374",
+        "hospital": "SCOTT AND WHITE HOSPITAL TAYLOR",
+        "state": "TX",
+        "fte2019": 139.51,
+        "fte2024": 545.11,
+        "fteGrowthPct": 290.7318471794137,
+        "patientDaysGrowthPct": -10.57307332231141,
+        "daysPerFteGrowthPct": -77.11296703270104,
+        "reviewReasons": [
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "370057",
+        "hospital": "MUSCOGEE CREEK NATION MED CENTER",
+        "state": "OK",
+        "fte2019": 124.59,
+        "fte2024": 334.0,
+        "fteGrowthPct": 168.07930010434222,
+        "patientDaysGrowthPct": -38.97009479661867,
+        "daysPerFteGrowthPct": -77.23438356500215,
+        "reviewReasons": [
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "260070",
+        "hospital": "PEMISCOT COUNTY MEMORIAL HOSPITAL",
+        "state": "MO",
+        "fte2019": 181.58,
+        "fte2024": 128.27,
+        "fteGrowthPct": -29.358960237911667,
+        "patientDaysGrowthPct": -84.14003812851767,
+        "daysPerFteGrowthPct": -77.54851581333313,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "280129",
+        "hospital": "NEBRASKA ORTHOPAEDIC HOSPITAL LLC",
+        "state": "NE",
+        "fte2019": 325.5,
+        "fte2024": 468.98,
+        "fteGrowthPct": 44.07987711213519,
+        "patientDaysGrowthPct": -68.41699350093583,
+        "daysPerFteGrowthPct": -78.07951593789632,
+        "reviewReasons": [
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "231306",
+        "hospital": "MACKINAC STRAITS HEALTH SYSTEM  INC",
+        "state": "MI",
+        "fte2019": 165.15,
+        "fte2024": 199.69,
+        "fteGrowthPct": 20.914320314865265,
+        "patientDaysGrowthPct": -73.55158979514893,
+        "daysPerFteGrowthPct": -78.12632107100428,
+        "reviewReasons": [
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "280127",
+        "hospital": "LINCOLN SURGICAL HOSPITAL",
+        "state": "NE",
+        "fte2019": 212.49,
+        "fte2024": 268.54,
+        "fteGrowthPct": 26.377711892324342,
+        "patientDaysGrowthPct": -75.92801959675899,
+        "daysPerFteGrowthPct": -80.95235303535905,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "440153",
+        "hospital": "NEWPORT MEDICAL CENTER",
+        "state": "TN",
+        "fte2019": 34.0,
+        "fte2024": 222.18,
+        "fteGrowthPct": 553.4705882352941,
+        "patientDaysGrowthPct": 12.41595511222302,
+        "daysPerFteGrowthPct": -82.79709031498973,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "491303",
+        "hospital": "DICKENSON COMMUNITY HOSPITAL",
+        "state": "VA",
+        "fte2019": 62.85,
+        "fte2024": 42.37,
+        "fteGrowthPct": -32.58552108194114,
+        "patientDaysGrowthPct": -88.40386326089718,
+        "daysPerFteGrowthPct": -82.79874453498675,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "530034",
+        "hospital": "SUMMIT MEDICAL CENTER  LLC",
+        "state": "WY",
+        "fte2019": 57.6,
+        "fte2024": 64.11,
+        "fteGrowthPct": 11.302083333333336,
+        "patientDaysGrowthPct": -80.87818696883853,
+        "daysPerFteGrowthPct": -82.81989657471688,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "461301",
+        "hospital": "FILLMORE COMMUNITY HOSPITAL",
+        "state": "UT",
+        "fte2019": 42.29,
+        "fte2024": 56.44,
+        "fteGrowthPct": 33.45944667770158,
+        "patientDaysGrowthPct": -77.1391352384365,
+        "daysPerFteGrowthPct": -82.87055331738979,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "170203",
+        "hospital": "MERCY SPECIALTY HOSPITAL - SOUTHEAST",
+        "state": "KS",
+        "fte2019": 87.12,
+        "fte2024": 125.93,
+        "fteGrowthPct": 44.54775022956841,
+        "patientDaysGrowthPct": -75.64183093885734,
+        "daysPerFteGrowthPct": -83.14870413240094,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "510091",
+        "hospital": "CHARLESTON SURGICAL HOSPITAL",
+        "state": "WV",
+        "fte2019": 104.61,
+        "fte2024": 113.52,
+        "fteGrowthPct": 8.517350157728698,
+        "patientDaysGrowthPct": -82.46140140435054,
+        "daysPerFteGrowthPct": -83.83797745691606,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "450162",
+        "hospital": "GRACE MEDICAL CENTER",
+        "state": "TX",
+        "fte2019": 204.91,
+        "fte2024": 164.61,
+        "fteGrowthPct": -19.667170953101355,
+        "patientDaysGrowthPct": -88.27407043589197,
+        "daysPerFteGrowthPct": -85.40331555202371,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "170183",
+        "hospital": "KANSAS SURGERY & RECOVERY CENTER",
+        "state": "KS",
+        "fte2019": 157.18,
+        "fte2024": 209.12,
+        "fteGrowthPct": 33.04491665606311,
+        "patientDaysGrowthPct": -80.72961725991676,
+        "daysPerFteGrowthPct": -85.51588198600668,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "231300",
+        "hospital": "PAUL OLIVER MEMORIAL HOSPITAL",
+        "state": "MI",
+        "fte2019": 104.96,
+        "fte2024": 89.97,
+        "fteGrowthPct": -14.281631097560975,
+        "patientDaysGrowthPct": -89.25636007827788,
+        "daysPerFteGrowthPct": -87.46635049256471,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "010065",
+        "hospital": "RUSSELL MEDICAL CENTER",
+        "state": "AL",
+        "fte2019": 65.11,
+        "fte2024": 463.63,
+        "fteGrowthPct": 612.071878359699,
+        "patientDaysGrowthPct": -10.760694654719993,
+        "daysPerFteGrowthPct": -87.46765487343102,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "230013",
+        "hospital": "PONTIAC GENERAL HOSPITAL",
+        "state": "MI",
+        "fte2019": 141.52,
+        "fte2024": 73.46,
+        "fteGrowthPct": -48.09214245336349,
+        "patientDaysGrowthPct": -94.70092915214866,
+        "daysPerFteGrowthPct": -89.79138978508139,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "161315",
+        "hospital": "KEOKUK COUNTY HEALTH CENTER",
+        "state": "IA",
+        "fte2019": 20.0,
+        "fte2024": 88.24,
+        "fteGrowthPct": 341.2,
+        "patientDaysGrowthPct": -56.760016306061715,
+        "daysPerFteGrowthPct": -90.19945972485533,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "220052",
+        "hospital": "BROCKTON HOSPITAL  INC.",
+        "state": "MA",
+        "fte2019": 1547.54,
+        "fte2024": 1079.54,
+        "fteGrowthPct": -30.24154464504957,
+        "patientDaysGrowthPct": -93.4513332657345,
+        "daysPerFteGrowthPct": -90.61236849218628,
+        "reviewReasons": [
+          "More than fourfold annualized patient-day change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "190020",
+        "hospital": "LANE REGIONAL MEDICAL CENTER",
+        "state": "LA",
+        "fte2019": 72.43,
+        "fte2024": 873.24,
+        "fteGrowthPct": 1105.633024989645,
+        "patientDaysGrowthPct": -15.920604993842923,
+        "daysPerFteGrowthPct": -93.02612044764788,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "450848",
+        "hospital": "MEMORIAL HERMANN SUGARLAND",
+        "state": "TX",
+        "fte2019": 773.32,
+        "fte2024": 47866.79,
+        "fteGrowthPct": 6089.777840997258,
+        "patientDaysGrowthPct": 39.79817284218483,
+        "daysPerFteGrowthPct": -97.7414670375365,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "230275",
+        "hospital": "HEALTHSOURCE SAGINAW  INC.",
+        "state": "MI",
+        "fte2019": 5.5,
+        "fte2024": 178.35,
+        "fteGrowthPct": 3142.727272727273,
+        "patientDaysGrowthPct": -45.875327590052414,
+        "daysPerFteGrowthPct": -98.330890393862,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      },
+      {
+        "ccn": "220071",
+        "hospital": "MASSACHUSETTS GENERAL HOSPITAL",
+        "state": "MA",
+        "fte2019": 17575.35,
+        "fte2024": 1434598.0,
+        "fteGrowthPct": 8062.5572179216915,
+        "patientDaysGrowthPct": 8.91560842097694,
+        "daysPerFteGrowthPct": -98.6656680558166,
+        "reviewReasons": [
+          "More than fourfold payroll FTE change",
+          "More than fourfold patient-days-per-FTE change"
+        ]
+      }
+    ],
+    "medianFteGrowthPct": 4.414265029046172,
+    "medianPatientDaysGrowthPct": 2.696649062349965,
+    "largestWorkloadIncreases": [
       {
         "ccn": "441300",
         "hospital": "ST THOMAS HICKMAN HOSPITAL",
@@ -798,14 +1453,224 @@
         "daysPerFteGrowthPct": 261.83271565815454
       },
       {
-        "ccn": "371336",
-        "hospital": "NEWMAN MEMORIAL HOSPITAL",
-        "state": "OK",
-        "fte2019": 43.78,
-        "fte2024": 72.95,
-        "fteGrowthPct": 66.62859753312014,
-        "patientDaysGrowthPct": 478.5933840749414,
-        "daysPerFteGrowthPct": 247.235344137093
+        "ccn": "161325",
+        "hospital": "GREENE COUNTY MEDICAL CENTER",
+        "state": "IA",
+        "fte2019": 267.82,
+        "fte2024": 178.54,
+        "fteGrowthPct": -33.335822567396015,
+        "patientDaysGrowthPct": 128.80550592283763,
+        "daysPerFteGrowthPct": 243.2210742480922
+      },
+      {
+        "ccn": "281359",
+        "hospital": "MEMORIAL COMMUNITY HOSPITAL",
+        "state": "NE",
+        "fte2019": 203.16,
+        "fte2024": 223.32,
+        "fteGrowthPct": 9.923213230950978,
+        "patientDaysGrowthPct": 277.1446929702695,
+        "daysPerFteGrowthPct": 243.09831552856863
+      },
+      {
+        "ccn": "670090",
+        "hospital": "CRESCENT MEDICAL CENTER LANCASTER",
+        "state": "TX",
+        "fte2019": 227.67,
+        "fte2024": 207.87,
+        "fteGrowthPct": -8.696797997101058,
+        "patientDaysGrowthPct": 208.96484173626146,
+        "daysPerFteGrowthPct": 238.39431143548683
+      },
+      {
+        "ccn": "260027",
+        "hospital": "AM 1 RESEARCH MED CTR",
+        "state": "MO",
+        "fte2019": 5599.81,
+        "fte2024": 1532.83,
+        "fteGrowthPct": -72.62710699113006,
+        "patientDaysGrowthPct": -9.794947246066776,
+        "daysPerFteGrowthPct": 229.5415385019884
+      },
+      {
+        "ccn": "191317",
+        "hospital": "JACKSON PARISH HOSPITAL",
+        "state": "LA",
+        "fte2019": 136.63,
+        "fte2024": 139.29,
+        "fteGrowthPct": 1.9468637927248844,
+        "patientDaysGrowthPct": 230.9278806463026,
+        "daysPerFteGrowthPct": 224.60820111066354
+      },
+      {
+        "ccn": "451312",
+        "hospital": "RICE MEDICAL CENTER",
+        "state": "TX",
+        "fte2019": 92.25,
+        "fte2024": 97.22,
+        "fteGrowthPct": 5.387533875338746,
+        "patientDaysGrowthPct": 224.75129606277147,
+        "daysPerFteGrowthPct": 208.14963034139754
+      },
+      {
+        "ccn": "341315",
+        "hospital": "BLADEN COUNTY HOSPITAL",
+        "state": "NC",
+        "fte2019": 313.23,
+        "fte2024": 176.97,
+        "fteGrowthPct": -43.50158030839958,
+        "patientDaysGrowthPct": 70.24898572632421,
+        "daysPerFteGrowthPct": 201.3340667856503
+      },
+      {
+        "ccn": "341303",
+        "hospital": "FIRSTHEALTH MONTGOMERY MEMORIAL CAH",
+        "state": "NC",
+        "fte2019": 94.91,
+        "fte2024": 120.12,
+        "fteGrowthPct": 26.562006111052593,
+        "patientDaysGrowthPct": 275.15582002493124,
+        "daysPerFteGrowthPct": 196.42057008463385
+      },
+      {
+        "ccn": "451317",
+        "hospital": "REFUGIO MEMORIAL HOSPITAL",
+        "state": "TX",
+        "fte2019": 117.63,
+        "fte2024": 127.18,
+        "fteGrowthPct": 8.11867720819519,
+        "patientDaysGrowthPct": 214.03325194744798,
+        "daysPerFteGrowthPct": 190.45236221558662
+      },
+      {
+        "ccn": "141321",
+        "hospital": "FRANKLIN HOSPITAL",
+        "state": "IL",
+        "fte2019": 129.66,
+        "fte2024": 123.33,
+        "fteGrowthPct": -4.8819990745025414,
+        "patientDaysGrowthPct": 174.3703353802551,
+        "daysPerFteGrowthPct": 188.4525880597087
+      },
+      {
+        "ccn": "281323",
+        "hospital": "CHI HEALTH SCHUYLER",
+        "state": "NE",
+        "fte2019": 47.88,
+        "fte2024": 49.51,
+        "fteGrowthPct": 3.4043441938178765,
+        "patientDaysGrowthPct": 198.26089296767768,
+        "daysPerFteGrowthPct": 188.44135639855395
+      },
+      {
+        "ccn": "521309",
+        "hospital": "MOUNDVIEW MEMORIAL HOSPITAL",
+        "state": "WI",
+        "fte2019": 107.9,
+        "fte2024": 107.76,
+        "fteGrowthPct": -0.12974976830398832,
+        "patientDaysGrowthPct": 187.87110585319135,
+        "daysPerFteGrowthPct": 188.24510320674972
+      },
+      {
+        "ccn": "051311",
+        "hospital": "BIGGS-GRIDLEY MEMORIAL HOSPITAL",
+        "state": "CA",
+        "fte2019": 125.55,
+        "fte2024": 133.12,
+        "fteGrowthPct": 6.029470330545594,
+        "patientDaysGrowthPct": 190.7164863280209,
+        "daysPerFteGrowthPct": 174.18460680951787
+      },
+      {
+        "ccn": "241335",
+        "hospital": "ST. ELIZABETH HOSP. OF WABASHA  INC.",
+        "state": "MN",
+        "fte2019": 185.98,
+        "fte2024": 195.3,
+        "fteGrowthPct": 5.011291536724394,
+        "patientDaysGrowthPct": 178.26086956521743,
+        "daysPerFteGrowthPct": 164.98185623010312
+      },
+      {
+        "ccn": "341316",
+        "hospital": "HIGHLANDS CASHIERS HOSPITAL",
+        "state": "NC",
+        "fte2019": 121.49,
+        "fte2024": 100.63,
+        "fteGrowthPct": -17.170137459873235,
+        "patientDaysGrowthPct": 114.11295052640841,
+        "daysPerFteGrowthPct": 158.49729066335448
+      },
+      {
+        "ccn": "450143",
+        "hospital": "ASCENSION SETON SMITHVILLE",
+        "state": "TX",
+        "fte2019": 64.69,
+        "fte2024": 62.98,
+        "fteGrowthPct": -2.6433761014067136,
+        "patientDaysGrowthPct": 149.3786667326782,
+        "daysPerFteGrowthPct": 156.1496657817871
+      },
+      {
+        "ccn": "100298",
+        "hospital": "FLORIDA STATE HOSPITAL",
+        "state": "FL",
+        "fte2019": 20.0,
+        "fte2024": 8.0,
+        "fteGrowthPct": -60.0,
+        "patientDaysGrowthPct": 2.040359034244421,
+        "daysPerFteGrowthPct": 155.1008975856111
+      },
+      {
+        "ccn": "030136",
+        "hospital": "ARIZONA GENERAL HOSPITAL",
+        "state": "AZ",
+        "fte2019": 376.63,
+        "fte2024": 277.35,
+        "fteGrowthPct": -26.3600881501739,
+        "patientDaysGrowthPct": 86.15664845173043,
+        "daysPerFteGrowthPct": 152.7931440648106
+      },
+      {
+        "ccn": "241328",
+        "hospital": "SANFORD BAGLEY MEDICAL CENTER",
+        "state": "MN",
+        "fte2019": 51.19,
+        "fte2024": 50.72,
+        "fteGrowthPct": -0.9181480757960547,
+        "patientDaysGrowthPct": 149.3169398907104,
+        "daysPerFteGrowthPct": 151.62725065073866
+      },
+      {
+        "ccn": "241340",
+        "hospital": "NORTHERN PINES MEDICAL CENTER",
+        "state": "MN",
+        "fte2019": 69.95,
+        "fte2024": 80.83,
+        "fteGrowthPct": 15.55396711937098,
+        "patientDaysGrowthPct": 187.1707581717076,
+        "daysPerFteGrowthPct": 148.51657223940308
+      },
+      {
+        "ccn": "521349",
+        "hospital": "RIVER FALLS AREA HOSPITAL",
+        "state": "WI",
+        "fte2019": 159.84,
+        "fte2024": 105.63,
+        "fteGrowthPct": -33.91516516516517,
+        "patientDaysGrowthPct": 62.808415986574964,
+        "daysPerFteGrowthPct": 146.36274932589367
+      },
+      {
+        "ccn": "351332",
+        "hospital": "HEART OF AMERICA MEDICAL CENTER",
+        "state": "ND",
+        "fte2019": 201.14,
+        "fte2024": 179.61,
+        "fteGrowthPct": -10.703987272546467,
+        "patientDaysGrowthPct": 119.13917483991247,
+        "daysPerFteGrowthPct": 145.4075698864205
       }
     ]
   },

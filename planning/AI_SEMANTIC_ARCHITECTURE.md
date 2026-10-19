@@ -53,3 +53,7 @@ For the next AI iteration, add typed conversational state (the previous validate
 ## Workforce catalog 1.1.0
 
 Seven new all-occupation workforce measures extend the existing query contract, guided peer comparisons and Neo4j report properties. Three source fields are API queried and matched by exact report ID, CCN and fiscal dates; they may have a later revision vintage than frozen financial inputs. National rural vulnerability, capacity contraction and matched workforce endpoint views have separate stated cohorts. See `WORKFORCE.md` for counts, provenance, tests and interpretation limits. Vacancies, turnover, nurse ratios and contract labor remain unsupported.
+
+## Validation and ownership network extension
+
+Catalog 1.1.1 adds visible endpoint review policy; private organizational network evidence has its own version hash. The graph now includes Facility and OwnershipEvent nodes, six disclosure categories, renal/CMHC enrollment identity and 779 dated hospital CHOW events. Ownership interests, operational control and neutral associations remain distinct. The bounded API source audit does not establish that filings are substantively correct. See VALIDATION_OWNERSHIP.md and graph/inspection-summary.json for current deployment verification; earlier counts above describe the initial inspection build.

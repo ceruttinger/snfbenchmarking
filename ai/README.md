@@ -17,3 +17,7 @@ Coverage analysis currently reports dataset-wide metadata totals. Historical-own
 ## Workforce extension
 
 Catalog 1.1.0 adds seven workforce measures backed by three CMS API fields and exact report-ID/CCN/period joins. See `planning/WORKFORCE.md` for scope and reproducibility. Run `python3 ai/test_workforce.py`. Guided comparisons do not require a model call; the two new language examples are included in `eval_planner.py`.
+
+## Validation and organizational network
+
+See `planning/VALIDATION_OWNERSHIP.md`. Run `python3 ai/test_validation_network.py`. Catalog 1.1.1 adds transparent endpoint review policy; the private organizational network has its own snapshot hash. API `/api/network` returns bounded exact-ID target evidence, while public network-summary.json contains aggregate coverage. Missing roster identities and ownership data remain unknown.

@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.1.1",
   "entity": "hospital_cost_report",
   "grain": [
     "CCN",
@@ -750,7 +750,8 @@
     ],
     "balanced": "Metric-specific fixed CCNs with valid values in every selected dataset.",
     "scope": "Descriptive; no case-mix, wage, teaching or clinical-quality adjustment.",
-    "workforce": "Exact report-ID/CCN/fiscal-period match. Nonnegative reported values only; zero retained, missing never imputed. Payroll FTEs are period averages, never annualized."
+    "workforce": "Exact report-ID/CCN/fiscal-period match. Nonnegative reported values only; zero retained, missing never imputed. Payroll FTEs are period averages, never annualized.",
+    "workforceEndpointReview": "Payroll FTE and workload endpoint-change rankings exclude missing/nonpositive FTE endpoints and more than fourfold changes in FTEs, annualized patient days or patient days per FTE. Guided raw trends retain values with target warnings. Review flags are not proof of errors."
   },
   "relationships": [
     {
@@ -1176,5 +1177,5 @@
     "nppesMode": "Exact CMS-reported NPI, organization-only lookup on demand; national NPPES is not bulk ingested.",
     "ownershipRule": "Source-reported enrollment disclosures, not an audited ultimate-parent registry. Association dates have no inferred termination dates."
   },
-  "catalogSha256": "7493789160cd34b39107750aa766a8dda1669461666f39942f4186a2ece4514c"
+  "catalogSha256": "175db2d36210c98a175fd3a10b9940919ef88b938c7d78b9a7ee0d8b8a267965"
 }

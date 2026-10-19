@@ -40,3 +40,7 @@ References: [Neo4j Docker](https://neo4j.com/docs/operations-manual/current/dock
 ## Workforce update
 
 `python3 graph/update.py` imports the rebuilt versioned artifact into this existing instance with MERGE and checks workforce properties. It retains prior catalog lineage and ownership evidence. An initially stopped instance is temporarily started and restored to stopped afterward. New report properties include payrollFte, residentFte, salaries and seven metric_ properties; WORKFORCE_FROM_SOURCE preserves separate API refresh lineage. Run the six queries in `graph/workforce.cypher`. See `planning/WORKFORCE.md` for limitations.
+
+## Cross-category organizational network
+
+The extension adds Facility and OwnershipEvent labels, role-specific organizational links and source snapshots. Run `graph/ownership-network.cypher` for inspection. Only operational/managerial-control disclosures create control edges; security, mortgage, ADP, trustee and other roles remain neutral associations. Previous incorrectly promoted hospital convenience edges are reclassified while retaining their assertion evidence. Network coverage is a mixture of retained CCNs and institutional enrollment identities, not a complete physical-site census. Dated CHOW events are not continuous ownership history. See `planning/VALIDATION_OWNERSHIP.md`.

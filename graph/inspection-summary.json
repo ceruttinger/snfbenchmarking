@@ -36,5 +36,27 @@
   },
   "access": "Private database ports through authenticated AWS SSM; password in AWS Secrets Manager.",
   "verifiedDate": "2026-10-18",
-  "importArtifactSha256": "1c02ad0a4df8bdcf17159d982c7c73a7f9f88a1141f3522a91f660567d7354c1"
+  "importArtifactSha256": "1c02ad0a4df8bdcf17159d982c7c73a7f9f88a1141f3522a91f660567d7354c1",
+  "workforceExtension": {
+    "catalogVersion": "1.1.0",
+    "catalogSha256": "7493789160cd34b39107750aa766a8dda1669461666f39942f4186a2ece4514c",
+    "graphArtifactSha256": "18043b55d79d265d25febea01eec4951a785570c8a16b0f4aa57bc708a4fc867",
+    "verifiedDate": "2026-10-18",
+    "nodesIncludingPriorCatalog": 98127,
+    "relationshipsIncludingPriorCatalog": 469864,
+    "costReports": 48193,
+    "payrollFteObservations": 47269,
+    "residentFteObservations": 11557,
+    "salaryObservations": 47556,
+    "target2024": {
+      "ccn": "460010",
+      "payrollFte": 3861.93,
+      "ftePer100Beds": 794.6358024691358,
+      "patientDaysPerFte": 36.0524666317143,
+      "salaryPerFte": 92431.77665446136
+    },
+    "previousPowerState": "stopped",
+    "restoredPowerState": "stopped",
+    "catalogHistory": "Previous catalog and interpretation edges retained; top-level verification records the initial deployment."
+  }
 }

@@ -197,17 +197,18 @@
     }
   ],
   "capacity": {
-    "matchedHospitals": 4143,
-    "beds2019": 712647.0,
-    "beds2024": 637867.0,
-    "largestReductions": [
+    "matchedHospitals": 4127,
+    "reviewExcludedHospitals": 16,
+    "reviewRules": "Either endpoint over 10,000 reported beds; zero endpoint; or more than fourfold endpoint difference. Screening flags require review, not proof of error. No values imputed.",
+    "reviewRecords": [
       {
         "ccn": "131316",
         "hospital": "BEAR LAKE MEMORIAL HOSPITAL",
         "state": "ID",
         "beds2019": 52913.0,
         "beds2024": 21.0,
-        "bedChange": -52892.0
+        "bedChange": -52892.0,
+        "reviewReason": "Reported beds exceed 10,000"
       },
       {
         "ccn": "370215",
@@ -215,7 +216,8 @@
         "state": "OK",
         "beds2019": 28401.0,
         "beds2024": 97.0,
-        "bedChange": -28304.0
+        "bedChange": -28304.0,
+        "reviewReason": "Reported beds exceed 10,000"
       },
       {
         "ccn": "391300",
@@ -223,7 +225,8 @@
         "state": "PA",
         "beds2019": 1605.0,
         "beds2024": 25.0,
-        "bedChange": -1580.0
+        "bedChange": -1580.0,
+        "reviewReason": "Zero endpoint or more than fourfold bed change"
       },
       {
         "ccn": "470003",
@@ -231,8 +234,121 @@
         "state": "VT",
         "beds2019": 401.0,
         "beds2024": 65.0,
-        "bedChange": -336.0
+        "bedChange": -336.0,
+        "reviewReason": "Zero endpoint or more than fourfold bed change"
       },
+      {
+        "ccn": "250099",
+        "hospital": "GREENWOOD LEFLORE HOSPITAL",
+        "state": "MS",
+        "beds2019": 173.0,
+        "beds2024": 25.0,
+        "bedChange": -148.0,
+        "reviewReason": "Zero endpoint or more than fourfold bed change"
+      },
+      {
+        "ccn": "390162",
+        "hospital": "ST LUKES HOSPITAL - EASTON CAMPUS",
+        "state": "PA",
+        "beds2019": 164.0,
+        "beds2024": 29.0,
+        "bedChange": -135.0,
+        "reviewReason": "Zero endpoint or more than fourfold bed change"
+      },
+      {
+        "ccn": "440176",
+        "hospital": "INDIAN PATH COMMUNITY HOSPITAL",
+        "state": "TN",
+        "beds2019": 148.0,
+        "beds2024": 34.0,
+        "bedChange": -114.0,
+        "reviewReason": "Zero endpoint or more than fourfold bed change"
+      },
+      {
+        "ccn": "440159",
+        "hospital": "DELTA MEDICAL CENTER MEMPHIS",
+        "state": "TN",
+        "beds2019": 113.0,
+        "beds2024": 10.0,
+        "bedChange": -103.0,
+        "reviewReason": "Zero endpoint or more than fourfold bed change"
+      },
+      {
+        "ccn": "181315",
+        "hospital": "FORT LOGAN HOSPITAL",
+        "state": "KY",
+        "beds2019": 108.0,
+        "beds2024": 25.0,
+        "bedChange": -83.0,
+        "reviewReason": "Zero endpoint or more than fourfold bed change"
+      },
+      {
+        "ccn": "110234",
+        "hospital": "SGMC BERRIEN CAMPUS",
+        "state": "GA",
+        "beds2019": 51.0,
+        "beds2024": 10.0,
+        "bedChange": -41.0,
+        "reviewReason": "Zero endpoint or more than fourfold bed change"
+      },
+      {
+        "ccn": "230085",
+        "hospital": "BRONSON SOUTH HAVEN HOSPITAL",
+        "state": "MI",
+        "beds2019": 49.0,
+        "beds2024": 8.0,
+        "bedChange": -41.0,
+        "reviewReason": "Zero endpoint or more than fourfold bed change"
+      },
+      {
+        "ccn": "440032",
+        "hospital": "HAWKINS COUNTY MEMORIAL HOSPITAL",
+        "state": "TN",
+        "beds2019": 32.0,
+        "beds2024": 5.0,
+        "bedChange": -27.0,
+        "reviewReason": "Zero endpoint or more than fourfold bed change"
+      },
+      {
+        "ccn": "371340",
+        "hospital": "MEMORIAL HOSPITAL OF TEXAS COUNTY",
+        "state": "OK",
+        "beds2019": 25.0,
+        "beds2024": 6.0,
+        "bedChange": -19.0,
+        "reviewReason": "Zero endpoint or more than fourfold bed change"
+      },
+      {
+        "ccn": "511304",
+        "hospital": "SISTERSVILLE GENERAL HOSPITAL",
+        "state": "WV",
+        "beds2019": 25.0,
+        "beds2024": 6.0,
+        "bedChange": -19.0,
+        "reviewReason": "Zero endpoint or more than fourfold bed change"
+      },
+      {
+        "ccn": "121302",
+        "hospital": "KOHALA HOSPITAL",
+        "state": "HI",
+        "beds2019": 6.0,
+        "beds2024": 25.0,
+        "bedChange": 19.0,
+        "reviewReason": "Zero endpoint or more than fourfold bed change"
+      },
+      {
+        "ccn": "361313",
+        "hospital": "MORROW COUNTY HOSPITAL",
+        "state": "OH",
+        "beds2019": 23.0,
+        "beds2024": 210.0,
+        "bedChange": 187.0,
+        "reviewReason": "Zero endpoint or more than fourfold bed change"
+      }
+    ],
+    "beds2019": 628410.0,
+    "beds2024": 637266.0,
+    "largestReductions": [
       {
         "ccn": "450058",
         "hospital": "BAPTIST HEALTH SYSTEM",
@@ -354,14 +470,6 @@
         "bedChange": -152.0
       },
       {
-        "ccn": "250099",
-        "hospital": "GREENWOOD LEFLORE HOSPITAL",
-        "state": "MS",
-        "beds2019": 173.0,
-        "beds2024": 25.0,
-        "bedChange": -148.0
-      },
-      {
         "ccn": "250048",
         "hospital": "ST. DOMINIC-JACKSON MEMORIAL HOSP",
         "state": "MS",
@@ -378,14 +486,6 @@
         "bedChange": -139.0
       },
       {
-        "ccn": "390162",
-        "hospital": "ST LUKES HOSPITAL - EASTON CAMPUS",
-        "state": "PA",
-        "beds2019": 164.0,
-        "beds2024": 29.0,
-        "bedChange": -135.0
-      },
-      {
         "ccn": "010113",
         "hospital": "MOBILE INFIRMARY MEDICAL CENTER",
         "state": "AL",
@@ -400,6 +500,54 @@
         "beds2019": 299.0,
         "beds2024": 166.0,
         "bedChange": -133.0
+      },
+      {
+        "ccn": "310064",
+        "hospital": "ATLANTICARE REGIONAL MEDICAL CENTER",
+        "state": "NJ",
+        "beds2019": 540.0,
+        "beds2024": 408.0,
+        "bedChange": -132.0
+      },
+      {
+        "ccn": "140158",
+        "hospital": "INSIGHTS HOSPITAL AND MEDICAL CENTER",
+        "state": "IL",
+        "beds2019": 203.0,
+        "beds2024": 72.0,
+        "bedChange": -131.0
+      },
+      {
+        "ccn": "240080",
+        "hospital": "UNIVERSITY OF MINNESOTA MEDICAL CTR",
+        "state": "MN",
+        "beds2019": 778.0,
+        "beds2024": 650.0,
+        "bedChange": -128.0
+      },
+      {
+        "ccn": "450678",
+        "hospital": "WHITE ROCK MEDICAL CENTER",
+        "state": "TX",
+        "beds2019": 187.0,
+        "beds2024": 64.0,
+        "bedChange": -123.0
+      },
+      {
+        "ccn": "180029",
+        "hospital": "HAZARD ARH",
+        "state": "KY",
+        "beds2019": 229.0,
+        "beds2024": 107.0,
+        "bedChange": -122.0
+      },
+      {
+        "ccn": "190098",
+        "hospital": "OCHSNER LSU HEALTH SHREVEPORT",
+        "state": "LA",
+        "beds2019": 365.0,
+        "beds2024": 243.0,
+        "bedChange": -122.0
       }
     ]
   },
